@@ -1,0 +1,9 @@
+ <div class="bar bar-header bar-positive" ng-controller = 'header' style="position: relative; !important;">
+  <p class="title" style="font-size:12px;text-align: -moz-right;">
+   <button class="button button-small button-assertive" style=" float: left;margin: 3px 0 0 2px;" ng-click="askQuestion({{id}})">
+      Ask Question
+    </button>
+ Logged in as {{email}}
+  
+  </p>
+</div>

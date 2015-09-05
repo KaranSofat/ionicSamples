@@ -1,0 +1,70 @@
+ <ion-view view-title="Registration">
+
+ <ion-nav-bar class="bar-dark">
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+         </ion-nav-bar>
+        <ion-content>
+        
+          <div class="list">
+            <label class="item-input">
+              <span class="input-label">FirstName</span>
+              <input type="text" ng-model="user.firstname">
+            </label>
+            
+            <label class="item-input">
+              <span class="input-label">LastName</span>
+              <input type="text" ng-model="user.lastname">
+            </label>
+            
+             <label class="item-input">
+              <span class="input-label">Email</span>
+              <input type="text" ng-model="user.email">
+            </label>
+            
+        
+            <label class="item-input">
+              <span class="input-label">Password</span>
+              <input type="password" ng-model="user.password">
+            </label>
+            
+            
+            
+            
+            <label class="item-input">
+              <span class="input-label">image</span>
+              <input type="file" name="user.image">
+            </label>
+            
+            <label class="item-input">
+             <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width:50px;">
+            <img ng-show="imgURI === undefined" ng-src="http://placehold.it" style="width:50px;">
+            <button class="button" ng-click="takePicture()">Take Picture</button>
+            </label>
+            
+             <label class="item-input">
+             <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width:50px;">
+            <img ng-show="imgURI === undefined" ng-src="http://placehold.it" style="width:50px;">
+            <button class="button" ng-click="gallery()">Upload From gallery</button>
+            </label>
+            
+            
+            
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="register()">
+             Register
+            </button>
+          </div>
+        </ion-content>
+  <style>
+  .back
+  {
+  background:none !important;
+  }
+  
+  </style>      
+        
+        
+        
+      </ion-view>

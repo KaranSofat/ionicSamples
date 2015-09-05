@@ -1,0 +1,43 @@
+<div class="bar-header">
+       <div class="header-logo"><a href="#home"><img alt="Vlife"  ng-src="img/v-life_logo.png" /></a></div>
+      <div class="menu-button"> 
+          
+          <a class="ion-android-menu"  ng-if="hideheadermenu" ng-click="headermenushow()"></a> 
+          <a class="ion-android-menu"  ng-if="headermenu" ng-click="headermenuhide()"></a>
+        <ion-list  ng-show="headermenu" ng-if="authtoken != null" >
+            <ion-item>
+             <a href="#profile">Profile</a>
+            </ion-item>
+            
+            <ion-item>
+             <a href="#updatepassword">Reset Password</a>
+            </ion-item>
+            
+            <ion-item>
+             <a href="#mfavorites">Favorites</a>
+            </ion-item>
+            
+            <ion-item>
+             <a href="#subscription">Subscription</a>
+            </ion-item>
+           
+            <ion-item>
+              <a href="#logout">Logout</a> 
+            </ion-item>
+        </ion-list>
+        
+        <ion-list ng-show="headermenu" ng-if="authtoken == null">
+          <ion-item>
+          <a href="#login">Login</a>
+           </ion-item>
+            <ion-item>
+          <a href="#register">Signup</a> 
+          </ion-item>
+        </ion-list>
+        
+        
+          
+       </div>
+    </div> 
+    
+    

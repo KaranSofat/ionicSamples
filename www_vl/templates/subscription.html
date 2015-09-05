@@ -1,0 +1,32 @@
+<ion-view  cache-view='false'>
+  <ion-content>
+    
+    <!--- header menu section -->
+        <div ng-include="'templates/include/headermenu.html'"></div>
+    <!--- header menu section end-->
+     <div ng-class="isAutoScroll ? 'icon-autoscroll' : 'icon-autoscroll-disabled'">
+    
+    <form name="authorizationForm" ng-submit="updatesubscription(authorizationForm)">
+         <h2>Update Subscription</h2>
+         <h4>Notify Me For </h4>
+         <p class="error" ng-if="error"> {{ error }}</p>
+       
+        <div class="list">
+         
+           
+           <ion-checkbox class="no-errors" ng-model="profile.User.live_notification" ng-true-value="'true'" ng-false-value="'false'">Upcomming Events</ion-checkbox>
+           <ion-checkbox ng-model="profile.User.archive_notification" ng-true-value="'true'" ng-false-value="'false'">New Video</ion-checkbox>
+    
+        </div>    
+         <h4>From My Favorites Church's </h4>
+        <button class="button button-full button-positive" type="submit">
+          Update
+        </button>
+        
+         
+    </form> 
+
+
+</div>
+  </ion-content>
+</ion-view>

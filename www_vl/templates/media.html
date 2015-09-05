@@ -1,0 +1,45 @@
+
+<ion-view cache-view='false'>
+  <ion-content>
+     <!--- header menu section -->
+    <div ng-include="'templates/include/headermenu.html'"></div>
+    <!--- header menu section end-->
+   <div ng-class="isAutoScroll ? 'icon-autoscroll' : 'icon-autoscroll-disabled'">
+    <!--- churchlogo -->
+    <div ng-include="'templates/include/churchlogo.html'"></div>
+    <!--- churchlogo end -->
+    
+    
+    <!--- livetimer  -->
+    <div ng-include="'templates/include/livetimer.html'"></div>
+    <!--- livetimer end -->
+    
+    
+
+    <h2 class="title" ng-if="mediafilename">{{ mediafilename }}</h2>
+    <div id="ondemandplayer" ></div>
+    
+    <h2 class="title">{{ categoryname }}</h2>
+    <ion-list>
+      <ion-item ng-click='play("{{x.Mediacategory.id}}","{{ trimTo(x.Mediacategory.client_id) }}","{{ x.Media.id }}")'  class="item-text-wrap item-remove-animate item-avatar item-icon-right" ng-repeat="x in media" ng-if="x.Media.id" type="item-text-wrap" >
+        
+        <img ng-if="x.Media.image !=-1"  alt="{{ x.Media.name }}"  ng-src="/img/sample.png" />
+        <img ng-if="x.Media.image"  alt="{{ x.Media.name }}" ng-src="http://www.vlifetech.com/img/media/{{ x.Media.image }}" width="100" height="100"/>
+        <h2>{{x.Media.name}}</h2>
+        <p class="item-text-wrap">{{x.Media.description}}</p>
+       
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      
+      </ion-item>
+    </ion-list>
+  
+   
+    <!--- churchbanner footer item  -->  
+    <div ng-include="'templates/include/churchfooter.html'"></div>
+     <!--- churchbanner footer item end  --> 
+ 
+  
+
+</div>
+  </ion-content>
+</ion-view>

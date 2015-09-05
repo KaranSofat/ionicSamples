@@ -1,0 +1,125 @@
+ <ion-view view-title="Detail" cache-view='false'>
+ <ion-nav-bar class="bar-dark">
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+         </ion-nav-bar>
+<!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom back">
+          <ion-nav-back-button class="button-icon ion-arrow-left-c">
+          </ion-nav-back-button>
+         </ion-nav-bar> --> 
+        <ion-content  ng-repeat="x in qDetail" >
+   
+        <div class="row" style="padding-top:65px;">
+        
+      <div class="col-10" style="cursor: pointer;">  <i class="icon ion-checkmark"style="margin: 0 0 0 8px;"></i></div>
+      <div class="col-80">{{x.question}}</div>
+      <div class="col-10" style="cursor: pointer;">  <i class="ion-close-round"></i></div>
+    </div>
+        <div class="row" ng-repeat="x in qDetail">
+        
+      <div class="col-50" style="margin: 0 0 0 8px;">55  </div>
+     
+      <div class="col-50" style=" margin: 0 0 0 -26px;
+    text-align: right;">  55</div>
+    </div>
+        <div class="row" ng-repeat="x in qDetail">
+        
+      <div class="col" style="margin: 0 0 0 3px;">{{x.title}}</div>
+    
+    </div>
+    
+    <div class="row">
+    <div class="col" style="text-align: end;">Asked By:{{x.first_name}}</div>
+    
+    </div>
+        <div class="row">
+    <div class="col"style="text-align: end;">{{x.creation_datetime.date}}</div>
+   
+    </div>                                                                        
+    <p class="answer" style="margin-top:18px;">Answers</p>
+        <hr>
+        <div ng-repeat = "x in answerss">
+        <div class="row"> 
+      <div class="col">
+      {{x.answer}}
+      </div>
+      
+      
+      </div>  
+         
+        <div class="row">
+      <div class="col" style="text-align:end;">
+      Answer by:{{x.first_name}}
+      </div>
+      
+      
+      </div> 
+         
+        <div class="row">
+      <div class="col" style="text-align:end;">
+      {{x.creation_datetime.date}}
+      </div>
+      
+      
+      </div> 
+      <hr>
+      </div>
+   <!--   <div class="row" ng-repeat = "x in answers">
+      <div class="col">
+      {{x.answer}}
+      </div>
+      
+      
+      </div>  -->
+        
+         <div class="row">
+      <div class="col">
+      
+      </div>
+      
+      
+      </div> 
+        
+          <label class="item item-input">
+    <textarea placeholder="Question" ng-model ="user.answer"></textarea>
+  </label>
+</div>
+<div class="padding">
+            <button class="button button-block button-positive" ng-click="answer({{x.id}})">
+             Submit
+            </button>
+         
+         
+        </ion-content>
+  <style>
+  .back
+  {
+  background:none !important;
+  }
+  .icon.ion-checkmark
+  {
+  font-size:20px !important;
+ 
+  }
+  .ion-close-round
+  {
+  
+    font-size:20px !important;
+  }
+  .col-80 {
+    -moz-box-flex: 0;
+    flex: 0 0 80%;
+    max-width: 80%;
+    text-align: -moz-center;
+}
+.answer
+{
+font-size: 18px;
+    margin: 0 0 -5px 9px;
+    text-transform: none;
+}
+  </style>      
+        
+        
+        
+      </ion-view>

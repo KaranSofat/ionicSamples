@@ -1,0 +1,4 @@
+ <a href="#church/{{ client.Client.id}}">
+    <img ng-if="client.Client.logo === ''" class="church-avatar-inner" alt="{{ client.Client.name }}"  ng-src="img/sample.png" />
+    <img ng-if="client.Client.logo !== ''" class="church-avatar-inner" alt="{{ client.Client.name }}"  ng-src="http://www.vlifetech.com/img/client/logo/{{ client.Client.logo }}" />
+ </a>

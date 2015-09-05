@@ -1,0 +1,64 @@
+ <ion-view view-title="Login">
+        <ion-content>
+        
+        <ion-slide-box auto-play=true slide-interval='1000' on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <div class="box blue"><img ng-src="img/cat_img_01.png" class="images"></div>
+          </ion-slide>
+          <ion-slide>
+               <div class="box blue"><img ng-src="img/cat_img_02.png" class="images"></div>
+          </ion-slide>
+          <ion-slide>
+           <div class="box blue"><img ng-src="img/cat_img_03.png" class="images"></div>
+          </ion-slide>
+        </ion-slide-box>
+
+        
+        
+          <div class="list">
+            <label class="item-input">
+              <span class="input-label">Username</span>
+              <input type="text" ng-model="user.username">
+            </label>
+            <label class="item-input">
+              <span class="input-label">Password</span>
+              <input type="password" ng-model="user.password">
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="signIn()">
+              Sign-In
+            </button>
+            
+            <p class="text-center">
+            <img ng-src="img/fb.png" ng-click="fbLogin()" style="width:150px;">
+         
+            </p>
+            <p class="text-center">
+              <a href="#/register">Register Here</a>
+         
+            </p>
+              <p class="text-center">
+              <a href="tel:555 555 5555" target="_blank">Click For Contact</a>
+         
+            </p>
+            
+            
+            	<!--<div id="map_canvas" style="width: 400px; height: 300px"></div>--> 
+                   
+                
+          </div>
+        </ion-content>
+        <style>
+        .images
+        {
+        
+        width:100%;
+        
+        }
+        
+        
+        </style>
+        
+        
+      </ion-view>

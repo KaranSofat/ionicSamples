@@ -1,0 +1,33 @@
+ <ion-view view-title="Dashboard">
+
+ <ion-nav-bar class="bar-dark">
+         
+         </ion-nav-bar>
+           <ion-content>
+
+<div class="list">
+
+  <div class="item item-button-right" ng-repeat = "x in rooms" >
+   {{x.name}}
+    <button class="button button-positive" ng-click="viewDetail({{x.id}})">
+      <i class="icon ion-ios-eye"></i>
+    </button>
+  </div>
+
+</div>
+
+
+    <!-- -->
+        </ion-content>
+        
+<style>
+
+.item
+{
+
+background:none !important;
+}
+</style>        
+        
+        
+      </ion-view>

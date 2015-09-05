@@ -1,0 +1,42 @@
+<ion-view>
+  <ion-content>
+    <!--- header menu section -->
+    <div ng-include="'templates/include/headermenu.html'"></div>
+    <!--- header menu section end-->
+  <div ng-class="isAutoScroll ? 'icon-autoscroll' : 'icon-autoscroll-disabled'">
+    
+    <!--- churchbanner  --> 
+    <div ng-include="'templates/include/churchbanner.html'"></div>
+    <!--- churchbanner end  -->
+    
+     <!--- churchlogo -->
+    <div ng-include="'templates/include/churchlogo2.html'"></div>
+    <!--- churchlogo end -->
+    
+    
+    <div class="church-content">
+    
+        <div class="church-content-left">
+          <div class="star-icon">
+             <i class="icon ion-star favourite" ng-if="favouritechannel.indexOf(client.Client.id)!=-1"></i>
+             <i class="icon ion-star" ng-if="favouritechannel.indexOf(client.Client.id)==-1"></i>
+          </div>
+        </div>
+        
+        <div class="church-content-right">
+            <h2>{{ client.Client.name}}  <a href="#contact/{{ client.Client.id}}"><i class="icon ion-email"></i></a></h2>
+            <p class="location" ng-if="client.Client.latitude" ng-click="showMap('{{ client.Client.latitude}}','{{ client.Client.longitude}}')"><i class="icon ion-location"></i><a >{{ client.Client.address_1}}, {{ client.Client.address_2}}</a></p>
+            <p class="description">{{ client.Client.description}}</p>
+        </div>
+    
+   </div>
+   
+    <!--- churchbanner footer item  -->  
+    <div ng-include="'templates/include/churchfooter.html'"></div>
+     <!--- churchbanner footer item end  --> 
+ 
+  
+</div>
+
+  </ion-content>
+</ion-view>

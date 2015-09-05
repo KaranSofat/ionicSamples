@@ -1,0 +1,33 @@
+<div class="church-timer" ng-if="countdownVal">
+    
+    <h4 class="center-align">Next Online experience in:</h4>
+    <div class="button-bar timer">
+     
+    <timer ng-if="countdownVal" countdown="countdownVal" max-time-unit="'day'" interval="1000">
+  
+    <a class="button">
+    <span class="timer-time">{{days}}</span> 
+    <span class="timer-label">days</span>
+   </a>
+   <a class="button">
+     <span class="timer-time">{{hours}}</span> 
+    <span class="timer-label">hours</span>
+   </a>
+    <a class="button">
+     <span class="timer-time">{{minutes}}</span> 
+    <span class="timer-label">minutes</span>
+    </a>
+    <a class="button">
+     <span class="timer-time">{{seconds}}</span> 
+    <span class="timer-label">seconds</span>
+    </a>
+    </timer>
+  
+  </div>
+</div>
+<!--
+<div class="church-timer" ng-if="countdownVal == 0">
+    
+    <h4 class="center-align">No Live Event Scheduled</h4>
+    
+</div>-->

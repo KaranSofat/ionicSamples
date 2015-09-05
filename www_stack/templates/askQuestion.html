@@ -1,0 +1,42 @@
+ <ion-view view-title="Ask Question">
+ <ion-nav-bar class="bar-dark">
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+         </ion-nav-bar>
+ 
+        <ion-content>
+  
+    
+       
+<div ng-include="'templates/header.html'"></div>
+       <div class="list" style="padding-top:45px;">
+  
+  <label class="item item-input">
+    <input type="text" placeholder="Title" style="background:white !important;" ng-model = "user.title">
+  </label>
+  <label class="item item-input">
+    <textarea placeholder="Question" ng-model ="user.question"></textarea>
+  </label>
+</div>
+<div class="padding">
+            <button class="button button-block button-positive" ng-click="askQuestion()">
+             Submit
+            </button>
+
+
+   
+        </ion-content>
+        
+<style>
+.item-input {
+    align-items: center;
+    display: flex;
+    margin: 11px 0 -2px;
+    overflow: hidden;
+    padding: 6px 0 5px 16px;
+    position: relative;
+}
+</style>        
+        
+        
+      </ion-view>

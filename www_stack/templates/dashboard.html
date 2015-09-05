@@ -1,0 +1,102 @@
+ <ion-view view-title="Dashboard">
+
+ <ion-nav-bar class="bar-dark">
+         
+         </ion-nav-bar>
+           <ion-content>
+
+<div ng-include="'templates/header.html'"></div>
+
+
+<!--<div class="row">
+
+  <div class="col">
+   <div fb-like="myModel.Url"></div>
+  </div>
+  <div class="col">
+   <div tweet="myModel.Name" tweet-url="myModel.Url"></div>
+  </div>
+  <div class="col">
+   <div google-plus="myModel.Url"></div>
+  </div>
+  <div class="col">
+  <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl" pin-it-url="myModel.Url"></div>
+  </div>
+</div>-->
+<div class="row">
+<div class="col">
+ <button class="button button-small button-royal" style=" float: left;margin: 3px 0 0 2px;" ng-click="settings()">
+ Settings
+ 
+</button>
+ <button class="button button-small button-royal" style=" float: left;margin: 3px 0 0 2px;" ng-click="videos()">
+Videos
+ 
+</button>
+
+
+ <button class="button button-small button-dark" style=" float: right;margin: 3px 0 0 2px;" ng-click="onlineChat()">
+ Online Chat
+ 
+</button>
+
+</div>
+
+
+
+
+</div>
+
+
+<!--<div class="jumbotron text-center">
+        <div class="container">
+            <div class="col-xs-3">
+                <div fb-like="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+               
+            </div>
+            <div class="col-xs-3">
+               
+            </div>
+            <div class="col-xs-3">
+                
+            </div>
+        </div>
+    </div>
+ <!--<div class="list card">
+            <div class="item">
+		{{message}}
+                <h2>{{user.name}}</h2>
+                <p>{{user.city}}</p>
+            </div>
+            <div class="item item-body">
+                <img src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270" ng-if="user.id"/>
+            </div>
+        </div>-->
+<div class="list">
+
+  <div class="item item-button-right" ng-repeat = "x in questions" >
+   {{x.question}}
+    <button class="button button-positive" ng-click="viewDetail({{x.id}})">
+      <i class="icon ion-ios-eye"></i>
+    </button>
+  </div>
+
+</div>
+
+
+    <!-- -->
+        </ion-content>
+        
+<style>
+
+.item
+{
+
+background:none !important;
+}
+</style>        
+        
+        
+      </ion-view>

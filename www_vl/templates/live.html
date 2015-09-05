@@ -1,0 +1,39 @@
+
+<ion-view cache-view='false'>
+
+  <ion-content>
+  
+    <!--- header menu section -->
+    <div ng-include="'templates/include/headermenu.html'"></div>
+    <!--- header menu section end-->
+  <div ng-class="isAutoScroll ? 'icon-autoscroll' : 'icon-autoscroll-disabled'">
+    <!--- churchlogo -->
+    <div ng-include="'templates/include/churchlogo.html'"></div>
+    <!--- churchlogo end -->
+    
+    <!--- livetimer  -->
+    <div ng-include="'templates/include/livetimer.html'"></div>
+    <!--- livetimer end -->
+    
+    
+    <!--- live player  -->
+    <div id="jwplayerelement"></div>
+    
+   
+    
+    <!--<video ng-if="countdownVal == 0" controls='controls' autoplay='autoplay' src='{{ church.Client.iphone_event_url }}'></video>--> 
+     <!--- live player  end -->
+     
+    <!--- churchbanner  --> 
+    <div ng-show="countdownVal" ng-include="'templates/include/churchbanner.html'"></div>
+    <!--- churchbanner end  --> 
+    
+    <!--- churchbanner footer item  -->  
+    <div ng-include="'templates/include/churchfooter.html'"></div>
+     <!--- churchbanner footer item end  -->  
+ 
+  
+
+</div>
+  </ion-content>
+</ion-view>

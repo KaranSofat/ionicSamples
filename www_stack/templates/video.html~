@@ -1,0 +1,14 @@
+ <ion-view view-title="Dashboard">
+
+ <ion-nav-bar class="bar-dark">
+         
+         </ion-nav-bar>
+           <ion-list>
+      <div class="modal transparent fullscreen-player" ng-click="closeModal()">
+    <video ng-src="http://player.vimeo.com/external/85569724.sd.mp4?s=43df5df0d733011263687d20a47557e4" class="centerme" controls="controls" autoplay></video>
+</div
+    </ion-list>
+        
+
+        
+      </ion-view>

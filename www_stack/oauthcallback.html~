@@ -1,0 +1,17 @@
+<html>
+<head>
+<script>
+
+   window.opener.openFB.oauthCallback(window.location.href);
+   function a()
+   {
+   
+      window.close();
+   } 
+</script>
+</head>
+<body onload="a()">
+
+<button onclick ="a()">ads</button>
+</body>
+</html>
