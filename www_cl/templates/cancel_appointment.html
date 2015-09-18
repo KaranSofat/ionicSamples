@@ -1,0 +1,62 @@
+<ion-view>
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service"> Cancel Appointment
+  </ion-nav-title>
+    <ion-content>
+        <br/>
+        <div class="rate_service" style=" width:88%;">
+            <div class='services_color' style="text-align:left;">Let 
+                <font class="wght_font"  style="text-transform: capitalize;">{{cncelappointmentName}}</font> know why you are cancelling
+            </div>
+            <br/>
+        </div>
+        <br/>
+        <br/>
+        <div class="item rate_service">
+            <div class="imagewidthrightpart_service">
+                <div>
+                    <input type="radio" name="sex" value="Homeowner cancelled service this week." ng-click="other('Homeowner cancelled service this week.')" >&nbsp; Homeowner cancelled service this week.
+					
+                        <br>
+                            <br>
+                                <input type="radio" name="sex" value="I checked and it does not need cut" ng-click="other('I checked and it does not need cut')">&nbsp; I checked and it doen't need cut
+					
+                                    <br>
+                                        <br>
+                                            <input type="radio" name="sex" value="Due to weather, no service is needed" ng-click="other('Due to weather, no service is needed')">&nbsp; Due to weather, no service is needed
+					
+                                                <br>
+                                                    <br>
+                                                        <input type="radio" name="sex" value="Other" ng-click="other('Others')">&nbsp; Other
+				
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                                <div id="cncl" style="display:none;">
+                                                    <input type="text" class="border_bottom_service" id="cancl" value="" placeholder="Explain reason for cancelation" style=" background-color: #3aa2e1 !important;
+    border-bottom: 1px solid;  width: 80%;">
+                                                        <div class="reshedule_lawn">
+                                                            <img ng-src="img/asset/place-bid_43.png" style="width: 18px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <div class="border_buttons">
+                                                    <button class="button button-assertive complete_color_red" ng-click="cancel_appointment(cancel)">
+				Cancel Appointment
+				</button>
+                                                </div>
+                                            </ion-content>
+                                        </ion-view>

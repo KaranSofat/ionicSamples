@@ -1,0 +1,83 @@
+<ion-view view-title="{{worker_name}}">
+  <!--  <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+        <div class="main_nee">
+            <div class="card user_wrap">
+                <div class="wrap_avatar">
+                    <img src="img/asset/default.png" alt="">
+                        <h2 class="fontsforweb_fontid_12950">&#x20B9; {{price}}</h2>
+                    </div>
+                    <div class="wrap_rating">
+                        <div class="rate_user">
+                            <div>
+                                <p>
+                                    <div fundoo-rating rating-value='rating_avg' max="max" readonly="true" style="float:none;"></div>
+                                </p>
+                            </div>
+                        </div>
+                        <div>({{rating_avg}} Avg. {{review_count}} Reviews)</div>
+                    </div>
+                    <div class="item item-text-wrap fontsforweb_fontid_12950">
+        {{worker_description}}
+      </div>
+                </div>
+                <div class="vendor_work fontsforweb_fontid_12950">
+                    <h2> OUR WORK </h2>
+                    <ion-scroll direction="x" class="wide-as-needed"  >
+                        <div class="container_images" style="width:1500px;">
+						
+                            <div class="content_appointment_wrap_image" ng-repeat="work_photo in images" >
+							
+                                <img src="{{work_photo}}" class="fullscreen-image" style="width: 285px;" />
+                            </div>
+                        </div>
+                    </ion-scroll>
+                </div>
+                <div class="vendor_work fontsforweb_fontid_12950">
+                    <h2>REVIEWS </h2>
+                  
+                    <div class="list card review" ng-repeat="reviews in review_detail">
+                        <div class="item">
+                            <p>
+                                <div fundoo-rating rating-value="reviews.rating" max="max" readonly="true"></div>
+                            </p>
+                            <br/>
+                            <p style="white-space: pre-line;width:100%;float:left;">{{reviews.review}}</p>
+                        </div>
+                        <i class="down_review ion-arrow-down-b"></i>
+                        <h4 class="head_user fontsforweb_fontid_12950"> An , {{reviews.full_name}}</h4>
+                    </div>
+                    <div class="content_lower_footer">
+                        <button class="button button-full button-custom schedule_cut fontsforweb_fontid_12950" style="position: relative;top: -31px;" ng-click="pickme(price)">
+                   Pick Me 
+                </button>
+                    </div>
+                </div>
+                <!-- <div class="bar" style="background:transparent;">-->
+                <!--  </div>-->
+            </div>
+        </ion-footer-bar>
+		
+		<style>
+		.rating .filled {
+    color: #faa632;
+    font-size: 35px;
+}
+ul.rating li {
+    display: inline;
+    border: 0px;
+    background: none;
+    padding: 3px 3px;
+    font-size: 35px;
+	color:#D1D1D1;
+	}
+		</style>
+    </ion-content>
+</ion-view>

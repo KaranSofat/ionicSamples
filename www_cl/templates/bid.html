@@ -1,0 +1,115 @@
+<ion-view>
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service"> Place Bid
+  </ion-nav-title>
+    <ion-content>
+        <div class="rate_service" ng-init="init()">
+            <br/>
+            <div class="width_27_percent">
+                <div class="width_27_percent_date_calendar"  style="background-color:white;">
+                    <div class="width_27_percent_date_calendar_green1">{{ vendor_auctions_place_bid.auctions.service_date | date:'MMM'}}</div>
+                    <div class="width_27_percent_date_cal1">{{ vendor_auctions_place_bid.auctions.service_date | date:'d'}}</div>
+                    <div class="width_27_percent_date_calendar_white" style="font-size:14px;">{{ vendor_auctions_place_bid.auctions.service_date | date:'EEEE'}}</div>
+                </div>
+            </div>
+            <div class="width_65_percent" style=" float: left;
+    margin-left: 5%;">
+                <div class="set_color">
+                    <font class="icon ion-plus"></font>
+                    <sub class="icon ion-minus" style="margin-left:-13px;top:9px;"></sub>&nbsp;{{vendor_auctions_place_bid.auctions.flexibility}} DAYS
+                </div>
+                <h2>{{vendor_auctions_place_bid.response.homeowner.name}}</h2>
+                <div class="set_color">{{vendor_auctions_place_bid.response.homeowner.address}}</div>
+                <div class="set_color">{{vendor_auctions_place_bid.response.homeowner.city}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="border_bottom_pops"></div>
+    
+    <div class="rate_service" ng-if="descriptions==''">
+        <div class="width_12_percent">
+            <img ng-src="img/asset/place-bid_11.png" class="imge_sze">
+            </div>
+            <div class="width_82_percent">Not Provided</div>
+        </div>
+        <div class="border_bottom_pops" ng-if="descriptions==''"></div>
+    
+    <div class="rate_service" ng-if="descriptions!=''">
+        <div class="width_12_percent">
+            <img ng-src="img/asset/place-bid_11.png" class="imge_sze">
+            </div>
+            <div class="width_82_percent">{{descriptions}}</div>
+        </div>
+        <div class="border_bottom_pops" ng-if="descriptions!=''"></div>
+        
+        <div class="rate_service" ng-if="vendor_auctions_place_bid.response.lawn.pets!=null">
+            <!--<div class="width_40_percent_left"><div class="width_40_percent_left"><img ng-src="img/asset/av_15.png" class="imge_szes"></div><div class="width_60_percent">90 Sq ft.</div></div>-->
+            <div class="width_40_percent_left" style="width:100%;"  >
+                <div class="width_40_percent_left" style="width:12%;">
+                    <img ng-src="img/asset/av_15.png" class="imge_szes" style="width:100%;">
+                    </div>
+                    <div class="width_60_percent" style="float:left; margin-left:20px;">Has {{vendor_auctions_place_bid.response.lawn.pets}}</div>
+                </div>
+                <!--<div class="width_50_percent_right"><div class="width_40_percent_lefts"><img ng-src="img/asset/av_15.png" class="imge_szing"></div><div class="width_68_percent">Has dog or cat </div></div>-->
+            </div>
+            <div class="border_bottom_pops" ng-if="vendor_auctions_place_bid.response.lawn.pets!=null"></div>
+            <div class="rate_service">
+                <div class="width_40_percent_left">
+                    <div class="width_40_percent_left">
+                        <img ng-src="img/asset/icon.png" class="imge_szes">
+                        </div>
+                        <div class="width_60_percent" ng-if='category.last_cut'>{{category.last_cut}} since last cut</div>
+                             <div class="width_60_percent" ng-if='!category.last_cut'>Not Provided</div>
+                        
+					
+                        
+                    </div>
+                    <div class="width_50_percent_right">
+                        <div class="width_40_percent_lefts">
+                            <img ng-src="img/asset/icddon.png" class="imge_szing">
+                            </div>
+                            	<div class="width_68_percent" ng-if='category.how_often'>Considering Service {{category.how_often}}</div>
+                        <div class="width_68_percent" ng-if='!category.how_often'>Not Provided</div>
+                        </div>
+                    </div>
+                    <div class="border_bottom_pops"></div>
+                    <div class="lawn_image_top" id="map-canvas" style="height: 250px;margin-left: 4%;width: 92%;floiat:left;"></div>
+                    <br/>
+                    <div id="pano" class="lawn_image_top" style="height: 250px;margin-left: 4%;width: 92%;float:left;"></div>
+                    <!--<div class="lawn_image_top"><img ng-src="img/asset/place-bid_34.png">
+                    <!--<div id="pano" style=" height: 400px;"></div></div>-->
+                    <div class="border_bottom_pops"></div>
+                    <div class='service_color'>
+                        <h3 class="left_float">Your Bid</h3>
+                        <input type="text" id="amt" class="width_20_percent" style="color:black;    font-size: 24px !important;
+    font-weight: bold;
+    text-align: center;">
+                        </div>
+                        <input type="text" class="border_bottom_service" id="bid_resn" value="" placeholder="Let homeowner know why"  style=" background-color: #3aa2e1 !important;
+    border-bottom: 1px solid;  width: 80%;">
+                            <div class="reshedule_lawn">
+                                <img ng-src="img/asset/place-bid_43.png" style="width: 18px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="border_button_bid" style="text-align:center; ">
+                            <button class="button button-balanced complete_color" style="text-align:center;margin-top:20px;" ng-click="you_place_bid(vendor_auctions_place_bid.auctions.id)">
+Place Bid
+</button>
+                        </div>
+                        <br/>
+                        <br/>
+                    </ion-content>
+                </ion-view>

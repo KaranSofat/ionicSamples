@@ -1,0 +1,146 @@
+<ion-view>
+    <!--  <div class="bar bar-header bar-balanced"><img ng-src="img/asset/auctions_03.png" class="logo_green"></div>  -->
+    <ion-content style="background:#fff;">
+        <div class="Reschedule_img_back">
+		      
+
+            <div class="image_width_on_banner">
+                <div class="date_calendarsing "  style="background-color:white;">
+                    <div class="date_calendar_green1">{{newDate}}</div>
+                    <div class="date_cal1">{{year}}</div>
+                    <div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>
+                    <!--<div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>-->
+                </div>
+                <div class="banner_rate">
+                    <!--<img ng-src="img/asset/notifications_29.png">-->
+                    <div class="blue_circle">{{jobDetail.service_price}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="all_border">
+            <div class="all_border_time"></div>
+            <div class="ratethems_service_all">
+                <div class="list">
+                    <div class="item" >
+                        <div class="complete_content">
+                            <h2 class="h2p_font" style="text-transform: capitalize;">{{jobDetail.servicename}}</h2>
+                            <p class="h2only_font">{{jobDetail.jobname}}</p>
+                           
+                            
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="rate_service">
+                <div class="width_12_percent clr_font">
+                    <img ng-src="img/asset/calendar001.png" class="imge_sze">
+                    </div>
+                    <div class="width_82_percent clr_font" >{{jobDetail.appointment_date}}: {{jobDetail.appointment_timing}}</div>
+                   <!--  <div class="width_82_percent clr_font" >{{jobDetail.appointment_timing}}</div>-->
+                    
+                </div>
+             <div class="border_bottom_pops">  </div>
+            <div class="rate_service">
+                <div class="width_12_percent clr_font">
+                    <img ng-src="img/asset/appointment-(1)_11.png" class="imge_sze">
+                    </div>
+                    <div class="width_82_percent clr_font" >{{jobDetail.description}}</div>
+                    
+                </div>
+                <div class="border_bottom_pops">  
+                
+                
+                
+                                  
+                <!----<div ng-if="jobDetail.booked==1 && jobDetail.in_progress==0">
+            
+                   <div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne1" class="checkhide" checked="checked" name="check1" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox"  value="None" id="roundedOne2" class="checkhide" name="check2" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne3"  class="checkhide" name="check3" readonly /><label for="roundedOne"></label></div>
+        </div>
+        
+        
+        
+<div ng-if="jobDetail.in_progress==1 && jobDetail.completed==0">
+            
+           <div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne1" class="checkhide" checked="checked" name="check1" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox"  value="None" id="roundedOne2" class="checkhide" checked="checked" name="check2" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne3"  class="checkhide" name="check3"  readonly /><label for="roundedOne"></label></div>
+
+</div>
+<div ng-if="jobDetail.in_progress==1 && jobDetail.completed==1">
+            
+           <div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne1" class="checkhide" checked="checked" name="check1" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox"  value="None" id="roundedOne2" class="checkhide" checked="checked" name="check2" readonly /><label for="roundedOne"></label></div><div class="roundedOne" style="float: left;margin-left: 2%;"><input type="checkbox" value="None" id="roundedOne3"  class="checkhide" name="check3" checked="checked" readonly /><label for="roundedOne"></label></div>
+
+</div>-->
+</div>
+               
+                <div class="row">
+<div style="width:100%;" ng-if="jobDetail.booked==1 && jobDetail.in_progress==0">
+                <!-- Progress Tracker v2 -->
+                <ol class="progress" data-steps="4">
+                    <li class="active">
+                        <span class="name">Booked</span>
+                        <span class="step"><span>1</span></span>
+                    </li>
+                     <li >
+                        <span class="name">In Progress</span>
+                        <span class="step"><span>2</span></span>
+                    </li>
+                     <li>
+                        <span class="name">Completed</span>
+                        <span class="step"><span>3</span></span>
+                    </li>
+               </ol>
+                </div>
+                
+                <div style="width:100%;" ng-if="jobDetail.in_progress==1 && jobDetail.completed==0">
+                 <ol class="progress" data-steps="4">
+                    <li class="done">
+                        <span class="name">Booked</span>
+                        <span class="step"><span>1</span></span>
+                    </li>
+                     <li class="active">
+                        <span class="name">In Progress</span>
+                        <span class="step"><span>2</span></span>
+                    </li>
+                     <li>
+                        <span class="name">Completed</span>
+                        <span class="step"><span>3</span></span>
+                    </li>
+               </ol>
+                
+                
+                </div>
+                
+                <div style="width:100%;" ng-if="jobDetail.in_progress==1 && jobDetail.completed==1">
+                 <ol class="progress" data-steps="4">
+                    <li class="done">
+                        <span class="name">Booked</span>
+                        <span class="step"><span>1</span></span>
+                    </li>
+                     <li class="done">
+                        <span class="name">In Progress</span>
+                        <span class="step"><span>4</span></span>
+                    </li>
+                     <li>
+                        <span class="done">Completed</span>
+                        <span class="step"><span>4</span></span>
+                    </li>
+               </ol>
+                
+                
+                </div>
+</div>
+
+                                <div class="border_bottom_pops"></div>
+                                
+                             
+                                
+                                </ion-content>
+      <style>
+
+      
+      </style>
+                                
+                                
+                            </ion-view>

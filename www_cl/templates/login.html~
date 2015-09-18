@@ -1,0 +1,66 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+ <ion-view view-title="{{navTitle}}">
+    <ion-content class="padding">
+        <div class="logo_align">
+            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            </div>
+            <form name="userForm">
+                <div class="list custom-form">
+                    <div class="img_login_right">
+                        <img ng-src="img/asset/log-in-screen-gary.png">
+                        </div>
+                        <label class="item item-input item-floating-label border-bottom">
+                            <span class="input-label">Email Address</span>
+                            <i class="ion-ios-telephone" style="height: 27px;
+    width: 20px;
+    float: left;
+    margin-right: 0px;
+    /* background-size: 25px 25px; */
+    position: absolute;
+    left: 0;
+    bottom: 7px;
+    margin-left: 8px;
+    color: #EAA528;font-size:20px"></i>
+	
+	
+
+	
+                            <input type="number" placeholder="Phone Number" id="mobile" name="mobile" class="padding_input" ng-model="user.mobile" required>
+                            </label>
+                            <label class="item item-input item-floating-label border-bottom">
+                                <span class="input-label">Password</span>
+                                <i class="ion-ios-locked" style="height: 27px;
+    width: 20px;
+    float: left;
+    margin-right: 0px;
+    /* background-size: 25px 25px; */
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    margin-left: 10px;
+    color: #EAA528;font-size:20px"></i>
+                                <input type="password" placeholder="Password" class="padding_input" ng-model="user.password" required>
+                                </label>
+                            </div>
+                            <div class="login_align">
+                                <button ng-invalid="login.$invalid" ng-disabled="userForm.$invalid" ng-click="login()" class="button button-custom top">
+      login
+     </button>
+                            </div>
+                        </form>
+                        <div class="forget_pass">
+						<a href="#/singup">
+                            <span class="fontsforweb_fontid_12950" style="color:white;" >Signup</span></a>
+                        </div>
+						
+						<div class="forget_pass">
+						<a href="#/reset_password">
+                            <span class="fontsforweb_fontid_12950" style="color:white;" >Forgot My Password</span></a>
+                        </div>
+						
+                    </ion-content>
+                </ion-view>

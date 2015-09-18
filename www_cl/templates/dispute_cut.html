@@ -1,0 +1,31 @@
+<ion-view  align-title="left" view-title="Dispute Cut">
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content class="dispute_cut_back">
+        <div class="dispute_cut">
+            <h1>Please add a picture of your lawn</h1>
+            <div class="dispute_camera" style="height:100%;">
+                <div class="camera" ng-if="!imgURI"  ng-click="Picture()">
+                    <img ng-src="img/asset/camera.png">
+                        <p>Add Picture</p>
+                    </div>
+                    <div ng-if="imgURI" style="height:100%;padding:0;">
+                        <img ng-src="{{imgURI}}"  style="height: 100%;padding: 6px 6px 1px;width:100%;"/>
+                    </div>
+                </div>
+                <h1>What is the reason for dispute?</h1>
+                <textarea id="descrip"></textarea>
+                <div class="login_align">
+                    <a class="button button-full button-custom auction_cut fontsforweb_fontid_12950"  ng-click="dispute_submit()" style="width:50% !important;margin-left:25%;">
+      		Dispute Cut
+     	     </a>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>

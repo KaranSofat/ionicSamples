@@ -1,0 +1,36 @@
+<ion-view >
+   <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+        
+            <hr>
+                <div>
+                    
+                        <div class="content">
+                          
+                            <a ng-click="detailJob(x.appointmentId)" ng-repeat="x in allJobs" >
+                                <div class="list card" style="margin-bottom:10px;">
+                                    <div class="item item-avatar ratethem" style="padding-left:9px !important;">
+                                     
+                                            <h2>{{x.servicename}} ({{x.jobname}})</h2>
+                                            <p style="font-size:10px !important;">
+                                       {{x.appointment_date}}: {{x.appointment_timing}}
+                                            </p>
+                                        </div>
+                                        <div class="item item_right_rate">
+                                             <i class="ion-ios-arrow-right" style="  float:right;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                       
+                            </ion-content>
+							
+                        </ion-view>

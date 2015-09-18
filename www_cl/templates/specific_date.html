@@ -1,0 +1,65 @@
+<ion-view view-title="Add Specific Dates">
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+     <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content class="dispute_cut_back">
+        <div class="card" >
+            <h1>Your lawn will be mowed on these dates</h1>
+            <div class="dispute_cameras date_auction" ng-repeat="i in getNumber(myNumber) track by $index">
+                <span class="specificdate" ng-if="!schedule['dates_'+ $index]">Tap to Add a Cut </span>
+                <span class="specificdate" ng-if="schedule['dates_'+ $index]">{{schedule['dates_'+ $index] | date:'MMMM d, yyyy'}} </span>
+                
+                <div class="specificdatecalender"  style="width:203px;">
+					 <input type="date"  placeholder="Date" class="padding_input date_auction" ng-model="schedule['dates_'+ $index]" ng-change="check_dates($index)" style="width: 100%;
+
+left: 0px;
+height: 46px;
+width:100%;
+background:transparent;color:white;background:url('img/asset/calendar001.png') no-repeat ;background-position: right center; background-size: 40px auto, 60px auto;border:none;" >
+				
+                  </div>
+                </div>
+               
+             <div class="content_lower">
+                <button ng-click="schedule_data()" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
+                 SET AND FORGET!
+              </button>
+             </div>
+            </div>
+            <style>
+input[type="date"]::-webkit-outer-spin-button,
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+	opacity:0 !important;
+}
+#date-time-edit
+{
+opacity:0;
+}
+#spin
+{
+opacity:0;
+}
+#picker
+{
+opacity:0;
+}
+.specificdatecalender {
+float: left;
+font-size: 15px;
+margin-right: 0px;
+margin-top: -34px;
+width: 100% !important;
+top: 0px;
+}
+            </style>
+        </ion-content>
+    </ion-view>

@@ -1,0 +1,60 @@
+<ion-view cache-view="false" >
+    <ion-content>
+        <div class="row">
+            <div ng-click="changetab('first')" class="col col-50 pointer">
+                <div ng-class="{'col-demo':tab=='first'}"> Appointments</div>
+            </div>
+            <div ng-click="changetab('second')" class="col col-50 pointer">
+                <div ng-class="{'col-demo':tab=='second'}"> My Greenpal</div>
+            </div>
+        </div>
+        <hr>
+            <br/>
+            <br/>
+            <div ng-if="tab=='second'">
+                <div class="barrel">
+                    <img ng-src="img/asset/bid-gavel.png">
+                    </div>
+                    <div class="content">
+                        <h4 class="fontsforweb_fontid_12950"> No current bid</h4>
+                        <h1> Gary is busy </h1>
+                        <h1> getting your bids.</h1>
+                        <div class="garry_no_bid">
+                            <img ng-src="img/asset/no-bids-gary.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="tab=='first'">
+                        <div class="calendar">
+                            <img ng-src="img/asset/cal.jpg" ng-click="calenderPop()">
+                                <p class="fontsforweb_fontid_12950"> Your Next Appointment</p>
+                            </div>
+                            <div class="appointment_box_me" style="height:130px;">
+                                <ion-scroll direction="y" class="wide-as-needed" delegate-handle="small" style="height: 100px;">
+                                    <div class="content_appointment_wrap_me">
+                                        <h1>{{new_appointment.service_date | date:'EEEE'}} </h1>
+                                        <h1>{{new_appointment.service_date | date:'MMMM'}}  {{new_appointment.service_date | date:'d'}}  </h1>
+                                    </div>
+                                </ion-scroll>
+                            </div>
+                            <div class="blur-effect"></div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="content_lower">
+                                <button ng-click="gotourl('specific')" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
+        SCHEDULE ANOTHER
+        </button>
+                            </div>
+                        </div>
+                    </ion-content>
+                </ion-view>

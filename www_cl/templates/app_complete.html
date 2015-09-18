@@ -1,0 +1,52 @@
+<ion-view>
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+     <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service"> Complete Job
+    </ion-nav-title>
+    <ion-content>
+        <br/>
+        <div class="item ratethem_service">
+            <div class="imagewidthrightpart_service">
+                <div ng-if="!imageUri" class="image_services">
+                    <img src="img/asset/contested.png" style="width:100%;">
+                    </div>
+                    <div ng-if="!imageUri" class="image_line">
+				    	Take a Picture of the lawn
+				    </div>
+                    <div ng-if="imageUri">
+                        <img ng-src="{{imageUri}}" style="width:100%;float:left;height:auto;"/>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="ratethem_service" style="color:white;">
+                <p class="h2only_font" >Hi {{homeowner.name}}</p>
+                <p class="h2only_font" >We've just completed mowing your</p>
+                <p class="h2only_font" >lawn see you next week.</p>
+            </div>
+            <br/>
+            <div class="ratethem_service" style="color:white;">
+                <p class="h2only_font" style="color:white;">John</p>
+            </div>
+            <input type="text" class="border_bottom_service" value="BC Cutters" style=" background-color: #3aa2e1 !important;
+    border-bottom: 1px solid;  width: 80%;">
+                <div class="reshedule_lawn">
+                    <img ng-src="img/asset/place-bid_43.png" style="width: 18px;">
+                    </div>
+                </div>
+                <div class="border_button" style="text-align:center;width:100%; margin: 50px auto;">
+                    <button class="button button-balanced" ng-click="takePicture(appointments.id)">
+				    SEND
+				</button>
+                </div>
+            </ion-content>
+        </ion-view>

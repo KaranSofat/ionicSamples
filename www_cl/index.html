@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title></title>
+	
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+	
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+   
+     <script src="lib/angular-websocket/angular-websocket.js"></script>
+     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
+
+    <script src="lib/ionic-service-push/ionic-push.js"></script>
+   <!-- <script src="lib/ionic/js/ionic-rating.min.js"></script>-->
+   
+
+    <script src="http://cdn.rawgit.com/laurihy/angular-payments/2472bc9befa256780d106a8e53a9dea12b7341ed/lib/angular-payments.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <!-- your app's js -->
+   
+    <script src="js/app.js"></script>
+	 
+	   <script src="js/angular-timer-all.min.js"></script>
+    <script src="js/controllers/LoginController.js"></script>
+    <script src="js/controllers/VendorController.js"></script>
+    
+    <script src="js/services/services.js"></script>
+    
+    <script src="js/services/vendorService.js"></script>
+	
+	<!-- if it create problem then remove it. i can use it for tooltip only -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+		<!-- angular-payments library - you probably want to install it through either bower or npm -->
+		
+
+
+		
+  </head>
+  <body ng-app="starter">
+
+  
+  
+  
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+	<ion-side-menus enable-menu-with-back-views="true">
+	<ion-pane ion-side-menu-content="">
+    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+      
+<ion-nav-buttons side="right">
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="powerCtrl"></div> 
+   <button menu-toggle="right" style="margin-left: 72px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+
+    <ion-nav-view animation="slide-right-left">
+	
+	
+	</ion-nav-view>
+	
+	 </ion-pane>
+
+  <ion-side-menu side="right" ng-controller="MyCtrl">
+    <header class="bar bar-header bar-positive">
+    </header>
+    <ion-content class="has-header mymenu" id="menu1" style="display:none;">
+      <ion-list>
+        
+		 <ion-item nav-clear="" menu-close="" href="#/services">
+            <span class="ion-home pic"></span>Home </ion-item>
+			
+        <!--<ion-item nav-clear menu-close href="#/profile">
+         <span class="ion-person pic"></span>Profile </ion-item>
+        
+        <ion-item nav-clear menu-close href="#/app/setting">
+        <span class="ion-android-notifications pic"></span>Notifications
+        </ion-item>-->
+		<ion-item nav-clear="" menu-close="" href="#/about">
+            <span class="ion-compose pic"></span>About us </ion-item>
+			 <ion-item nav-clear="" menu-close="" href="#/my_greenpal">
+            <span class="ion-android-contacts pic"></span>Contact us </ion-item>
+		
+		
+        <ion-item nav-clear="" menu-close="" href="#/app/shop">
+           <span class="ion-document-text pic"></span>Terms &amp; Conditions
+        </ion-item>
+		       <!-- <ion-item nav-clear menu-close ng-click="logout()">
+         <span class="ion-power pic"></span>Log Out
+        </ion-item>-->
+      </ion-list>
+    </ion-content>
+	
+	
+	 <ion-content class="has-header mymenu" id="menu12">
+      <ion-list>
+        
+		 <ion-item nav-clear="" menu-close="" href="#/services">
+            <span class="ion-home pic"></span>Home </ion-item>
+			
+        
+		<ion-item nav-clear="" menu-close="" href="#/about">
+            <span class="ion-compose pic"></span>About us </ion-item>
+			 <ion-item nav-clear="" menu-close="" href="#/my_greenpal">
+            <span class="ion-android-contacts pic"></span>Contact us </ion-item>
+		
+		
+        <ion-item nav-clear="" menu-close="" href="#/app/shop">
+           <span class="ion-document-text pic"></span>Terms &amp; Conditions
+        </ion-item>
+
+      </ion-list>
+	  
+	  <script id="templates/popover.html" type="text/ng-template">
+      <ion-popover-view style="height:130px; margin-top:10px !important;" >
+        <ion-content style="background-color:white;">
+          <div class="list">
+            <a class="item" ng-click="profile()" >
+              My Profile
+            </a>
+            <a class="item" ng-click="logout()">
+             Logout
+            </a>
+
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+    
+     <script id="templates/popoverNew.html" type="text/ng-template">
+      <ion-popover-view style="height:78px;margin-top:10px !important;" >
+        <ion-content style="background-color:white;">
+          <div class="list">
+            <a class="item" ng-click="jobs()" >
+              My Jobs
+            </a>
+           
+
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+    
+    
+    </ion-content>
+	
+	
+	
+  </ion-side-menu>
+</ion-side-menus>
+	
+     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&amp;sensor=false"></script>
+  </body>
+</html>

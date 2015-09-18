@@ -1,0 +1,364 @@
+<ion-view cache-view="false">
+      <ion-content style="background:#fff;">
+            <div class="logo_align_dash only_backgrounds_blue">
+               <img ng-src="img/asset/greenpal-mobile-logo.png" style="margin-left:10px;margin-top:10px;">
+            </div>
+            <div class="row only_background_blue" style="background-color:#65A0DC;">
+						 <div ng-click="changetab('first')" class="col col-33 pointer" style="padding-bottom:0px;">
+							 <div ng-class="{'col-demo':tab=='first'}" style="padding-bottom:0px">
+							   <img ng-src="img/asset/place-bid_23.png" class="imge_logo_size">
+							 </div>
+						 </div>
+                        <div ng-click="changetab('unbid')" class="col col-33 pointer" style="padding-bottom:0px;">
+                           <div ng-if="vendor_auctions" class="orange_circle_border">  {{vendor_auctions.length}}
+						   </div>
+                              <div ng-class="{'col-demo':tab=='unbid'}" style="padding-bottom:0px">
+                                <img ng-src="img/asset/bids_nish.png" class="imge_logo_size">
+                              </div>
+                        </div>
+                        <div ng-click="changetab('all')" class="col col-33 pointer" style="padding-bottom:0px;">
+                            <div ng-class="{'col-demo':tab=='all'}" style="padding-bottom:0px;">
+                                <img ng-src="img/asset/place-bid_11.png" class="imge_logo_size">
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="tab=='first'">
+                            <div class="all_bordering" ng-if="disputed_appointments!=''" ng-click="toggleDispute()">
+                                <div class="white_circle_border">!</div>
+                                <div class="ratethems_service_all" style="background-color: red;">
+                                    <div class="list">
+                                        <p class="strip_pages color_white">Disputed Cuts</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-hide="dispute">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc" ng-repeat="appointment in disputed_appointments">
+                                        <a class="item" href="#service/{{appointment.id}}" style="width:100%;" >
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green" >{{ appointment.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ appointment.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ appointment.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <p class="h2only color_style_only">{{appointment.homeowners.name}}  </p>
+                                                <p class="h2only">{{appointment.results[0].formatted_address}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="greenish_circle" style="background-color: red;">${{ appointment.price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_bordering" ng-if="appointment_list" ng-click="toggleOver()">
+                                <div class="white_circle_border">!</div>
+                                <div class="ratethems_service_all">
+                                    <div class="list">
+                                        <p class="strip_pages color_white">Over Due</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-show="overdue" ng-if="overdues!=0">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc" ng-repeat="appointment in appointment_list"  ng-if="appointment.state!='paid' && appointment.state!='disputed' && appointment.state!='complete' ">
+                                        <a class="item" href="#complete/{{appointment.id}}" style="width:100%;" >
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green" >{{ appointment.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ appointment.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ appointment.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <p class="h2only color_style_only">{{appointment.homeowners.name}} </p>
+                                                <p class="h2only">{{appointment.results[0].formatted_address}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="greenish_circle" style="background-color:#E0922F">${{ appointment.price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                              
+                                </div>
+                         
+                            </div>
+                           
+                         <div class="list" style="border-bottom: 1px solid #dcdcdc; margin-bottom:0px;"  ng-if="overdues=='0'">
+                                <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                            </div>
+                            <div class="all_border" ng-hide="overdue"></div>
+                            
+                            <div class="all_borders" ng-click="toggleToday()">
+                                <div data-tags="chevron" data-pack="ios" class="all_border_time ion-ios-arrow-down left_pad"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list">
+                                        <p class="strip_pages">Today</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-hide="todayhideshow">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc" ng-repeat="appointment in appointment_list" ng-if="appointment.service_date==todays">
+                                        <a class="item" href="#complete/{{appointment.id}}" style="width:100%;" >
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green" >{{ appointment.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ appointment.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ appointment.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <p class="h2only color_style_only">{{appointment.homeowners.name}}  </p>
+                                                <p class="h2only">{{appointment.results[0].formatted_address}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="greenish_circle">${{ appointment.price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc"  ng-if="today_count=='0'">
+                                        <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-show="todayhideshow"></div>
+                            <div class="all_borders" ng-click="toggleTomorrow()">
+                                <div data-tags="chevron" data-pack="ios" class="all_border_time ion-ios-arrow-down left_pad"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" >
+                                        <p class="strip_pages">Tomorrow</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border"  ng-hide="tomorrowhideshow">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc" ng-repeat="appointment in appointment_list" ng-if="appointment.service_date==tomorrows">
+                                        <a class="item" href="#complete/{{appointment.id}}" style="width:100%;" >
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green" >{{ appointment.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ appointment.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ appointment.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <p class="h2only color_style_only">{{appointment.homeowners.name}}  </p>
+                                                <p class="h2only">{{appointment.results[0].formatted_address}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="greenish_circle">${{ appointment.price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc"  ng-if="tomorrow_count=='0'">
+                                        <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                           
+                           
+                           
+                           <div class="all_border"  ng-show="tomorrowhideshow">
+                           </div>
+
+							<div class="all_borders"  ng-click="toggleComing()">
+							  <div data-tags="chevron" data-pack="ios" class="all_border_time ion-ios-arrow-down left_pad">
+							  </div>
+                            <div class="ratethems_service_all">
+                                    <div class="list" >
+                                        <p class="strip_pages">Coming</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-hide="cominghideshow" ng-if="coming_length!=0">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc" ng-repeat="appointment in appointment_list | orderBy:'service_date':reverse" ng-if="appointment.service_date!=tomorrows && appointment.service_date!=todays && appointment.state!='paid' && appointment.state!='disputed' && appointment.state!='complete'">
+                                        <a class="item" href="#complete/{{appointment.id}}" style="width:100%;" >
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green" >{{ appointment.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ appointment.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ appointment.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <p class="h2only color_style_only">{{appointment.homeowners.name}}  </p>
+                                                <p class="h2only">{{appointment.results[0].formatted_address}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="greenish_circle">${{ appointment.price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc"  ng-if="coming_length=='0'">
+                                        <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-show="cominghideshow"></div>
+                        </div>
+                      
+                    <div ng-if="tab=='all'">
+                        <div class="all_borders" >
+                            <div class="all_border_edit ion-edit" data-tags="change, update, write, type, pencil" data-pack="default"></div>
+                            <div class="ratethems_service_all">
+                                <div class="list">
+                                    <p class="strip_pages">All</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="all_border" style="border-bottom: 1px solid #dcdcdc" ng-repeat="paids in paid | orderBy:'-updated_at'">
+                            <div class="all_border_time">{{paids.updated_at | date:'MM/dd/yy'}}</div>
+                            <div class="ratethems_service_all">
+                                <div class="list" >
+                                    <div class="width_18_percent">
+                                        <div class="greenish_circle" style="margin-left:15px;">${{ paids.price }}</div>
+                                    </div>
+                                    <a class="item item-avatar" href="#paid/{{paids.id}}/{{paids.homeowner_name}}" style="padding-left:0px;">
+                                        <h2>You Got {{paids.state}}</h2>
+                                        <p>{{paids.results[0].formatted_address}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                        <div ng-if="tab=='unbid'">
+                            <div class="all_borders"  ng-click="toggleUnbid()">
+                                <div data-tags="chevron" data-pack="ios" class="all_border_time ion-ios-arrow-down left_pad"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc;">
+                                        <p class="strip_pages">Unbid</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-hide="Unbid">
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc;"  ng-repeat="vendors in vendor_auctions | orderBy:'service_date':reverse" ng-if="vendor_auctions_length!='0'">
+                                        <a class="item" style="width:100%;" href="#bid/{{vendors.id}}">
+                                            <div class="width_18_percent">
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green">{{ vendors.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ vendors.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ vendors.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <font class="icon ion-plus" style="font-size: 10px;color:#cecece;
+    margin-left: 20px;"></font>
+                                                <sub class="icon ion-minus" style="margin-left:-13px;top:9px;color:#cecece;font-size:10px;"></sub>&nbsp;
+					
+                                                <font style="color:#cecece;font-size: 12px;">{{vendors.flexibility}} DAYS</font>
+                                                <p class="h2only color_style_only">{{vendors.homeowner.address}}</p>
+                                                <p class="h2only color_style_only">{{vendors.homeowner.city}}</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <button class="button button-balanced complete_color width_set button_due" ng-click="gotourl('bid')">
+							BID
+							</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc"  ng-if="vendor_auctions_length=='0'">
+                                        <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                                    </div>
+                                </div>
+                                <div class="all_border" ng-show="Unbid" ></div>
+                            </div>
+                            <div class="all_borders" ng-click="togglebid()">
+                                <div data-tags="chevron" data-pack="ios" class="all_border_time ion-ios-arrow-down left_pad"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc;">
+                                        <p class="strip_pages">Bid</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all_border" ng-hide="bid" >
+                                <div class="all_border_time"></div>
+                                <div class="ratethems_service_all">
+                                    <div class="list"  style="border-bottom: 1px solid #dcdcdc" ng-repeat="alreadyBid in bid_auction | orderBy:'service_date':reverse" ng-if="bid_auction_length!=0" ng-click="already_bid()">
+                                        <div class="item" style="width:100%;" >
+                                            <!--<div class="width_18_percent"><img ng-src="img/asset/place-bid_07.png"></div>-->
+                                            <div class="width_18_percent" >
+                                                <div class="date_calendar">
+                                                    <div class="date_calendar_green">{{ alreadyBid.service_date | date:'MMM'}}</div>
+                                                    <div class="date_cal">{{ alreadyBid.service_date | date:'d'}}</div>
+                                                    <div class="date_calendar_white">{{ alreadyBid.service_date | date:'EEEE'}}</div>
+                                                </div>
+                                            </div>
+                                            <div style="width:55%;float:left;">
+                                                <font class="icon ion-plus" style="font-size: 10px;color:#cecece;
+    margin-left: 20px;"></font>
+                                                <sub class="icon ion-minus" style="margin-left:-13px;top:9px;color:#cecece;font-size:10px;"></sub>&nbsp;
+					
+                                                <font style="color:#cecece;font-size: 12px;">{{alreadyBid.flexibility}} DAYS</font>
+                                                <p class="h2only color_style_only">{{alreadyBid.address}}</p>
+                                                <p class="h2only color_style_only">{{alreadyBid.city}}.</p>
+                                            </div>
+                                            <div class="width_18_percent">
+                                                <div class="blue_circle_border">${{alreadyBid.my_bid}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list" style="border-bottom: 1px solid #dcdcdc"  ng-if="bid_auction_length=='0'">
+                                        <div style="text-align:center;width:100%;color:red;"> NO Result Found</div>
+                                    </div>
+                                </div>
+                                <div class="all_border" ng-show="bid" ></div>
+                            </div>
+							</div>
+                        </ion-content>
+                      
+                          <ion-footer-bar align-title="left" class="bar-positive" style="  height: auto;" ng-show="showonshedules">
+                        <div class="row">
+                            <div class="col col-10">
+                                <div class="width_18_percent">
+                                    <div  style="margin-left:0px;margin-top:0px;">
+                                        <img src="img/asset/niiss.png" style="width:34px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-67" style="margin-left:20px;">
+                                    <p style="margin:0;font-weight:bold;font-size:12px;">Appointment Cancelled.</p>
+                                    <p style="margin:0;font-size:12px;">Your Customer has been notified.</p>
+                                </div>
+                                <div class="col col-10" style="margin-left:10px;" >
+                                    <button class="button button-calm" style="font-weight:bold;border-radius:4px;width:50px;" ng-click="cancelAppointment()">OK</button>
+                                </div>
+                            </div>
+                        </ion-footer-bar>    
+						  <ion-footer-bar align-title="left" class="bar-positive" style="  height: auto;" ng-show="showonshedule">
+                            <div class="row">
+                                <div class="col col-10">
+                                    <div class="width_18_percent">
+                                        <div  style="margin-left:0px;margin-top:0px;">
+                                            <img src="{{image}}" style="width:34px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-67" style="margin-left:20px;">
+                                        <p style="margin:0;font-weight:bold;font-size:12px;">{{message}}</p>                                    
+                                    </div>
+                                    <div class="col col-10" style="margin-left:10px;" >
+                                        <button class="button button-calm" style="font-weight:bold;border-radius:4px;width:50px;" ng-click="ok()">OK</button>
+                                    </div>
+                                </div>
+                            </ion-footer-bar>
+                            
+                        </ion-view>
+<style>
+.popup-body
+{
+	overflow:hidden;
+}
+</style>

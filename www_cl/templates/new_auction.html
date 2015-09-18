@@ -1,0 +1,349 @@
+<ion-view view-title="New Auction" cache-view="false">
+  <!--  <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service">New Auction
+  </ion-nav-title>-->
+    <ion-content>
+	
+	
+	<form name="myForm" id="form2">
+        <br/>
+        <div class="rate_service">
+            <div class='services_color' style="text-align:left;">When would you want the service</div>
+            <br/>
+        </div>
+        <!--<img src="img/asset/appoid_02.png" class="Reschedule_img">-->
+        <!--<div class="outer"><div class="orginal"><h4>New date</h4><div ng-if="photo.getTime()!=dates.getTime()" style="background-color:#e3e3e3" ng-click="divOuterGreen()" class="new_date_calendars web"><p style="color:black; margin-bottom:20px;" class="res_cal_date_height ng-binding">Wed</p><p style="color:black; margin-bottom:15px;" class="res_cal_date ng-binding">8</p></div>
+    </div>-->
+	<div>
+    <ion-scroll direction="x" class="available-scroller overflow_dat">
+        <div class="photo" collection-repeat="photo in photos"  collection-item-height="100"
+    collection-item-width="'80px'" ng-click="itemClicked($index,photo)" >
+            <div ng-class="{ 'orginal': $index == selectedIndex }">
+               <div class="new_date_calendars" ng-if="photo.getTime()==dates.getTime()" style="margin-top:0px;">
+                    <p class="res_cal_date_height" style="margin-bottom:12px;line-height:2;">{{photo | date:'MMM'}}</p>
+                    <p class="res_cal_date" style="margin-bottom:5px;">{{photo | date:'d'}}</p>
+					  <p class="res_cal_date_height" style="margin-bottom:5px;line-height:2;">{{photo | date:'EEE'}}</p>
+                    <h6 class="res_cal_date_height_h6" >Today's DATE</h6>
+                </div>
+                <h4 ng-if="$index == selectedIndex">&nbsp;</h4>
+                <div class="new_date_calendars " ng-click="divOuterGreen()" ng-class="{ 'back_grey': $index == selectedIndex }" ng-if="photo.getTime()!=dates.getTime()">
+                    <p class="res_cal_date_height ng-binding" style="color:black; margin-bottom:10px;line-height:2; " >{{photo | date:'MMM'}}</p>
+                    <p class="res_cal_date ng-binding" style="color:black; margin-bottom:5px;">{{photo | date:'d'}}</p>
+					   <p class="res_cal_date_height ng-binding" style="color:black;line-height:2; margin-bottom:20px;" >{{photo | date:'EEE'}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-scroll>
+</div>
+<br/>
+<br/>
+<br/>
+<div class="rate_service">
+
+    <div class="row">
+	
+	<div class="sel">
+	<ul class="timeslot-selector">
+                    <li>
+                        <input id="timeslot-mornings" type="radio" name="AppointmentTimeSlot" value="Morning (9AM - 12PM)" required="required" checked>
+                 <label for="timeslot-mornings"> <a class="tooltips" tooltip="9AM - 12PM" >Morning<div class="tip" style="display: none;">9AM - 12PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-afternoons" type="radio" name="AppointmentTimeSlot" value="Afternoon (12PM - 3PM)" required="required" >
+						<label for="timeslot-afternoons"><a class="tooltips" tooltip="12PM - 3PM" >Afternoon<div class="tip" style="display: none;">12PM - 3PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-evenings" type="radio" name="AppointmentTimeSlot" value="Evening (3PM - 6PM)" required="required">
+                     <label for="timeslot-evenings">   <a class="tooltips" tooltip="3PM - 6PM" >Evening<div class="tip" style="display: none;">3PM - 6PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-nights" type="radio" name="AppointmentTimeSlot" value="Night (6PM - 9PM)" required="required">
+                       <label for="timeslot-nights"> <a class="tooltips" tooltip="6PM - 9PM" >Night<div class="tip" style="display: none;">6PM - 9PM</div></a></label>
+                    </li>
+					<li></li>
+                    <div class="clearfix"></div>
+                </ul>
+				</div>
+	<!--<div class="col-25 white_color">
+									
+									<input type="radio" ng-model="$parent.name" name="name" value="Morning (9AM - 12PM)" style="opacity:0;"  />
+									<label for="timeslot-evening" data-toggle="tooltip" data-placement="top" title="" data-original-title="9AM - 12PM">Morning</label>
+									
+									
+	</div><div class="col-25 white_color">Afternoon</div><div class="col-25 white_color">Evening</div><div class="col-25 white_color">Night</div>-->
+	</div>
+</div>
+<br/>
+
+
+<div class="rate_service">
+<div class='services_color' style="text-align:left;">Help us with your details <font style="color:red;font-size:15px;">*</font></div>
+    <div class="row">
+	
+	<div class="col-50" style="max-width: 48%;"><input type="text" id="mobile" name="mobile" class="textboxfield" style="color:black !important;" placeholder=" Your Mobile No." ng-model="orginal.mobile" required ng-change="mobileverify()"></div>&nbsp;&nbsp;&nbsp;<div class="col-50"><input type="checkbox" id="returning" style="transform: scale(1.4);" ng-click="checkproprty()"> &nbsp;<font class="white_color">I'm a returning user </font></div></div>
+	
+
+</div>
+
+<div id="withoutmobile">
+<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	
+	<input type="text"  class="textboxfield" style="color:black !important;" name="name" placeholder=" Name" ng-model="orginal.name" required>
+	
+	
+	</div>
+	</div>
+</div>
+
+<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	
+	<input type="email" name="email" class="textboxfield" style="color:black !important;" placeholder=" Email Id" ng-model="orginal.email" required>
+	
+	</div>
+	</div>
+</div>
+
+ 
+
+
+<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	<input type="text" class="textboxfield" name="address" style="color:black !important;"  placeholder=" House No, Flat No..." ng-model="orginal.address" required></div>
+	</div>
+</div>
+<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	 <select name="cities" ng-model="selectedColor" ng-options="cities as cities.name for cities in city" ng-init="selectedColor = check(selected,cities)" ng-change="setcities(selectedColor)" style="width:100%;height:26px;" required >
+                <option value="" disabled selected>Select A City</option>
+            </select>
+			</div>
+	</div>
+</div>
+
+<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	 <select name="locations" ng-model="selectedColors" ng-options="locations as locations.name for locations in location" ng-init="selectedColors = check(selected,locations)" ng-change="setlocations(selectedColors)" style="width:100%;height:26px;"  required>
+                <option value="" disabled selected>Select A Location</option>
+            </select>
+			</div>
+	
+	</div>
+</div>
+<div style="width:96%;float:left;margin-left:2%;">
+                    <div class="row auction_float">
+                        <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="create_auction()">
+             Next
+             </button>
+                    </div></div>
+</div>
+	
+	<div id="withmobile" style="display:none;">
+	<div class="rate_service">
+    <div class="row">
+	<div class="sel">
+	<div class="col-50" style="max-width: 48%;float:left;">
+	<input type="password" name="password" class="textboxfield" style="color:black !important;" placeholder=" Password" ng-model="orginal.password" required></div>
+	<div class="col-50" style="float:left;margin-left:10px;max-width: 48%;"><font class="white_color">Forgot again?   </font><br/><font class="white_color">Get a new password via mail now.</font></div>
+	
+	</div></div></div>
+	<div style="width:96%;float:left;margin-left:2%;">
+                    <div class="row auction_float">
+                        <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="Login_auction()">
+             Next
+             </button>
+                    </div></div>
+               
+					</div>
+	
+	
+	   </form>
+
+	
+	
+	
+	
+	
+	<div style="clear:both;"></div>
+	
+	
+	
+	
+	
+	
+				<form name="myForm" id="form22" style="display:none;">
+        <br/>
+			<br/>
+        <div class="rate_service">
+            <div class='services_color' style="text-align:left;">When would you want the service</div>
+            <br/>
+        </div>
+    
+	<div>
+    <ion-scroll direction="x" class="available-scroller overflow_dat">
+        <div class="photo" collection-repeat="photo in photos"  collection-item-height="100"
+    collection-item-width="'80px'" ng-click="itemClickeds($index,photo)" >
+            <div ng-class="{ 'orginal': $index == selectedIndex }">
+               <div class="new_date_calendars" ng-if="photo.getTime()==dates.getTime()" style="margin-top:0px;">
+                    <p class="res_cal_date_height" style="margin-bottom:12px;line-height:2;">{{photo | date:'MMM'}}</p>
+                    <p class="res_cal_date" style="margin-bottom:5px;">{{photo | date:'d'}}</p>
+					  <p class="res_cal_date_height" style="margin-bottom:5px;line-height:2;">{{photo | date:'EEE'}}</p>
+                    <h6 class="res_cal_date_height_h6" >Today's DATE</h6>
+                </div>
+                <h4 ng-if="$index == selectedIndex">&nbsp;</h4>
+                <div class="new_date_calendars " ng-click="divOuterGreen()" ng-class="{ 'back_grey': $index == selectedIndex }" ng-if="photo.getTime()!=dates.getTime()">
+                    <p class="res_cal_date_height ng-binding" style="color:black; margin-bottom:10px;line-height:2; " >{{photo | date:'MMM'}}</p>
+                    <p class="res_cal_date ng-binding" style="color:black; margin-bottom:5px;">{{photo | date:'d'}}</p>
+					   <p class="res_cal_date_height ng-binding" style="color:black;line-height:2; margin-bottom:20px;" >{{photo | date:'EEE'}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-scroll>
+</div>
+<br/>
+<br/>
+<br/>
+<div class="rate_service">
+
+    <div class="row">
+	
+	<div class="sel">
+	<ul class="timeslot-selector">
+                    <li>
+                        <input id="timeslot-morning" type="radio" name="AppointmentTimeSlots" value="Morning (9AM - 12PM)" required="required" checked>
+                 <label for="timeslot-morning"> <a class="tooltips" tooltip="9AM - 12PM" >Morning<div class="tip" style="display: none;">9AM - 12PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-afternoon" type="radio" name="AppointmentTimeSlots" value="Afternoon (12PM - 3PM)" required="required" >
+						<label for="timeslot-afternoon"><a class="tooltips" tooltip="12PM - 3PM" >Afternoon<div class="tip" style="display: none;">12PM - 3PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-evening" type="radio" name="AppointmentTimeSlots" value="Evening (3PM - 6PM)" required="required">
+                     <label for="timeslot-evening">   <a class="tooltips" tooltip="3PM - 6PM" >Evening<div class="tip" style="display: none;">3PM - 6PM</div></a></label>
+                    </li>
+                    <li>
+                        <input id="timeslot-night" type="radio" name="AppointmentTimeSlots" value="Night (6PM - 9PM)" required="required">
+                       <label for="timeslot-night"> <a class="tooltips" tooltip="6PM - 9PM" >Night<div class="tip" style="display: none;">6PM - 9PM</div></a></label>
+                    </li>
+					<li></li>
+                    <div class="clearfix"></div>
+                </ul>
+				</div>
+	
+	</div>
+</div>
+	<br/>	<br/>
+	<div style="width:96%;float:left;margin-left:2%;">
+                    <div class="row auction_float">
+                        <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="gotonext()">
+             Next
+             </button>
+                    </div></div>
+                  
+					</div>
+	
+	</form>
+	
+	
+	
+	
+	
+			
+                                    </ion-content>
+                                    <style>
+.selected-class-name {
+  color: red !important;
+}
+.back_grey
+{
+background:#E3E3E3;
+    margin: 0 0 0 5px;
+    width: 83px;
+}
+ul.timeslot-selector {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+	width: 100%;
+}
+.timeslot-selector li {
+    float: left;
+    text-align: center;
+    width: 25%;
+	color: #fff;
+}
+ul.timeslot-selector input[type=radio] {
+    display: none;
+}
+input[name="AppointmentTimeSlot"]:checked ~ label {
+    border:1px solid #EAA528!important;
+    color: #EAA528;
+}
+input[name="AppointmentTimeSlots"]:checked ~ label {
+    border:1px solid #EAA528!important;
+    color: #EAA528;
+}
+
+ul.timeslot-selector label {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal !important;
+    border: 1px solid transparent;
+    padding: 2px 0;
+    
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+a.tooltips {
+  position: relative;
+  display: inline;
+}
+a.tooltips span {
+  position: absolute;
+  width:140px;
+  color: #FFFFFF;
+  background: #000000;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+}
+a.tooltips span:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  margin-top: 0px;
+  width: 0; height: 0;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-top: 8px solid #000000;
+}
+a:hover.tooltips span {
+    visibility: visible;
+    opacity: 0.8;
+    left: -14px;
+    top: 0px;
+    margin-top: -45px;
+    margin-left: 0px;
+    z-index: 999;
+    width: 90px;
+}
+</style>
+
+                                </ion-view>

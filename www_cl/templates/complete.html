@@ -1,0 +1,94 @@
+<ion-view>
+    <!--  <div class="bar bar-header bar-balanced"><img ng-src="img/asset/auctions_03.png" class="logo_green"></div>  -->
+    <ion-content style="background:#fff;">
+        <div class="Reschedule_img_back">
+		       <div class="button-icon ion-arrow-left-c" style="color: white;font-size: 32px;position: absolute;z-index:11;" ng-click="previousPage()"></div>
+
+            <div class="image_width_on_banner">
+                <div class="date_calendarsing "  style="background-color:white;">
+                    <div class="date_calendar_green1">{{ specificvendorappointmentInfo.appointments.service_date | date:'MMM'}}</div>
+                    <div class="date_cal1">{{ specificvendorappointmentInfo.appointments.service_date | date:'d'}}</div>
+                    <div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>
+                </div>
+                <div class="banner_rate">
+                    <!--<img ng-src="img/asset/notifications_29.png">-->
+                    <div class="blue_circle">${{ specificvendorappointmentInfo.appointments.price}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="all_border">
+            <div class="all_border_time"></div>
+            <div class="ratethems_service_all">
+                <div class="list">
+                    <div class="item" >
+                        <div class="complete_content">
+                            <h2 class="h2p_font" style="text-transform: capitalize;">{{specificvendorappointmentInfo.homeowners.name}}</h2>
+                            <p class="h2only_font">{{specificvendorappointmentInfo.results[0].formatted_address}}</p>
+                           
+                            
+                        </div>
+                        <div class="width_18_percent">
+                            <img ng-src="img/asset/appointment-(1)_07.png" class="imgresize_arrow" ng-click="openmap(specificvendorappointmentInfo.response.directions_url)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rate_service" ng-if="description!=''">
+                <div class="width_12_percent clr_font">
+                    <img ng-src="img/asset/appointment-(1)_11.png" class="imge_sze">
+                    </div>
+                    <div class="width_82_percent clr_font" >{{description}}</div>
+                    
+                </div>
+                <div class="border_bottom_pops" ng-if="description!=''"></div>
+                <div ng-if="description==''">
+                    <br/>
+                </div>
+                <div class="row">
+                    <div class="col col_way" ng-click="email(specificvendorappointmentInfo.homeowners.email)">
+                        <img ng-src="img/asset/appointment-(1)_15.png" class="imge_sized_new">
+                            <p class="P_complete_style_way">ON MY WAY</p>
+                        </div>
+                        <div class="col col_way" ng-click="openmap(specificvendorappointmentInfo.response.directions_url)">
+                            <img ng-src="img/asset/appointment-(1)_23.png" class="imge_sized_new">
+                                <p class="P_complete_style_nav">NAVIGATE</p>
+                            </div>
+                            <div class="col col_way" ng-click="call(specificvendorappointmentInfo.mobile)">
+                                <img ng-src="img/asset/appointment-(1)_17.png" class="imge_sized_new">
+                                    <p class="P_complete_style_phn">CALL</p>
+                                </div>
+                                <div class="col col_way" ng-click="sms(specificvendorappointmentInfo.mobile)" style="margin-right:10px;">
+                                    <img ng-src="img/asset/appointment-(1)_20.png" class="imge_sized_new">
+                                        <p class="P_complete_style_text">TEXT</p>
+                                    </div>
+                                </div>
+                                <div class="border_bottom_pops"></div>
+                                
+                             
+                                <div class="row">
+                                    <div class="col" ng-if="date_length=='0'" ng-init="isDisabled = false">
+                                        <button disabled="{{isDisabled}}"  class="button button-full button-balanced"  >
+				COMPLETE
+				</button>
+                                    </div>
+                                    <div class="col" ng-if="date_length!='0'">
+                                        <button class="button button-full button-balanced" ng-click="Picture(specificvendorappointmentInfo.appointments.id)">
+				COMPLETE
+				</button>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#reschedule/{{specificvendorappointmentInfo.appointments.id}}/{{specificvendorappointmentInfo.homeowners.name}}" style="text-decoration: none;">
+                                            <button class="button button-full button-calm" >
+				RESCHEDULE
+				</button>
+                                            <a></a>
+                                        </div>
+                                    </div>
+                                    <div class="border_buttons">
+                                        <a href="#cancelapp/{{specificvendorappointmentInfo.appointments.id}}/{{specificvendorappointmentInfo.homeowners.name}}" style="text-decoration: none;">
+                                            <font class="cancl_app">CANCEL APPOINTMENT</font>
+                                        </a>
+                                    </div>
+                                </ion-content>
+                            </ion-view>

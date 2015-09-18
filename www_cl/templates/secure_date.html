@@ -1,0 +1,51 @@
+<ion-view view-title="Add Card to Secure Date">
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content>
+        <div class="credit">
+            <img src="img/asset/credit-card-scan.png">
+            </div>
+            <form stripe-form="stripeCallback" data-abide>
+                <div class=credit_form>
+                    <div class="col-1">
+                        <div class="cred_img">
+                            <img src="img/asset/ced_img.png">
+                            </div>
+                            <input ng-model="number" name="number" payments-format="card" payments-validate="card"
+					       placeholder="Card Number" type="text" id="number">
+                                <div class="cred_img2">
+                                    <img src="img/asset/visa.png">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <label>EXP</label>
+                                    <input ng-model="expiry" name="expiry" payments-format="expiry" payments-validate="expiry"
+					       placeholder="Expiry" type="text" id="exp">
+                                    </div>
+                                    <div class="col-3">
+                                        <label>CVV</label>
+                                        <input ng-model="cvc" name="cvc" payments-format="cvc" payments-validate="cvc"
+					       placeholder="CVC" type="text" id="cvc">
+                                        </div>
+                                        <div class="col-4">
+                                            <label>ZIP</label>
+                                            <input type="text" placeholder="12345">
+                                            </div>
+                                        </div>
+                                        <div class="card_security">
+                                            <img src="img/asset/security.png">
+                                            </div>
+                                            <div class="content_lower_security">
+                                                <button class="button button-full button-custom schedule_cut fontsforweb_fontid_12950" ng-click="card(current_bid)">
+           Get My Lawn Mowed
+        </button>
+                                            </div>
+                                        </form>
+                                    </ion-content>
+                                </ion-view>

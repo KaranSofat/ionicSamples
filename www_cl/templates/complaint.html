@@ -1,0 +1,42 @@
+<ion-view>
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service"> Address Complaint
+  </ion-nav-title>
+    <ion-content>
+        <br/>
+        <div class="item ratethem_service">
+            <div class="imagewidthrightpart_service" ng-click="takePicture()">
+                <div class="image_services" ng-if="!imgURI">
+                    <img src="img/asset/contested.png" >
+                    </div>
+                    <div class="image_line" ng-if="!imgURI">
+					 Take a Picture of the lawn</div>
+                    <br/>
+                    <br/>
+                </div>
+                <div ng-if="imgURI" style="margin-top:-36px;">
+                    <img ng-src="{{imgURI}}" style="width:100%;"/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <input type="text" class="border_bottom_service" id="des" value="" placeholder="Notify homeowner of works" style=" background-color: #3aa2e1 !important;
+    border-bottom: 1px solid;  width: 80%;">
+                <div class="reshedule_lawn">
+                    <img ng-src="img/asset/place-bid_43.png" style="width: 18px;">
+                    </div>
+                </div>
+                <div class="border_button" style="text-align:center;width:100%; margin: 50px auto;">
+                    <button class="button button-balanced" ng-click="complaintregister()">
+SEND
+</button>
+                </div>
+            </ion-content>
+        </ion-view>

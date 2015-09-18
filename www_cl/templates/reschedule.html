@@ -1,0 +1,96 @@
+<ion-view>
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-nav-title class="title_service"> Reschedule Lawn
+  </ion-nav-title>
+    <ion-content>
+        <br/>
+        <div class="rate_service">
+            <div class='services_color' style="text-align:left;">Let 
+                <font class="wght_font" style="text-transform: capitalize;">{{resName}}</font> know what day you are coming
+            </div>
+            <br/>
+        </div>
+        <!--<img src="img/asset/appoid_02.png" class="Reschedule_img">-->
+        <!--<div class="outer"><div class="orginal"><h4>New date</h4><div ng-if="photo.getTime()!=dates.getTime()" style="background-color:#e3e3e3" ng-click="divOuterGreen()" class="new_date_calendars web"><p style="color:black; margin-bottom:20px;" class="res_cal_date_height ng-binding">Wed</p><p style="color:black; margin-bottom:15px;" class="res_cal_date ng-binding">8</p></div>-->
+    </div>
+    <ion-scroll direction="x" class="available-scroller overflow_dat">
+        <div class="photo" collection-repeat="photo in photos"  collection-item-height="100"
+    collection-item-width="'80px'" ng-click="itemClicked($index,photo)" >
+            <div ng-class="{ 'orginal': $index == selectedIndex }">
+                <div class="new_date_calendars" ng-if="photo.getTime()==dates.getTime()" style="margin-top:0px;">
+                    <p class="res_cal_date_height" style="margin-bottom:20px;">{{photo | date:'EEE'}}</p>
+                    <p class="res_cal_date" style="margin-bottom:15px;">{{photo | date:'d'}}</p>
+                    <h6 class="res_cal_date_height_h6" >ORIGINAL DATE</h6>
+                </div>
+                <h4 ng-if="$index == selectedIndex">New Date</h4>
+                <div class="new_date_calendars " ng-click="divOuterGreen()" ng-class="{ 'back_grey': $index == selectedIndex }" ng-if="photo.getTime()!=dates.getTime()">
+                    <p class="res_cal_date_height ng-binding" style="color:black; margin-bottom:20px;" >{{photo | date:'EEE'}}</p>
+                    <p class="res_cal_date ng-binding" style="color:black; margin-bottom:15px;">{{photo | date:'d'}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-scroll>
+</div>
+<br/>
+<br/>
+<div class="rate_service">
+    <div class='services_color' style="text-align:left;">Let the homeowner know why</div>
+</div>
+<br/>
+<div class="item rate_service" style="width:88%;">
+    <div class="imagewidthrightpart_service">
+        <div>
+            <input type="radio" name="sex" value="Homeowner cancelled service this week." ng-click="other('Homeowner cancelled service this week.')" >&nbsp; Homeowner cancelled service this week.
+					
+                <br>
+                    <br>
+                        <input type="radio" name="sex" value="I checked and it does not need cut" ng-click="other('I checked and it does not need cut')">&nbsp; I checked and it doen't need cut
+					
+                            <br>
+                                <br>
+                                    <input type="radio" name="sex" value="Due to weather, no service is needed" ng-click="other('Due to weather, no service is needed')">&nbsp; Due to weather, no service is needed
+					
+                                        <br>
+                                            <br>
+                                                <input type="radio" name="sex" value="Other" ng-click="other('Others')">&nbsp; Other
+				
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        <div id="others_resn"  style="display:none;">
+                                            <input type="text" class="border_bottom_service" id="res_resn" placeholder="Let homeowner know why" value="" style=" background-color: #3aa2e1 !important;
+    border-bottom: 1px solid;  width: 80%;">
+                                                <div class="reshedule_lawn">
+                                                    <img ng-src="img/asset/place-bid_43.png" style="width: 18px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border_buttons">
+                                            <button class="button button-balanced complete_color" ng-click="reschdule(resp_id)">
+				Request New Date
+				</button>
+                                        </div>
+                                    </ion-content>
+                                    <style>
+.selected-class-name {
+  color: red !important;
+}
+.back_grey
+{
+background:#E3E3E3;
+    margin: 0 0 0 5px;
+    width: 83px;
+}
+
+</style>
+                                </ion-view>

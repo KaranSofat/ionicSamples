@@ -1,0 +1,64 @@
+<ion-view view-title="Profile">
+   <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+        <div class="logo_align_dash">
+            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            </div>
+        
+            <hr>
+                <div ng-if="tab=='first'">
+                    <div class="card user_wrap my_greenpal">
+                        <div class="wrap_avatar_greenpal">
+                            <img src="img/asset/avatar.jpg" style="left:0px;">
+                               <!-- <h2 class="fontsforweb_fontid_12950">$55</h2>-->
+                            </div>
+                            <div class="wrap_rating fontsforweb_fontid_12950">
+							<div class="peach_head">
+                                    <h4>Nishant Garg</h4>
+                                </div>
+                                <div>482,Phase-1</div>
+								<div>Mohali</div>
+								<div>Punjab</div>
+								<div>+91-95016-63394,0172-4009730</div>
+								<div>nishantgarg.27@gmail.com</div>
+ 
+
+                                
+                                <!--<div class="rate_user">
+                                    <rating ng-model="rate" max="max" readonly="true"></rating>
+                                </div>
+                                <div>({{rate}} Avg.)</div>-->
+                            </div>
+                        </div>
+                        
+
+                                  <!--  <div class="content_lower_wrap">
+                                        <a class="fontsforweb_fontid_12950">
+           Not happy with your current work?
+        </a>
+                                    </div>-->
+                                </div>
+                             
+							   <div class="content_lower">
+                                    <button ng-click="gotourl('edit_info')" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950" style="margin-top:20px;">
+           Edit Information
+        </button>
+		 <div style="clear:both;"></div>
+                                <div style="color: white;
+    width: 100%;
+    float: left;
+    text-align: center;"> -OR-</div>
+                                    <button ng-click="gotourl('change_password')" class="button button-full button-trans schedule_cut fontsforweb_fontid_12950" style="border: 1px solid #fff;">
+           Change Password
+        </button>
+                                </div>
+							  
+                                </ion-content>
+                            </ion-view>

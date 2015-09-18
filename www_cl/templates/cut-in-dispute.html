@@ -1,0 +1,131 @@
+<ion-view >
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content>
+        <div class="logo_align_dash">
+            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            </div>
+            <div class="row">
+                <div ng-click="changetab('first')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='first'}"> Appointments</div>
+                </div>
+                <div ng-click="changetab('second')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='second'}"> My Greenpal</div>
+                </div>
+            </div>
+            <hr>
+                <div ng-if="tab=='second'">
+                    <div class="barrel">
+                        <img ng-src="img/asset/bid-gavel.png">
+                        </div>
+                        <div class="content">
+                            <h4 class="fontsforweb_fontid_12950">Current Bids</h4>
+                            <div class="list card" ng-click="gotourl('provider_detail')">
+                                <div class="item item-avatar ratethem">
+                                    <img src="img/asset/avatar.jpg">
+                                        <h2>Tysons Lawn Care</h2>
+                                        <p>
+                                            <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                        </p>
+                                    </div>
+                                    <div class="item item_right_rate">
+                                        <h2>$55</h2>
+                                        <i class="ion-ios-arrow-right"></i>
+                                    </div>
+                                </div>
+                                <div class="list card" ng-click="gotourl('provider_detail')">
+                                    <div class="item item-avatar ratethem">
+                                        <img src="img/asset/avatar.jpg">
+                                            <h2>Tysons Lawn Care</h2>
+                                            <p>
+                                                <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                            </p>
+                                        </div>
+                                        <div class="item item_right_rate">
+                                            <h2>$55</h2>
+                                            <i class="ion-ios-arrow-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="list card" ng-click="gotourl('provider_detail')">
+                                        <div class="item item-avatar ratethem">
+                                            <img src="img/asset/avatar.jpg">
+                                                <h2>Tysons Lawn Care</h2>
+                                                <p>
+                                                    <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                                </p>
+                                            </div>
+                                            <div class="item item_right_rate">
+                                                <h2>$55</h2>
+                                                <i class="ion-ios-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                        <div class="list card" ng-click="gotourl('provider_detail')">
+                                            <div class="item item-avatar ratethem">
+                                                <img src="img/asset/avatar.jpg">
+                                                    <h2>Tysons Lawn Care</h2>
+                                                    <p>
+                                                        <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                                    </p>
+                                                </div>
+                                                <div class="item item_right_rate">
+                                                    <h2>$55</h2>
+                                                    <i class="ion-ios-arrow-right"></i>
+                                                </div>
+                                            </div>
+                                            <div class="list card" ng-click="gotourl('provider_detail')">
+                                                <div class="item item-avatar ratethem">
+                                                    <img src="img/asset/avatar.jpg">
+                                                        <h2>Tysons Lawn Care</h2>
+                                                        <p>
+                                                            <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                                        </p>
+                                                    </div>
+                                                    <div class="item item_right_rate">
+                                                        <h2>$55</h2>
+                                                        <i class="ion-ios-arrow-right"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="list card">
+                                                    <div class="item item-avatar ratethem">
+                                                        <img src="img/asset/avatar.jpg">
+                                                            <h2>Tysons Lawn Care</h2>
+                                                            <p>
+                                                                <rating ng-model="rate" max="max" readonly="true"></rating>({{rate}} Avg.)
+                                                            </p>
+                                                        </div>
+                                                        <div class="item item_right_rate">
+                                                            <h2>$55</h2>
+                                                            <i class="ion-ios-arrow-right"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-if="tab=='first'">
+                                                <div class="calendar">
+                                                    <img ng-src="img/asset/dislike.png">
+                                                    </div>
+                                                    <div class="bc_appointment">
+                                                        <p>Disputed Cut from {{disputed_data_disputed_appointment.service_date | date:'MMM'}}. {{disputed_data_disputed_appointment.service_date | date:'d'}}</p>
+                                                        <h1>Wating for Reply From BC Cutters</h1>
+                                                    </div>
+                                                    <div class="lawn_image">
+                                                        <img src='{{disputed_data.disputed_photo}}' >
+                                                        </div>
+														<br/><br/><br/><br/>
+														<div style="clear:both;"></div>
+                                                        <div class="content_lower" style="margin-top:0;">
+                                                            <button  class="button button-full button-trans schedule_cut fontsforweb_fontid_12950">
+           Cancel Dispute
+        </button>
+                                                        </div>
+                                                    </div>
+												<br/><br/><br/><br/><br/><br/>
+                                                </div>
+                                            </ion-content>
+                                        </ion-view>
