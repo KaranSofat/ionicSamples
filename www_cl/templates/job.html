@@ -1,23 +1,34 @@
-<ion-view view-title="New Auction" hide-back-button="true">
-   <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
-        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
-    </ion-nav-bar>
-          <ion-nav-buttons side="right">
-		             <div ng-include="'templates/power.html'"></div> 
+<ion-view  hide-back-button="true">
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
 
-	
-      </ion-nav-buttons>
-    <ion-nav-title class="title_service">New Auction
-  </ion-nav-title>-->
+	  </ion-nav-bar>
     <ion-content>
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         <br/>
-		<form name="myForm" id="form1">
+		<form name="myForm" id="form1" ng-if="status!=0">
         <div class="rate_service">
             <div class='services_color' style="text-align:left;">Select the Job Type</div>
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
-	 <select ng-model="selectedColor" ng-options="job as job.name for job in jobs" ng-init="selectedColor = check(selected,jobs)" ng-change="setJobs(selectedColor)" style="width:100%;height:26px;" required >
-                <option value="" disabled selected>Select A Job</option>
+	 <select ng-model="selectedColor" ng-options="job as job.name for job in jobs" ng-init="selectedColor = check(selected,jobs)" ng-change="setJobs(selectedColor)" style="width: 100%;
+height: 25px;" class="op"
+ required >
+                <option value="" disabled selected style="font-size:14px !important;">Select A Job</option>
             </select></div>
 	</div>
         </div>
@@ -28,33 +39,177 @@
 		 <div class='services_color' style="text-align:left;">Fill the name of Job</div>
 		 <div class="row" style="padding-left:0px;">
 			<div class="sel">
-		 <input type="text" name="fill_name" id="fill_name" required style="color:black;"></div>
+		 <input type="text" name="fill_name" id="fill_name" required style="color:black;padding: 10px;"></div>
 		 </div>
 		 </div>
 		<br/>
 		
          <div class="rate_service" >
 		 
-		 <div class='services_color' style="text-align:left;">Select the Job Type</div>
+		 <div class='services_color' style="text-align:left;">Job Description</div>
 		 <div class="row" style="padding-left:0px;">
 		 	<div class="sel">
-		 <textarea id="comments" name="comment" style="height:100px;color:black;" required></textarea>
+		 <textarea id="comments" name="comment" style="height:100px;color:black;padding: 10px;" required></textarea>
 		 </div>
 		 </div>
 		 </div>
 		 
 		  <div class="rate_service">
 		  <div class="row" style="padding-left:0px;">
-		         <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="next()" >
+		  
+		  	<div class="col" style="text-align: -webkit-right;">
+		  <button class="button button-full button-custom  fontsforweb_fontid_12950 neww_button " ng-click="backButton()" style="border-radius:0px !important;"><i class="ion-chevron-left"></i>
+             Back
+             </button>    
+		
+		</div>
+		  
+		  <div class="col" style="text-align: -webkit-right;">
+		         <button class="button button-full button-custom  fontsforweb_fontid_12950 ag_button" ng-click="next()" style="border-radius:0px !important;">
              Continue
              </button>
+		
+		</div>
+		
+	
+		
+		 </div>
+		
+		
+		
+		
+		
+		  </div>
+		  </form>
+		  
+		   <div ng-if="status==0">
+                            <div>
+                                <div class="calendar">
+                                    <img ng-src="img/asset/calendar-icon-0-days.png">
+                                    </div>
+                                    <div class="content_appointment">
+                                        <h1>Service is not available</h1>
+                                    </div>
+                                    
+                                </div>
+                
+                <div class="content_appointment" style="margin-top: 46px;
+text-align: left;
+
+margin-left: 33px;
+font-weight: bold;
+font-size: 17px;">Request a call back</div>
+                
+                	<form name="myForm" id="form11">
+		
+		
+		
+		
+				 
+		
+        <div class="list custom-form">
+           
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <input type="text" name="uname" id="uname" placeholder=" Name" ng-model="orginal.name" required style="color:black;height:25px;padding: 10px;">
+	 </div>
+	</div>
+        </div>
+		
+		
+			
+        <div class="list custom-form">
+           
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <input type="text" name="phone" id="uname" placeholder="Phone" ng-model="orginal.phone" required style="color:black;height:25px;padding: 10px;">
+	 </div>
+	</div>
+        </div>
+		
+		
+		  <div class="list custom-form">
+            
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <input type="email" name="email" id="email_id" ng-model="orginal.email" placeholder=" Email Id" required style="color:black;height:25px;padding: 10px;">
+	 </div>
+	</div>
+        </div>
+		
+
+
+<div class="list custom-form">
+            
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <select name="cities" ng-model="selectedColor" ng-options="cities as cities.name for cities in city"  ng-change="setcities(selectedColor)" style="width:100%;height:25px;" required >
+                <option value="" disabled selected>Select A City</option>
+            </select>
+	 </div>
+	</div>
+        </div>
+	
+		
+		  <div class="list custom-form">
+           
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+			<select name="locations" ng-model="selectedColors" ng-options="locations as locations.name for locations in location" ng-init="selectedColors = check(selected,locations)" ng-change="setlocations(selectedColors)" style="width:100%;height:25px;"  required>
+                <option value="" disabled selected>Select A Location</option>
+            </select>	  
+
+	  </div>
+	</div>
+        </div>
+		
+
+
+
+       
+		   <div class="list custom-form">
+                         <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <textarea name="address" id="address" placeholder="Requierments" ng-model="orginal.message" required style="color:black;height:50px;padding:10px;"></textarea>
+	 </div>
+	</div>
+        </div>
+	
+		
+		  
+		
+		
+		 	
+		
+		
+		  <div class="list custom-form">
+		  <div class="row" style="padding-left:0px;">
+		  <div class="col">
+		
+		  <button class="button button-full button-custom  fontsforweb_fontid_12950" ng-click="backButton()" style="border-radius:0px !important;"><i class="ion-chevron-left"></i>
+             Back
+             </button>    
+		
+		</div>
+             <div class="col">
+              <button class="button button-full button-custom  fontsforweb_fontid_12950" ng-click="serviceMessage()" style="border-radius:0px !important;">
+             Send
+             </button>
+             </div>
 		 </div>
 		
 		  </div>
 		  </form>
-	
-                                    </ion-content>
-                                    <style>
+                
+		  
+		  
+		     <style>
 .selected-class-name {
   color: red !important;
 }
@@ -64,7 +219,15 @@ background:#E3E3E3;
     margin: 0 0 0 5px;
     width: 83px;
 }
+option
+{
+font-size:10px !important;
+}
 
 
 </style>
-                                </ion-view>
+        
+		  
+	
+                                    </ion-content>
+                                                         </ion-view>

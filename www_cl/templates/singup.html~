@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view view-title="Registration" cache-view="false">
     <!--<ion-nav-bar class="nav-title-slide-ios7 bar-custom">
         <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
     </ion-nav-bar>
@@ -9,20 +9,39 @@
       </ion-nav-buttons>
     <ion-nav-title class="title_service">Edit Information
   </ion-nav-title>-->
+  
     <ion-content>
+    
+    <div class="logo_align" style="margin-top:8% !important;">
+            <img ng-src="img/asset/incity.png">
+            </div>
+               <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         <br/>
 		<form name="myForm" id="form11">
 		
-				  <div class="rate_service">
+		
+		
+		
+				  <div class="list custom-form">
             <div class="row" style="padding-left:0px;">
+            
 			<div class="sel">
-	 
+	<!-- <i class="ion-ios-telephone" style="height: 27px;
+    width: 20px;
+    float: left;
+    margin-right: 0px;
+    /* background-size: 25px 25px; */
+    position: absolute;
+    left: 0;
+    
+    margin-left: 8px;
+    color: #EAA528;font-size:20px"></i>-->
 	  <input type="text" name="mobile" id="mobile"  placeholder=" Your Mobile No."  style="color:black;height:25px;" ng-model="orginal.mobile">
 	 </div>
 	</div>
         </div>		
 		
-        <div class="rate_service">
+        <div class="list custom-form">
            
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
@@ -32,7 +51,7 @@
 	</div>
         </div>
 		
-		  <div class="rate_service">
+		  <div class="list custom-form">
             
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
@@ -44,7 +63,7 @@
 		
 
        
-		   <div class="rate_service">
+		   <div class="list custom-form">
                          <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
@@ -53,7 +72,7 @@
 	</div>
         </div>
 		
-		<div class="rate_service">
+		<div class="list custom-form">
             
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
@@ -66,7 +85,7 @@
         </div>
 	
 		
-		  <div class="rate_service">
+		  <div class="list custom-form">
            
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
@@ -83,9 +102,9 @@
 		 	
 		
 		
-		  <div class="rate_service">
+		  <div class="list custom-form">
 		  <div class="row" style="padding-left:0px;">
-		         <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="register()" >
+		         <button class="button button-full button-custom  fontsforweb_fontid_12950" ng-click="register()" style="border-radius:0px !important;">
              Register
              </button>
 		 </div>

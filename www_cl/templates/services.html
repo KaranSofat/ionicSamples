@@ -1,44 +1,88 @@
-<ion-view view-title="Select service"  >
+<ion-view>
     
+    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power2.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
     <ion-content class="dispute_cut_back">
+
 	
-	<div id="search-box" class="bar bar-header item-input-inset">
+<!--	<div id="search-box" class="bar bar-header item-input-inset">
         <div class="item-input-wrapper">
-          <i class="icon ion-ios7-search placeholder-icon"></i>
+         <!-- <i class="icon ion-ios7-search placeholder-icon"></i>
           <input type="search" placeholder="Search" ng-model="data.searchQuery">
           <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
         </div>
         
-      </div>
-
-	
+      </div>-->
+      
+<div ng-include="'templates/searchBox.html'" ng-controller="searchBoxCtrl"></div> 
         <div class="card">
 		<div class="custom_row">
-		<div class="col-32-custom"  ng-repeat="services in services_data track by $index"><div class="brand-content wow fadeIn animated" data-wow-duration="700ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 700ms; animation-delay: 300ms; animation-name: fadeIn;">
+		<div class="col-32-custom"  ng-repeat="services in services_data track by $index" style="margin-top:1%;">
+		
+		 <a href="#job/{{services.id}}">
+		<div ng-class="{'0': 'brand-content',  '1': 'brand-content_again', '2': 'brand-content_grey'}[($index) % 4]" class="brand-content wow fadeIn animated" data-wow-duration="700ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 700ms; animation-delay: 300ms; animation-name: fadeIn;">
+	
+	<div class="my_sutom">
+	
 		<div class="service_cover" style="
     width: 100%;
     text-align: center;
 ">
-								<img class="pull-left img-responsive" src="img/asset/plumber.png" alt="">
+								<img class=" img-responsive bright" src="http://incitysearch.com/themes/web/images/app/{{services.icons}}" alt="">
 								</div>
-								<div class="media-body" style="padding-bottom:25px;">							
-									<h2 class="align_center">{{services.name}}</h2>
-                               									
-									   <a href="#job/{{services.id}}">
-                                 <span class="select_btn ">
+								
+								<div class="media-body" style="padding-bottom:5px;">							
+									<h2 class="align_center" style="">{{services.name}}</h2>
+                  <!--   	<p class="align_center_des">{{services.description}}</p>  -->        									
+									  
+                               	<!--  <span class="select_btn ">
 									
 									<input type="radio" ng-model="$parent.name" name="name" value="{{services.name}}" class="btn btn-submit service " style="opacity:0;"  />
-									<label for="radio1" style="color:white;margin-left:-5px;"><span><span></span></span>Select</label></a></span>
+								<label for="radio1" style="color:white;margin-left:-5px;"><span><span></span></span>Select</label></a></span>-->
                                     
                                       
                                     
                                     
 								</div>
-							</div></div>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
+
+							</div>
+						
+						
+						
+						
 						</div>	
 							
-		
+		 <ion-refresher on-refresh="load()" pulling-text="Pull to refresh..." refreshing-text="Updating Services" refreshing-icon="ion-loading-d">
            
 </div>
+
+<style>
+.my_sutom
+{
+height:95px;
+}
+</style>
+
 		   </ion-content>
-    </ion-view>

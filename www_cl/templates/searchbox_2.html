@@ -1,0 +1,45 @@
+
+
+<div class="col-32-customs" id="searchDivResult" style="display:none;">
+
+      <div class="row">
+       <div class="col">
+       <label class="item item-input">
+       <i class="ion-android-search" style="font-size:25px;"></i>
+      
+		        <input type="text" name="business" id="email_id" ng-model="users.business" placeholder="Search Anything Local"  ng-keypress="getBusinessDetail()" ng-keyup ="getBusinessDetail()" required style="color:black;height:29px;padding-left:14px;padding-bottom: 2px;">
+		        </label>
+		         <div class="searchCity">
+                	<ul class="cityBox" ng-show="allBusiness"  >
+                	<li ng-click="insertBusiness(users.business)">{{users.business}}</li>
+                   <li ng-click="insertBusiness(businessDetail.name)" ng-repeat="businessDetail in business | filter:users.business | limitTo:8 ">	{{businessDetail.name}} </li>
+             	    </ul>
+            	</div>
+      </div>  
+     </div>
+    
+    <div class="row">  
+      <div class="col">
+      <label class="item item-input">
+      <i class="ion-location" style="font-size:25px;"></i>
+         	<input type="text" ng-model="users.citys" name ="citys" placeholder="Location, Area" ng-keypress="getCities()" ng-keyup ="getCities()"required style="color:black;height:29px;padding-left:22px;padding-bottom: 2px;">
+         	</label>
+           <div class="searchCity">
+           
+          	<ul class="cityBox" ng-show="allCities" >
+          	        	<li ng-click="inserVal(users.citys)">{{users.citys}}</li>
+              <li ng-click="inserVal(cities.locationname,cities.cityname)" ng-repeat="cities in city | filter:users.citys | limitTo:8 ">	{{cities.locationname}},{{cities.cityname}} </li>
+           	</ul>
+         	</div>  	
+      </div>
+     </div> 
+      
+      <div class="row">
+        <div class="col" style="text-align:center;">
+         <button class="button  button-custom auction_cut fontsforweb_fontid_12950" ng-click="searchResult()" style="min-height:0px !important;line-height:28px;border-radius:0px !important;">
+             Search
+           </button>
+       </div>
+      </div>
+  </div>
+

@@ -1,6 +1,25 @@
 <ion-view>
-    <!--  <div class="bar bar-header bar-balanced"><img ng-src="img/asset/auctions_03.png" class="logo_green"></div>  -->
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content >
     <ion-content style="background:#fff;">
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         <div class="logo_align_dash only_backgrounds_blue">
             <img ng-src="img/asset/greenpal-mobile-logo.png" style="margin-left:10px;margin-top:10px;">
             </div>

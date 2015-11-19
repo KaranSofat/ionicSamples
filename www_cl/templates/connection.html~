@@ -1,0 +1,113 @@
+<ion-view>
+   <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+     <!--   <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+     <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+     
+     <div class="wrap">
+			<!---start-header---->
+				<div class="header">
+					<div class="logo">
+					
+					</div>
+				</div>
+			<!---End-header---->
+			<!--start-content------>
+			<div class="content">
+				<img src="img/asset/rabbit.png" title="error" />
+				<p style="color:white;"><span><label>O</label>hh....</span>Your Internet Connection is failed.</p>
+					<div class="col" ng-click="refresh()">
+			 <button class="button  button-custom auction_cut fontsforweb_fontid_12950" ng-click="go('jobs')" style="width: 50px;border-radius:0px !important;adding-bottom: 13px; 
+padding-top: 6px;"> <i class="ion-refresh" style="font-size:32px;"></i>
+           </button>
+						</div>
+				<div class="copy-right">
+				
+				</div>
+   			</div>
+			<!--End-Cotent------>
+		</div>
+     <style>
+     .content p{
+	margin: 0px 0px 22px 0px;
+}
+.content p{
+	font-family: "Century Gothic";
+	font-size: 1em;
+	color:#666;
+	text-align:center;
+}
+.content  span,.logo h1 a{
+	color:#e54040;
+}
+.content span{
+	font-size: 2em;
+}
+.content{
+	text-align:center;
+	padding: 25px 0px 0px 0px;
+	margin: 0px 12px;
+}
+.content a{
+	color:#fff;
+	font-family: "Century Gothic";
+	background: #666666; /* Old browsers */
+	background: -moz-linear-gradient(top,  #666666 0%, #666666 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#666666)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #666666 0%,#666666 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #666666 0%,#666666 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #666666 0%,#666666 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #666666 0%,#666666 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#666666',GradientType=0 ); /* IE6-9 */
+	padding: 8px 17px;
+	border-radius:0.9em;
+}
+.content a:hover{
+	color:#e54040;
+}
+.logo{
+	text-align:center;
+	-webkit-box-shadow: 0 8px 6px -6px rgb(139, 139, 139);
+	-moz-box-shadow: 0 8px 6px -6px  rgb(139, 139, 139);
+	box-shadow: 0 8px 6px -6px  rgb(139, 139, 139);
+}
+.logo h1{
+	font-size:2em;
+	font-family: "Century Gothic";
+	background: #666666; /* Old browsers */
+	background: -moz-linear-gradient(top,  #666666 0%, #666666 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#666666)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #666666 0%,#666666 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #666666 0%,#666666 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #666666 0%,#666666 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #666666 0%,#666666 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#666666',GradientType=0 ); /* IE6-9 */	
+	padding: 6px 10px 10px 10px;
+}
+.logo h1 a{
+	font-size:1em;
+}
+.copy-right{
+	padding-top:20px;
+}
+.copy-right p{
+	font-size:0.9em;
+}
+.copy-right p a{
+	background:none;
+	color:#e54040;
+	padding:0px 0px 5px 0px;
+	font-size:0.9em;
+}
+.copy-right p a:hover{
+	color:#666;
+}
+     </style>
+     
+                    </ion-content>
+                </ion-view>

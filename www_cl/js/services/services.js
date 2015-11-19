@@ -1,6 +1,10 @@
 angular.module('starter.services', [])
 
 
+
+
+
+
 //factory for authentication and login signup 
 .factory('HomeOwners', function($http, $q, ApiEndpoint) {
 
@@ -100,9 +104,65 @@ angular.module('starter.services', [])
         },
  
 		
+		      getBusiness: function(id) {
+
+
+            var Url = baseurl + 'getBusiness';
+
+            var defer = $q.defer();
+
+
+            $http.post(Url,id,{
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+
+                defer.resolve(data);
+
+
+            }).
+            error(function(data, status, headers, config) {
+                console.log(data);
+                defer.reject();
+
+            });
+
+            return defer.promise;
+        },
+        
+		 techInfo: function(id) {
+
+
+            var Url = baseurl + 'techInfo';
+
+            var defer = $q.defer();
+
+
+            $http.post(Url,id,{
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+
+                defer.resolve(data);
+
+            }).
+            error(function(data, status, headers, config) {
+                console.log(data);
+                defer.reject();
+
+            });
+
+            return defer.promise;
+        },
+		
  /*=============Jobs service Starts here===============================*/
 
 jobs: function(id) {
+
 
             var Url = baseurl + 'appointmentFix';
 
@@ -158,6 +218,35 @@ detailJob: function(id) {
             return defer.promise;
         },
         
+        
+ 
+ServiceMessage: function(id) {
+
+            var Url = baseurl + 'user_detail_submit';
+
+            var defer = $q.defer();
+
+
+            $http.post(Url,id,{
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+
+                defer.resolve(data);
+
+            }).
+            error(function(data, status, headers, config) {
+                console.log(data);
+                defer.reject();
+
+            });
+
+            return defer.promise;
+        },
+               
+        
 /*=============Detail Jobservice Starts here===============================*/  
 
 
@@ -200,6 +289,26 @@ detailJob: function(id) {
 
             return defer.promise;
         },
+ 
+ 
+      	show_Cities_new: function() {
+            //alert(item);
+            var Url = baseurl + 'LocationCity';
+			console.log(Url);
+            var defer = $q.defer();
+            
+            $http.get(Url).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
  
 			show_location: function(city_id) {
             //alert(item);
@@ -300,6 +409,9 @@ detailJob: function(id) {
         },
 		
 		
+		  
+		
+		
 		 
 		show_mobile: function(item) {
             //alert(item);
@@ -346,6 +458,245 @@ detailJob: function(id) {
         },
  /*....................  End Card submit service.................................... */
  
+ 
+  Profile: function(id) {
+
+
+            var Url = baseurl + 'myInformation';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,id, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+      
+        ResetPassword: function(phone) {
+
+
+            var Url = baseurl + 'forgot_password';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+        ChangePassword: function(phone) {
+
+
+            var Url = baseurl + 'change_password';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+        SearchDetail: function(phone) {
+
+
+            var Url = baseurl + 'getSpecificBusiness';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+ 
+ 
+      
+        SearchResult: function(phone) {
+
+
+            var Url = baseurl + 'showBusiness';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+ 
+      
+        CountNotify: function(phone) {
+//alert(phone);
+
+            var Url = baseurl + 'CountNotify';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+        MyNotify: function(phone) {
+//alert(phone);
+
+            var Url = baseurl + 'notifyResult';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+      
+ 
+        notify: function(phone) {
+
+
+            var Url = baseurl + 'notify';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+ 
+        techDetail: function(phone) {
+
+
+            var Url = baseurl + 'getTechnicianDetail';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+ 
+         EditInfo: function(data) {
+
+        //alert(data);
+            var Url = baseurl + 'UpdateInformation';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,data, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
  reply_dispute: function(item,id) {
 
 
@@ -381,6 +732,81 @@ detailJob: function(id) {
 
             return defer.promise;
         },
+        
+      
+        About: function(phone) {
+
+
+            var Url = baseurl + 'about';
+			
+			     // var Url = "http://localhost:4300/";
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+        
+        Term: function(phone) {
+
+
+            var Url = baseurl + 'term';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+        
+         Team: function(phone) {
+
+
+            var Url = baseurl + 'team';
+			
+            var defer = $q.defer();
+            
+            $http.post(Url,phone, {
+            
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+       
+            }).
+            success(function(data, status, headers, config) {
+              //  console.log(data);
+                defer.resolve(data);
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject();
+            });
+
+            return defer.promise;
+        },
+ 
+ 
+        
  /*....................  End Current Bid service.................................... */
  
  /*....................  start review api to getting the comapny name service.................................... */

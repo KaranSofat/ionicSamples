@@ -1,33 +1,45 @@
-<ion-view view-title="Contact us">
-    <!--<ion-nav-bar class="nav-title-slide-ios7 bar-custom">
-        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
-    </ion-nav-bar>
-          <ion-nav-buttons side="right">
-		             <div ng-include="'templates/power.html'"></div> 
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
 
-	
-      </ion-nav-buttons>-->
-    <ion-content>
+	  </ion-nav-bar>
+    <ion-content >
+
         <div class="logo_align_dash">
-            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            <img ng-src="img/asset/incity.png" style="width:43% !important;">
             </div>
+             <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         
-            <hr>
                 <div ng-if="tab=='first'">
-                    <div class="card user_wrap my_greenpal">
-                        <div class="wrap_avatar_greenpal">
+                    <div class="card user_wrap my_greenpal" style="margin-top:17px;">
+                       <!-- <div class="wrap_avatar_greenpal">
                             <img src="img/asset/avatar.jpg" style="left:0px;">
-                               <!-- <h2 class="fontsforweb_fontid_12950">$55</h2>-->
-                            </div>
+                               <!-- <h2 class="fontsforweb_fontid_12950">$55</h2>
+                            </div>-->
                             <div class="wrap_rating fontsforweb_fontid_12950">
 							<div class="peach_head">
-                                    <h4>Incity App</h4>
+                                    <!--<h4>Incity App</h4>-->
                                 </div>
                                 <div>E-51-First Floor,</div>
 								<div>Phase VIII, Industrial Area,</div>
 								<div>SAS Nagar, Mohali,</div>
 								<div>Punjab-160059</div>
-								<div>+91-95016-63394,0172-4009730</div>
+								<div style="font-weight: bold;
+font-size: 18px;
+margin-top: 11px;">+91-(859)-(159)-1800</div>
 
  
 
@@ -39,19 +51,22 @@
                             </div>
                         </div>
                         <div class="row wrap_button">
-                            <div class="col_custom" ng-click="email('nishantgarg.27@gmail.com')">
+                            <div class="col_custom" ng-click="email('info@incitysearch.com')">
                                 <img src="img/asset/email.png">
                                     <span>Email</span>
                                 </div>
-                                <div class="col_custom" ng-click="sms('7696622805')">
+                                <div class="col_custom" ng-click="sms('918591591800')">
                                     <img src="img/asset/text.png">
                                         <span>Text</span>
                                     </div>
-                                    <div class="col_custom"  ng-click="call('7696622805')">
+                            <a href="tel:+918591591800" class="col_custom">
+                                  
                                         <img src="img/asset/call.png">
                                             <span>Call</span>
-                                        </div>
-                                    </div>
+                                       
+                                  
+                                </a>
+                                </div>
                                  <!--   <div class="content_lower_wrap">
                                         <button class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
            Schedule more
@@ -63,22 +78,7 @@
         </a>
                                     </div>
                                 </div>
-                                <div ng-if="tab=='second'">
-                                    <div class="calendar">
-                                        <img ng-src="img/asset/calendar-icon-0-days.png">
-                                        </div>
-                                        <div class="content_appointment">
-                                            <h1>No Scheduled Appointments </h1>
-                                        </div>
-                                        <div class="content_lower">
-                                            <button ng-click="gotourl('specific')" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
-           Schedule a cut
-        </button>
-                                            <div class="or_state fontsforweb_fontid_12950"> -OR- </div>
-                                            <button ng-click="gotourl('new_auction')" class="button button-full button-trans schedule_cut fontsforweb_fontid_12950">
-           Get new quotes
-        </button>
-                                        </div>
+                                
                                     </div>
                                 </ion-content>
                             </ion-view>

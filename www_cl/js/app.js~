@@ -7,7 +7,17 @@
 
 angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.service.push',  'starter.controller', 'starter.services','angularPayments','timer'])
 
- .run(function($ionicPlatform,$rootScope,$http,$window, $stateParams,storageService) {
+ .run(function($ionicPlatform,$rootScope,$http,$window, $stateParams, $location,storageService,$ionicPopup,$state,HomeOwners,$cordovaSplashscreen) {
+ 
+$rootScope.$on('$locationChangeStart', function (event, next, current) {
+
+ var userId=storageService.get("userId");
+
+
+ 
+})
+ 
+ 
   
   var userId=storageService.get("userId");
 
@@ -17,15 +27,20 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
  
   $("#menu12").hide();
   $("#menu1").show();
+   $("#notify").show();
+   
   
   }
   else
   {
   $("#menu1").hide();
   $("#menu12").show();
+   $("#notify").hide();
+  
   }
-   $rootScope.displayName = 'dsd';
+
   $ionicPlatform.ready(function() {
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -35,10 +50,41 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
       StatusBar.styleDefault();
     }
    
+   
+
+   
+ /*  if(window.Connection) {
+   
+                if(navigator.connection.type == Connection.NONE) {
+                
+                    $state.go('connection');
+                    /*$ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device."
+                    })
+                    .then(function(result) {
+                        if(!result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+            }*/
+
+/*     HomeOwners.show_services().then(function(response) {
+  //alert("here");
+       $cordovaSplashscreen.hide();
+       
+  })*/
+
+   
+  });
+
+
 
  
-    
-  });
+
+
+
 })
   .constant('ApiEndpoint', {
   url: 'http://incitysearch.com/api/'
@@ -47,7 +93,8 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
 .config(['$httpProvider', function($httpProvider) {
 //$httpProvider.defaults.withCredentials = true;
        // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        
+         
+  
           
     }
 ])
@@ -79,9 +126,25 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
  $ionicAppProvider.identify({
     app_id: '77c3656e',
     api_key: '6d866706c24990c84206e461d3d50f5c2ee2a2b872b46fe4',
-   dev_push: false
+   dev_push: true
   });
   
+  /* if(window.Connection) {
+   
+                if(navigator.connection.type == Connection.NONE) {
+                
+                    $state.go('connection');
+                    /*$ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device."
+                    })
+                    .then(function(result) {
+                        if(!result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+            }*/
   
    
 
@@ -98,10 +161,40 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
 
   .state('index', {
     url: "/index",
+    
     templateUrl: "templates/menu.html",
     controller: 'DashCtrl'
   })
-
+  
+  .state('power2', {
+    url: "/power2",
+    cache: false,
+    templateUrl: "templates/power2.html",
+    controller: 'power2Ctrl'
+  })
+  
+  .state('searchBox', {
+    url: "/searchBox",
+    templateUrl: "templates/searchBox.html",
+    controller: 'searchBoxCtrl'
+  })
+  
+    .state('searchBox2', {
+    url: "/searchBox2",
+    templateUrl: "templates/searchbox_2.html",
+    controller: 'searchBoxCtrl'
+  })
+  .state('connection', {
+    url: "/connection",
+    templateUrl: "templates/connection.html",
+    controller: 'connectionCtrl'
+  })
+  .state('searchDetail', {
+    url: "/searchDetail/:id",
+    templateUrl: "templates/searchDetail.html",
+    controller: 'searchDetailCtrl'
+  })
+    
   .state('jobs', {
     url: "/jobs",
     templateUrl: "templates/jobs.html",
@@ -109,9 +202,35 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
   })
 
   .state('detailJob', {
-    url: "/detailJob/:id,",
+    url: "/detailJob/:id",
     templateUrl: "templates/detailJob.html",
     controller: 'detailJobCtrl'
+  })
+
+    .state('logout', {
+    url: "/logout",
+    templateUrl: "templates/services.html",
+    controller: 'logOutCtrl'
+  })
+
+      .state('techDetail', {
+    url: "/techDetail/:id",
+    templateUrl: "templates/techDetail.html",
+    controller: 'techDetailCtrl'
+  })
+
+
+      .state('noResult', {
+    url: "/noResult",
+    templateUrl: "templates/noResult.html",
+    controller: 'noResultCtrl'
+  })
+
+
+   .state('searchResult', {
+    url: "/searchResult",
+    templateUrl: "templates/searchResult.html",
+    controller: 'searchResultCtrl'
   })
 
 
@@ -140,7 +259,9 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
   })
   
     .state('power', {
+  
     url: '/power',
+    cache: false,
     templateUrl: 'templates/power.html',
     controller: 'powerCtrl'
 
@@ -151,6 +272,12 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
     url: '/my_bids',
     templateUrl: 'templates/my_bids.html',
     controller: 'BidsCtrl'
+
+  })
+   .state('detailNotification', {
+    url: '/detailNotification',
+    templateUrl: 'templates/detailNotification.html',
+    controller: 'detailNotificationCtrl'
 
   })
 
@@ -356,8 +483,14 @@ angular.module('starter', ['ionic','ionic.service.core','ngCordova','ionic.servi
     templateUrl: 'templates/paid.html',
     controller: 'paidCtrl'
   })
+   .state('terms', {
+    url: '/terms',
+    templateUrl: 'templates/terms.html',
+    controller: 'termsCtrl'
+  })
 
     .state('log_out', {
+      cache: false,
     url: '/log_out',
     templateUrl: 'templates/log_out.html',
     controller: 'log_outCtrl'

@@ -1,0 +1,84 @@
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content >
+
+        <div class="logo_align_dash">
+            <img ng-src="img/asset/incity.png" style="width:43% !important;">
+            </div>
+             <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        
+                <div ng-if="tab=='first'">
+                    <div class="card user_wrap my_greenpal" style="margin-top:17px;">
+                       <!-- <div class="wrap_avatar_greenpal">
+                            <img src="img/asset/avatar.jpg" style="left:0px;">
+                               <!-- <h2 class="fontsforweb_fontid_12950">$55</h2>
+                            </div>-->
+                            <div class="wrap_rating fontsforweb_fontid_12950">
+							<div class="peach_head">
+                                    <!--<h4>Incity App</h4>-->
+                                </div>
+                                <div>E-51-First Floor,</div>
+								<div>Phase VIII, Industrial Area,</div>
+								<div>SAS Nagar, Mohali,</div>
+								<div>Punjab-160059</div>
+								<div style="font-weight: bold;
+font-size: 18px;
+margin-top: 11px;">+91-(859)-(159)-1800</div>
+
+ 
+
+                                
+                                <!--<div class="rate_user">
+                                    <rating ng-model="rate" max="max" readonly="true"></rating>
+                                </div>
+                                <div>({{rate}} Avg.)</div>-->
+                            </div>
+                        </div>
+                        <div class="row wrap_button">
+                            <div class="col_custom" ng-click="email('nishantgarg.27@gmail.com')">
+                                <img src="img/asset/email.png">
+                                    <span>Email</span>
+                                </div>
+                                <div class="col_custom" ng-click="sms('918591591800')">
+                                    <img src="img/asset/text.png">
+                                        <span>Text</span>
+                                    </div>
+                            <a href="tel:+918591591800" class="col_custom">
+                                  
+                                        <img src="img/asset/call.png">
+                                            <span>Call</span>
+                                       
+                                  
+                                </a>
+                                </div>
+                                 <!--   <div class="content_lower_wrap">
+                                        <button class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
+           Schedule more
+        </button>
+                                    </div>-->
+                                    <div class="content_lower_wrap">
+                                        <a class="fontsforweb_fontid_12950">
+           Not happy with your current work?
+        </a>
+                                    </div>
+                                </div>
+                                
+                                    </div>
+                                </ion-content>
+                            </ion-view>

@@ -1,12 +1,22 @@
-<ion-view view-title="Appointment">
-    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
-      <!--  <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>-->
-    </ion-nav-bar>
-        <ion-nav-buttons side="right">
-		             <div ng-include="'templates/power.html'"></div> 
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
 
-	
-      </ion-nav-buttons>
+	  </ion-nav-bar>
+    <ion-content >
     <ion-content>
         <div class="logo_align_dash">
             <img ng-src="img/asset/greenpal-mobile-logo.png">

@@ -1,0 +1,107 @@
+<ion-view>
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content style="background:#fff;">
+     <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        <div class="techImg">
+		      
+<img src= "http://incitysearch.com/themes/web/images/app/{{img}}" style="width: 375px;
+height: 190px;">
+            <div class="image_width_on_banner" style="position: absolute;
+z-index: 1222222;
+top: 76px;
+text-align: right;
+left: -29px;">
+            
+                   <button class="button  button-custom auction_cut fontsforweb_fontid_12950" ng-click="hire(serviceId)" style="min-height:0px !important;border-radius:0px !important;line-height:28px;margin: -3px 0 -6px 0;">
+ Hire Now
+           </button>
+              <!--  <div class="date_calendarsing "  style="background-color:white;">
+                    <div class="date_calendar_green1">{{newDate}}</div>
+                    <div class="date_cal1">{{year}}</div>
+                    <div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>-->
+                    <!--<div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>-->
+                </div>
+             
+            </div>
+        </div>
+        
+       <!--     <div class="ratethems_service_all">
+                <div class="list">
+                    <div class="item" >
+                        <div class="complete_content">
+                            <h2 class="h2p_font" style="text-transform: capitalize;">{{jobDetail.servicename}}</h2>
+                            <p class="h2only_font">{{jobDetail.jobname}}</p>
+                           
+                            
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>-->
+          
+            
+             <div class="rate_service" style="width:94% !important;">
+               
+                <div class="content">
+                           <!-- <h4 class="cur_bid">Service Providers Near You</h4>-->
+                            <a ng-click="techInfo(techList.tech_id)" ng-repeat="techList in tech">
+                                <div class="list card" style="margin-bottom:10px;">
+                                    <div class="item item-avatar ratethem">
+                                         <img src="http://incitysearch.com/themes/web/images/app/{{techList.profile_pic}}" alt="" style="font-size: 8px;max-width: 50px;border-radius:0px !important;">
+                                            <h2>{{techList.username}}</h2>
+                                            <p>
+                                             {{techList.jobname}} 
+                                            </p>
+                                        </div>
+                                      <div class="item item_right_rate">
+                                         
+                                            <i class="ion-ios-arrow-right" style="  float:right;top: 18px;right:12px;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div
+                    
+                </div>
+            
+                
+                
+                
+                                  
+               
+</div>
+               
+              
+               
+</div>
+
+
+
+
+
+                              
+                                
+                             
+                                
+                                </ion-content>
+   
+                                
+                                
+                            </ion-view>

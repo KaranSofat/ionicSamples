@@ -1,47 +1,74 @@
-	 <ul ng-show ="false" >
+	
+	
+	
+	 <ul ng-if="useremail!=null" id="notify">
 	 
-	 
-	 	 
- 
-	 
-  <li class="ion-android-notifications pic" data-tags="on, off" data-pack="default" style="    font-size: 23px;
+	   <li class="ion-ios-search" data-tags="on, off" data-pack="default" style="    font-size: 23px;
     color: white;
-    margin-right: 12px;
+  
+margin: 6px 7px 0 30px;
+    float: left;" ng-controller="searchBoxCtrl" ng-click="search()"></li>
+	   <li class="ion-android-notifications pic" data-tags="on, off" data-pack="default" style="    font-size: 23px;
+    color: white;
+    margin-left: 18px;
     margin-top: 6px;
     float: left;" ></li>
+    <div class="notify" ng-if="counter!= null&&counter!=0" ng-click="Notification()">{{counter}}</div>
+	 
+	 	 
+
+	 
+
 	
 	
-	<li data-tags="on, off" data-pack="default" style="    font-size: 23px;
+<!--	<li data-tags="on, off" data-pack="default" style="    font-size: 23px;
     color: white;
     margin-right: 12px;
     margin-top: 6px;
-    float: left;" ng-click="popover.show($event)" ng-controller="PopoverNewCtrl"><img ng-src="img/asset/jobs.png" style="width:21px;"> </li>
+    float: left;" ng-click="jobs()"><img ng-src="img/asset/jobs.png" style="width:21px;"> </li>
 	<!--<img ng-src="img/asset/jobs.png">-->
 	
 	
-	<li class="ion-person pic" data-tags="on, off" data-pack="default" style="font-size: 23px;
+	<!--<li class="ion-person pic" data-tags="on, off" data-pack="default" style="font-size: 23px;
     color: white;
     margin-right: 30px;
     margin-top: 6px;
-    float: left;"  ng-click="popover.show($event)" ></li>
+    float: left;"  ng-click="popover.show($event)" ></li>-->
     
      
     
   </ul>
 
   
-  	 <ul ng-show ="hideButtons">
-	 
-	 <a href="#/login">
+  	 <ul ng-if="useremail==null">
+	 	   <li class="ion-ios-search" data-tags="on, off" data-pack="default" style="    font-size: 23px;
+    color: white;
+  
+margin: 6px 7px 0 70px;
+    float: left;" ng-controller="searchBoxCtrl" ng-click="search()"></li>
+	 <!--<a href="#/login">
   <li class="ion-log-in pic"  data-tags="on, off" data-pack="default" style="    font-size: 23px;
     color: white;
     margin-right: 0px;
 	margin-left:24px;
     margin-top: 6px;
-    float: left;" ></li></a>
+    float: left;" ></li></a>-->
     
     
     
   </ul>
-  
+  <style>
+  .notify
+  {
+width: 22px;
+border: 1px solid;
+height: 23px;
+position: absolute;
+border-radius: 97px;
+background: #EAA528;
+left: 75px;
+top: 20px;
+text-align: center;
+  }
+  </style>
     

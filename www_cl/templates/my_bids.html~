@@ -1,0 +1,135 @@
+<ion-view>
+   <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        <!--<div class="logo_align_dash">
+            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            </div>-->
+            <!--<div class="row">
+                <div ng-click="changetab('first')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='first'}"> Appointments</div>
+                </div>
+                <div ng-click="changetab('second')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='second'}"> My Greenpal</div>
+                </div>
+            </div>-->
+            <hr>
+                <div>
+                    <div class="barrel">
+                       <!-- <img ng-src="img/asset/bid-gavel.png">-->
+                        </div>
+                        <div class="content">
+                            <h4 class="cur_bid">Service Providers Near You</h4>
+                            <a ng-href="#provider_detail/{{works.tech_id}}/{{works.price}}/{{works.distance_measure | number:2}} " ng-repeat="works in workers | orderBy:'price'" >
+                                <div class="list card" style="margin-bottom:10px;">
+                                    <div class="item item-avatar ratethem">
+                                      <img src="http://incitysearch.com/themes/web/images/app/{{works.profile_pic}}" alt="" style="font-size: 8px;border-radius:0px ">
+                                            <h2>{{works.username}}</h2>
+                                            <p>
+                                             (Distance:{{works.distance_measure | number:2}} km)
+                                            </p>
+                                        </div>
+                                        <div class="item item_right_rate">
+                                            <h2 style="width:auto;background: none repeat scroll 0 0 #faa632;">&#x20B9; {{works.price}}</h2>
+                                            <i class="ion-ios-arrow-right" style="  float:right;position: absolute;top: 18px;right:12px;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div ng-if="status==0">
+                            <div>
+                                <div class="calendar">
+                                    <img ng-src="img/asset/calendar-icon-0-days.png">
+                                    </div>
+                                    <div class="content_appointment">
+                                        <h1>Service is not available</h1>
+                                    </div>
+                                    
+                                     <div class="row" style="padding:38px;">
+		         <button class="button button-full button-custom  fontsforweb_fontid_12950" style="border-radius:0px !important;"ng-click="services()" >
+             Try with Another Service
+             </button>
+		 </div>
+		
+                                    
+                                </div>
+                
+                
+                
+               <!-- 	<form name="myForm" id="form11">
+		
+		
+		
+		
+				 
+		
+        <div class="list custom-form">
+           
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <input type="text" name="uname" id="uname" placeholder=" Name" ng-model="orginal.name" required style="color:black;height:25px;">
+	 </div>
+	</div>
+        </div>
+		
+		  <div class="list custom-form">
+            
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <input type="email" name="email" id="email_id" ng-model="orginal.email" placeholder=" Email Id" required style="color:black;height:25px;">
+	 </div>
+	</div>
+        </div>
+		
+
+       
+		   <div class="list custom-form">
+                         <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <textarea name="address" id="address" placeholder="Message" ng-model="orginal.message" required style="color:black;height:50px;"></textarea>
+	 </div>
+	</div>
+        </div>
+	
+		
+		  
+		
+		
+		 	
+		
+		
+		  <div class="list custom-form">
+		  <div class="row" style="padding-left:0px;">
+		         <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="serviceMessage()" >
+             Send
+             </button>
+		 </div>
+		
+		  </div>
+		  </form>-->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                            </ion-content>
+							
+                        </ion-view>

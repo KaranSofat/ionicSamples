@@ -1,16 +1,25 @@
-<ion-view view-title="New Auction" cache-view="false">
-  <!--  <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
-        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
-    </ion-nav-bar>
-          <ion-nav-buttons side="right">
-		             <div ng-include="'templates/power.html'"></div> 
+<ion-view  cache-view="false">
 
-	
-      </ion-nav-buttons>
-    <ion-nav-title class="title_service">New Auction
-  </ion-nav-title>-->
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+  </ion-nav-title>
     <ion-content>
-	
+	  <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
 	
 	<form name="myForm" id="form2">
         <br/>
@@ -248,9 +257,20 @@
 	<br/>	<br/>
 	<div style="width:96%;float:left;margin-left:2%;">
                     <div class="row auction_float">
-                        <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="gotonext()">
+                    <div class="col">
+                    
+                        <button class="button button-full button-custom  fontsforweb_fontid_12950 neww_button" ng-click="backButton()" style="border-radius:0px !important;"><i class="ion-chevron-left"></i>
+             Back
+             </button>
+                    </div>
+                    <div class="col" style="text-align: -webkit-right;">
+                    
+                    
+                        <button class="button button-full button-custom  fontsforweb_fontid_12950  ag_button" ng-click="gotonext()" style="border-radius:0px !important;">
              Next
              </button>
+             
+             </div>
                     </div></div>
                   
 					</div>

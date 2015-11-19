@@ -49,7 +49,7 @@
   font-family: 'proximanovalight' !important;
 }
 
-label, input, button, select, textarea{
+label, input, button,  textarea{
   font-family: 'proximanovalight' !important;
   font-size:16px !important; 
 }
@@ -65,8 +65,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .logo_align{
 	text-align: center;
-  width: 100%;
-  margin-top: 22%;
+width: 100%;
+margin-top: 22%;
 
 }
 
@@ -80,10 +80,40 @@ hr {
   margin: 0em 0;
   padding: 0;
 }
-.logo_align img {
-   width: 70%;
- }
 
+.neww_button
+{
+
+border-radius: 0px !important;
+background: none !important;
+border: none !important;
+font-weight: bold !important;
+text-align: left !important;
+}
+
+.ag_button
+{
+border-radius: 0px !important;
+width: 115px !important;
+padding: 0px !important;
+line-height: 0px !important;
+min-height: 38px !important;
+margin-top: 15px !important;
+}
+
+
+
+.logo_align img {
+  width: 47%;
+ }
+.content_appointment_wrap_image_dup {
+/* float: left; */
+margin: 0 0 0 10px;
+width: auto;
+text-align: center;
+font-size: 16px;
+color: red;
+}
 .border-bottom{
 
 	border: 0;
@@ -98,13 +128,13 @@ hr {
 }
 
 .img_login_right img {
-  width: 33%;
   float: left;
-  position: absolute;
-  right: -24px;
-  top: 25px;
-  zoom: initial;
-  z-index: 17;
+    position: absolute;
+    right: -50px;
+    top: -12px;
+    transform: rotate(-12deg);
+    width: 40%;
+    z-index: 17;
 }
 
 .button.button-custom {
@@ -412,7 +442,7 @@ ul.rating{
     text-align: center;
     height: 25px;
     float: left;
-    margin-right: 25px;
+    margin-right: 18px;
     position: relative;
     top: 7px;
     padding: 4px;
@@ -460,12 +490,12 @@ ul.rating{
   height: 65px;
 }
 .wrap_avatar > img {
-    border-radius: 50px;
-    bottom: 40px;
-    height: 90px;
-    left: 126px;
-    position: relative;
-    width: 27%;
+/* border-radius: 50px; */
+bottom: 40px;
+height: 76px;
+left: 91px;
+position: relative;
+width: 37%;
 }
 
 .card.user_wrap{
@@ -514,7 +544,12 @@ i.down_review.ion-arrow-down-b {
   font-size: 15px;
   color: #fff;
 }
-
+.align_center_des {
+text-align: center;
+color: white;
+text-transform: capitalize;
+font-size: 12px;
+}
 .head_user {
   position: absolute;
   color: #fff;
@@ -2139,16 +2174,25 @@ a {
     text-align: center;
     width: 100%;
 }
-.cur_bid
-{
- font-size: 30px;
+.cur_bid {
+    font-size: 21px;
     font-weight: bold;
-    margin: -9px 0 0;
+    margin: 16px 3px 20px;
+}
+.disable_ions
+{
+-webkit-filter: contrast(38%);
+}
+.bright
+{
+-webkit-filter: contrast(1000%);
 
 }
-
-
 /***********************************NEW CSS END********************************/
+option
+{
+font-size:10px !important;
+}
 
 
 .outer {
@@ -2256,19 +2300,72 @@ color:white;
 }
 .col-32-custom
 {
-width:32%;
+width:48%;
 float:left;
 margin-left:1%;
 }
+.col-32-customs
+{
+background: #3AA2E1;
+margin: 1% 2% 2% 2%;
+}
+
 .brand-content {
     background-color: #3AA2E1;
     padding: 10px 15px;
     font-size: 14px;
     
 }
+/*.brand-contents {
+    background-color: #EA4335;
+    padding: 10px 15px;
+    font-size: 14px;
+    
+}*/
+.brand-content_again {
+    background-color: #FBBC05;
+    padding: 10px 15px;
+    font-size: 14px;
+    
+}
+.brand-content_grey {
+    background-color: #8fb741;
+    padding: 10px 15px;
+    font-size: 14px;
+    
+}
+
 .brand-content img
 {
 
+}
+.searchCity {
+border: 1px solid #ccc;
+background: #3AA2E1;
+/*position: fixed;*/
+z-index: 999999;
+width: 100%;
+margin-top: -2px;
+}
+.cityBox
+{
+
+margin: 8px 0 0 6px;
+
+}
+.cityBox > li:hover
+{
+background:#EAA528;
+color:white;
+cursor:pointer;
+
+}
+.cityBox > li {
+/* border-bottom: 1px solid #ccc; */
+color: white;
+font-size: 18px;
+margin: 11px 0 0 0;
+height: 30px;
 }
 .brand-content span.select_btn {
     border: 1px solid #EAA528 !important;
@@ -2279,7 +2376,7 @@ margin-left:1%;
     margin-top: 15px;
     padding: 0;
     position: relative;
-    right: 5px;
+    right: 30px;
     float: right;
 	width:70px;
 	border-color: #EAA528;
@@ -2292,7 +2389,7 @@ margin-left:1%;
     text-align: center;
     color: white;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 16px;
 }	
 .color_white_service
 {
@@ -2316,7 +2413,7 @@ float:left;
 width:100%;
 float:left;
 display:initial;
-color:black;
+color:red;
 }
 .pic
 {
@@ -2324,4 +2421,15 @@ margin-right: 10px;
  
     font-size: 20px;
     color: #EAA528;
+}
+.button.button-custom.auction_cut.fontsforweb_fontid_12950:hover
+{
+background:#8FB741;
+
+}
+.button.button-full.button-custom.fontsforweb_fontid_12950:hover
+{
+background:#8FB741;
+
+
 }

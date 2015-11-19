@@ -1,0 +1,82 @@
+<ion-view view-title="Appointment">
+    <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+      <!--  <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>-->
+    </ion-nav-bar>
+        <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content>
+        <div class="logo_align_dash">
+            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            </div>
+            <div class="row">
+                <div ng-click="changetab('first')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='first'}"> Appointments</div>
+                </div>
+                <div ng-click="changetab('second')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='second'}"> My Greenpal</div>
+                </div>
+            </div>
+            <hr>
+                <div ng-if="tab=='second'">
+                    <div class="barrel">
+                        <img ng-src="img/asset/bid-gavel.png">
+                        </div>
+                        <div class="content">
+                            <h4 class="fontsforweb_fontid_12950"> No current bid</h4>
+                            <h1> Gary is busy </h1>
+                            <h1> getting your bids.</h1>
+                            <div class="garry_no_bid">
+                                <img ng-src="img/asset/no-bids-gary.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="tab=='first'">
+                            <div class="calendar" ng-click="openModal()">
+                                <img ng-src="img/asset/cal.jpg" >
+                                    <p class="fontsforweb_fontid_12950"> Your Next Appointment</p>
+                                </div>
+                                <div class="appointment_box_me" style="height:130px;">
+                                    <ion-scroll direction="y" style="height: 100px;">
+                                        <div class="content_appointment_wrap_me" ng-repeat="date in allAppointments track by $index">
+                                            <h1>{{ date.service_date | date:'MMMM d'}} </h1>
+                                            <h1>{{ date.service_date | date:'EEEE'}} </h1>
+                                        </div>
+                                    </ion-scroll>
+                                </div>
+                                <div class="blur-effect"></div>
+                                <div class="slide_vertical">
+                                    <i ng-click="moveslider(allAppointments.length)" class="ion-ios-arrow-down"></i>
+                                </div>
+                                <div class="content_lower">
+                                    <button class="btn round_button" ng-click="gotourl('specific')">
+                                        <i class="ion-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+
+                        </ion-content>
+                    </ion-view>
+                    
+                    
+                    <style>
+                    .modal {
+    background-color: #fff;
+    display: block;
+    min-height: 0;
+    overflow: hidden;
+    position: static;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.imagewidth_rightpart {
+     float: left;
+    height: 37px;
+    margin-left: 10%;
+    width: 74%;
+}
+                    </style>

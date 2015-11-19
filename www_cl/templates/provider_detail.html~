@@ -1,0 +1,110 @@
+<ion-view>
+
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content>
+    <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        <div class="main_nee">
+            <div class="card user_wrap">
+                <div class="wrap_avatar">
+                    <img src="http://incitysearch.com/themes/web/images/app/{{worker_image}}" alt="" style="height: 93px !important;;
+width: 93px !important;
+}">
+                        <h2 class="fontsforweb_fontid_12950">&#x20B9; {{price}}</h2>
+                    </div>
+                    <div class="wrap_rating">
+                        <div class="rate_user">
+                        <div style="margin-bottom:19px;">{{worker_name}}</div>
+                            <div>
+                                <p>
+                                    <div fundoo-rating rating-value='rating_avg' max="max" readonly="true" style="float:none;"></div>
+                                </p>
+                            </div>
+                        </div>
+                        <div>(10 Avg. {{review_count}} Reviews)</div>
+                    </div>
+                    <div class="item item-text-wrap fontsforweb_fontid_12950">
+        {{worker_description}}
+      </div>
+                </div>
+                <div class="vendor_work fontsforweb_fontid_12950">
+                    <h2> MY WORK </h2>
+                    <ion-scroll direction="x" class="wide-as-needed"  ng-if='workerImages!="0"'>
+                        <div class="container_images" style="width:1500px;">
+						
+						               
+						
+                            <div class="content_appointment_wrap_image" ng-repeat="work_photo in images" >
+							
+                                <img src="{{work_photo}}" class="fullscreen-image" style="width: 285px;" />
+                            </div>
+                        </div>
+                    </ion-scroll>
+                     <div class="content_appointment_wrap_image_dup" ng-if='workerImages="0"'> 
+							
+                                         No Image Found
+                            </div>
+                </div>
+                <div class="vendor_work fontsforweb_fontid_12950">
+                    <h2>REVIEWS </h2>
+                  
+                    <div class="list card review" ng-repeat="reviews in review_detail">
+                        <div class="item">
+                            <p>
+                                <div fundoo-rating rating-value="reviews.rating" max="max" readonly="true"></div>
+                            </p>
+                            <br/>
+                            <p style="white-space: pre-line;width:100%;float:left;">{{reviews.review}}</p>
+                        </div>
+                        <i class="down_review ion-arrow-down-b"></i>
+                        <h4 class="head_user fontsforweb_fontid_12950"> An , {{reviews.full_name}}</h4>
+                    </div>
+                    <div class="content_appointment_wrap_image_dup" ng-if="review_detail==undefined"> 
+							
+                                         No Reviews Found
+                            </div>
+                  
+                    
+                    
+                    <div class="content_lower_footer" style="padding:41px;">
+                        <button class="button button-full button-custom schedule_cut fontsforweb_fontid_12950" style="position: relative;top: -31px;border-radius:0px !important;" ng-click="pickme(price)">
+                   Hire Now
+                </button>
+                    </div>
+                </div>
+                <!-- <div class="bar" style="background:transparent;">-->
+                <!--  </div>-->
+            </div>
+        </ion-footer-bar>
+		
+		<style>
+		.rating .filled {
+    color: #faa632;
+    font-size: 35px;
+}
+ul.rating li {
+    display: inline;
+    border: 0px;
+    background: none;
+    padding: 3px 3px;
+    font-size: 35px;
+	color:#D1D1D1;
+	}
+		</style>
+    </ion-content>
+</ion-view>

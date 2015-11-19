@@ -3,15 +3,16 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
- <ion-view view-title="{{navTitle}}">
+<ion-view>
     <ion-content class="padding">
         <div class="logo_align">
-            <img ng-src="img/asset/greenpal-mobile-logo.png">
+            <img ng-src="img/asset/incity.png">
             </div>
+              <div ng-include="'templates/searchbox_2.html'"></div> 
             <form name="userForm">
                 <div class="list custom-form">
                     <div class="img_login_right">
-                        <img ng-src="img/asset/log-in-screen-gary.png">
+                        <img ng-src="img/asset/rabbit.png">
                         </div>
                         <label class="item item-input item-floating-label border-bottom">
                             <span class="input-label">Email Address</span>
@@ -47,19 +48,20 @@ navigation history that also transitions its views in and out.
                                 </label>
                             </div>
                             <div class="login_align">
-                                <button ng-invalid="login.$invalid" ng-disabled="userForm.$invalid" ng-click="login()" class="button button-custom top">
+                                <button ng-invalid="login.$invalid" ng-disabled="userForm.$invalid" ng-click="login()" class="button button-custom top" style="margin-top:11% !important;border-radius:0px !important;">
       login
      </button>
                             </div>
                         </form>
-                        <div class="forget_pass">
+                        <div class="forget_pass" >
+                        Not a member? 
 						<a href="#/singup">
-                            <span class="fontsforweb_fontid_12950" style="color:white;" >Signup</span></a>
+                           <span class="fontsforweb_fontid_12950" style="color:white;" >Sign up now</span></a>
                         </div>
 						
 						<div class="forget_pass">
 						<a href="#/reset_password">
-                            <span class="fontsforweb_fontid_12950" style="color:white;" >Forgot My Password</span></a>
+                            <span class="fontsforweb_fontid_12950" style="color:white;" >Forgot your Password?</span></a>
                         </div>
 						
                     </ion-content>

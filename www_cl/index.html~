@@ -10,7 +10,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -23,6 +23,7 @@
     <script src="lib/ionic-service-core/ionic-core.js"></script>
 
     <script src="lib/ionic-service-push/ionic-push.js"></script>
+    <script src="lib/"></script>
    <!-- <script src="lib/ionic/js/ionic-rating.min.js"></script>-->
    
 
@@ -44,6 +45,7 @@
 	<!-- if it create problem then remove it. i can use it for tooltip only -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+  
 		<!-- angular-payments library - you probably want to install it through either bower or npm -->
 		
 
@@ -62,15 +64,28 @@
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
-    -->
+    --> 
+    
+       <!-- <ion-header-bar align-title="center" class="bar-positive">
+      
+      <h1 class="title"><img class="title-image" src="img/asset/incity.png" width="123" height="43" /></h1>
+     
+    </ion-header-bar>-->
 	<ion-side-menus enable-menu-with-back-views="true">
 	<ion-pane ion-side-menu-content="">
+
+	 
     <ion-nav-bar class="bar-positive nav-title-slide-ios7">
-      
-<ion-nav-buttons side="right">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
    <!-- Toggle left side menu -->
     <div ng-include="&apos;templates/power.html&apos;" ng-controller="powerCtrl"></div> 
-   <button menu-toggle="right" style="margin-left: 72px !important;
+    <button menu-toggle="right" style="margin-left: 106px !important;
     top: -36px;" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
 
@@ -91,6 +106,12 @@
         
 		 <ion-item nav-clear="" menu-close="" href="#/services">
             <span class="ion-home pic"></span>Home </ion-item>
+                  <ion-item nav-clear="" menu-close="" href="#/profile">
+           <span class="ion-person pic"></span>My Profile
+        </ion-item>
+                       <ion-item nav-clear="" menu-close="" href="#/jobs">
+           <span class="ion-ios-albums-outline pic"></span>My Jobs
+        </ion-item>
 			
         <!--<ion-item nav-clear menu-close href="#/profile">
          <span class="ion-person pic"></span>Profile </ion-item>
@@ -98,18 +119,34 @@
         <ion-item nav-clear menu-close href="#/app/setting">
         <span class="ion-android-notifications pic"></span>Notifications
         </ion-item>-->
-		<ion-item nav-clear="" menu-close="" href="#/about">
-            <span class="ion-compose pic"></span>About us </ion-item>
+        	<ion-item  ng-click="collapsed=!collapsed">
+            <span class="ion-arrow-right-b pic" ng-hide="collapsed"></span><span class="ion-arrow-down-b pic" ng-show="collapsed"></span>Info
+            
+            	<ion-item nav-clear="" menu-close="" href="#/about" ng-show="collapsed" style="margin-top: 9px;">
+            <span class="ion-compose pic" ></span>About us </ion-item>
+             
+            	<ion-item nav-clear="" menu-close="" href="#/terms" ng-show="collapsed" style="margin-bottom: -20px;">
+           <span class="ion-document-text pic"></span>Terms &amp; Conditions
+        </ion-item>
+            
+            
+            </ion-item>
+<!--		<ion-item nav-clear="" menu-close="" href="#/about">
+            <span class="ion-compose pic"></span>About us </ion-item>-->
+            
+            
 			 <ion-item nav-clear="" menu-close="" href="#/my_greenpal">
             <span class="ion-android-contacts pic"></span>Contact us </ion-item>
 		
 		
-        <ion-item nav-clear="" menu-close="" href="#/app/shop">
+        <!--<ion-item nav-clear="" menu-close="" href="#/terms">
            <span class="ion-document-text pic"></span>Terms &amp; Conditions
-        </ion-item>
-		       <!-- <ion-item nav-clear menu-close ng-click="logout()">
-         <span class="ion-power pic"></span>Log Out
         </ion-item>-->
+         
+        
+		     <ion-item nav-clear menu-close href="#/logout">
+         <span class="ion-power pic"></span>Log Out
+        </ion-item>
       </ion-list>
     </ion-content>
 	
@@ -119,22 +156,37 @@
         
 		 <ion-item nav-clear="" menu-close="" href="#/services">
             <span class="ion-home pic"></span>Home </ion-item>
+            
+       <ion-item nav-clear="" menu-close="" href="#/login">
+            <span class="ion-log-in pic"></span>Login </ion-item>     
 			
-        
-		<ion-item nav-clear="" menu-close="" href="#/about">
-            <span class="ion-compose pic"></span>About us </ion-item>
+    <ion-item  ng-click="collapsed=!collapsed">
+            <span class="ion-arrow-right-b pic" ng-hide="collapsed"></span><span class="ion-arrow-down-b pic" ng-show="collapsed"></span>Info
+            
+            	<ion-item nav-clear="" menu-close="" href="#/about" ng-show="collapsed" style="margin-top: 9px;">
+            <span class="ion-compose pic" ></span>About us </ion-item>
+             
+            	<ion-item nav-clear="" menu-close="" href="#/terms" ng-show="collapsed" style="margin-bottom: -20px;">
+           <span class="ion-document-text pic"></span>Terms &amp; Conditions
+        </ion-item>
+            
+            
+            </ion-item>
+<!--		<ion-item nav-clear="" menu-close="" href="#/about">
+            <span class="ion-compose pic"></span>About us </ion-item>-->
+            
+            
 			 <ion-item nav-clear="" menu-close="" href="#/my_greenpal">
             <span class="ion-android-contacts pic"></span>Contact us </ion-item>
 		
 		
-        <ion-item nav-clear="" menu-close="" href="#/app/shop">
-           <span class="ion-document-text pic"></span>Terms &amp; Conditions
-        </ion-item>
+		
+
 
       </ion-list>
 	  
 	  <script id="templates/popover.html" type="text/ng-template">
-      <ion-popover-view style="height:130px; margin-top:78px !important;" >
+      <ion-popover-view style="height:130px; margin-top:10px !important;" >
         <ion-content style="background-color:white;">
           <div class="list">
             <a class="item" ng-click="profile()" >
@@ -149,8 +201,8 @@
       </ion-popover-view>
     </script>
     
-     <script id="templates/popoverNew.html" type="text/ng-template">
-      <ion-popover-view style="height:78px;margin-top:78px !important;" >
+    <!-- <script id="templates/popoverNew.html" type="text/ng-template">
+      <ion-popover-view style="height:78px;margin-top:10px !important;" >
         <ion-content style="background-color:white;">
           <div class="list">
             <a class="item" ng-click="jobs()" >
@@ -161,7 +213,7 @@
           </div>
         </ion-content>
       </ion-popover-view>
-    </script>
+    </script>-->
     
     
     </ion-content>

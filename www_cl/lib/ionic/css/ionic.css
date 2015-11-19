@@ -1966,7 +1966,9 @@ body {
  * Remove default outlines.
  */
 a, button, :focus, a:focus, button:focus, a:active, a:hover {
-  outline: 0; }
+  outline: 0; 
+  background-color:none; 
+}
 
 /* *
  * Remove tap highlight color
@@ -2211,7 +2213,13 @@ body, .ionic-body {
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
-  -webkit-user-drag: none; }
+  -webkit-user-drag: none; 
+  background: #3aa2e1;
+}
+option
+{
+font-size:10px !important;
+}
 
 body.grade-b, body.grade-c {
   text-rendering: auto; }
@@ -2229,7 +2237,8 @@ body.grade-b, body.grade-c {
   margin-top: -1px;
   padding-top: 1px;
   width: auto;
-  height: auto; }
+  height: auto;
+  background: #3aa2e1; }
 
 .scroll-content-false, .menu .scroll-content.scroll-content-false {
   z-index: 11; }
@@ -2488,15 +2497,15 @@ ion-infinite-scroll {
   left: 0;
   width: 100%;
   height: 100%;
-  /*background-color: #fff;*/
-  background-color: #3aa2e1;
+  background-color: #fff;
   overflow: hidden; }
 
 .view-container {
   position: absolute;
   display: block;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  background: #3aa2e1; }
 
 /**
  * Typography
@@ -2776,7 +2785,7 @@ a.subdued {
       background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
     border-color: #0c63ee;
-    background-color: #387ef5;
+      background-color: #8FB741;
     background-image: linear-gradient(0deg, #0c63ee, #0c63ee 50%, transparent 50%);
     color: #fff; }
     .bar.bar-positive .title {
@@ -5263,7 +5272,7 @@ input, button, select, textarea {
   padding: 7px 10px 7px 0px;
   max-width: 200px;
   width: 35%;
-  color: #444;
+  color: #fff;
   font-size: 16px; }
 
 .placeholder-icon {
@@ -5315,7 +5324,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   padding-top: 2px;
   padding-left: 0;
   height: 34px;
-  color: #111;
+  color: #fff;
   vertical-align: middle;
   font-size: 14px;
   line-height: 16px; }
@@ -5358,11 +5367,11 @@ input[type="file"] {
   width: 200px; }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #aaaaaa; }
+  color: #fff; }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  color: #aaaaaa; }
+  color: #fff; }
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #aaaaaa;
+  color: #fff;
   text-indent: 0; }
 
 input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {

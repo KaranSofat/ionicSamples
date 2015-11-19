@@ -1,0 +1,39 @@
+<ion-view  hide-back-button="true">
+  <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+          <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>
+    <ion-content>
+    <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        
+            <hr>
+                <div>
+                    
+                        <div class="content">
+                          <h4 class="cur_bid">Notifications</h4>
+                          <!--ng-if="$index < 10"-->
+                            <a ng-click="detailJob(x.app_id)" ng-repeat="x in notify">
+                                <div class="list card" style="margin-bottom:10px;">
+                                
+                                    <div class="item item-avatar ratethem" style="width:79% !important;">
+                                       <img src="http://incitysearch.com/themes/web/images/app/{{x.serviceicons}}" alt="" style="font-size: 8px;max-width: 50px;border-radius:0px ">   
+                                            <h2>{{x.servicename}} ({{x.jobname}})</h2>
+                                            <p style="font-size:10px !important;">
+                                       {{x.appointment_date}}: {{x.appointment_timing}}
+                                            </p>
+                                        </div>
+                                        <div class="item item_right_rate"style="width:19% !important;">
+                                             <i class="ion-ios-arrow-right" style="  float:right;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                       
+                            </ion-content>
+							
+                        </ion-view>

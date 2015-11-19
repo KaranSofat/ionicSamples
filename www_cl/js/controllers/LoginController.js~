@@ -28,12 +28,32 @@ $scope.user_response={};
     var pass=$scope.user.password;
 		var mobile=$scope.user.mobile;
 		var data = "pass=" +  pass + "&mobiles=" + mobile;
-		
+		$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
 		 HomeOwners.login_details(data).then(function(response) {
             console.log(response);
+            
+            if(response.mobiles_verify_with_password == "Please enter the valid mobile number and password")
+            {
+            $ionicLoading.hide();
+            $ionicPopup.alert({
+              title: 'Login Error',
+              content: 'Please enter the valid mobile number and password'
+            }).then(function(res) {
+              console.log('Test Alert Box');
+            });
+            
+            }
+            
 			$scope.user_response=response;
 			if($scope.user_response.mobile_counter==1)
 			{
+			$ionicLoading.hide();
 			angular.forEach($scope.user_response.mobiles_verify_with_password, function(key, value) {
 			//console.log(key); 
 			$scope.useremail=key.email_id;
@@ -86,7 +106,7 @@ $scope.user_response={};
 
 /*.................... start signup Controller for vendor and homeowner part.................................... */
 
-.controller('singupCtrl', function($scope, $state, HomeOwners, storageService,$rootScope,$ionicUser,$ionicPush,$ionicPopup, $ionicLoading, $cordovaToast,$ionicHistory) {
+.controller('singupCtrl', function($scope, $state, HomeOwners, storageService,$rootScope,$ionicUser,$ionicPush,$ionicPopup, $ionicLoading, $cordovaToast,$ionicHistory,$window) {
 
     //initialize user
     $scope.user = {};
@@ -178,7 +198,18 @@ $scope.user_response={};
    /*...................................... Start signup functionality  .....................................*/
     $scope.register = function() {
 
+      var novalid=$("#form11").valid();
+	 
+	 if(novalid==true)
+	 {
 
+	$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
     
 			var user = $ionicUser.get();
      if(!user.user_id) {
@@ -208,10 +239,7 @@ $scope.user_response={};
      });
     
      $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-         var novalid=$("#form11").valid();
-	 
-	 if(novalid==true)
-	 {
+   
 	    var service_job=storageService.get("service_job");
 	    console.log(service_job);
 	
@@ -232,6 +260,13 @@ $scope.user_response={};
         //console.log(data);
 
         HomeOwners.Create(data).then(function(response) {
+        if(response.user_id!==null)
+        {
+        
+        $("#menu12").hide();
+        $("#menu1").show();
+         $("#notify").show();
+        }
             console.log(response);
 			//console.log(response.email_id);
 			
@@ -248,6 +283,9 @@ $scope.user_response={};
 			console.log($scope.useremail);
 			storageService.save("useremail", $scope.useremail);
 			storageService.save("userId", $scope.userId);
+				$state.go('services', {}, {reload: true})
+ 
+			 //$window.location.reload(true);	
 			})
 	
 	})
@@ -258,15 +296,22 @@ $scope.user_response={};
 			var longi_lati={longi:longi,lati:lati};
 			console.log(longi_lati);
 			storageService.save("longi_lati", longi_lati);
-      $state.go($state.current, {}, {reload: true});			
+     	
+     
+       $ionicLoading.hide();
+     
+     
 			$state.go("services");
 			
 			})
+			
+			  });
+			
 			}
 
     //  storageService.save("deviceToken", data.token);
      
-    });
+  
     
     
 
@@ -1177,8 +1222,8 @@ console.log(base64Img);
 
         var email = {
             to: email_id,
-            subject: 'Greenpal',
-            body: 'How are you? Nice greetings from Greenpal',
+            subject: 'IncitySearch',
+            body: 'How are you? Nice greetings from InCitySearch',
             isHtml: true
         };
 
@@ -1320,7 +1365,7 @@ console.log(base64Img);
 
 /*....................  start New Auction Controller.................................... */
 
-.controller('NewAucCtrl', function($scope, $state, $http, HomeOwners, storageService, $filter) {
+.controller('NewAucCtrl', function($scope, $state, $http, HomeOwners, storageService, $filter,$ionicPopup,$ionicHistory) {
 
 	$scope.orginal = {};
     $scope.photos = [];
@@ -1537,7 +1582,18 @@ console.log(base64Img);
 		var data = "pass=" +  pass + "&mobiles=" + mobile;
 		
 		 HomeOwners.login_details(data).then(function(response) {
-            console.log(response);
+		 
+		 
+      if(response.mobiles_verify_with_password == '"Please enter the valid mobile number and password"');
+      {
+           $ionicPopup.alert({
+              title: 'Login Error',
+              content: 'Please enter the valid mobile number and password'
+            }).then(function(res) {
+              console.log('Test Alert Box');
+            });
+        return false;
+      }
 			
 			$scope.new_results=response.mobiles_verify_with_password;
 			angular.forEach($scope.new_results, function(key, value) {
@@ -1614,6 +1670,14 @@ console.log(base64Img);
         //console.log(data);
 
         HomeOwners.Create(data).then(function(response) {
+        
+          if(response.user_id!==null)
+        {
+        
+        $("#menu12").hide();
+        $("#menu1").show();
+         $("#notify").show();
+        }
             console.log(response.user_id);
 			console.log(response.email);
 			//$state.go("my_bids");
@@ -1647,36 +1711,179 @@ console.log(base64Img);
 	}
 
 }
+
+ $scope.backButton = function() {
+	  
+	  $ionicHistory.goBack();
+	  
+	  
+	  }
+
 })
 
 /*....................  End New Auction Controller.................................... */
 
 /*....................  start about Controller.................................... */
 
-.controller('aboutCtrl', function($scope, $state, $http, HomeOwners,storageService) {
+.controller('aboutCtrl', function($scope, $state, $http, HomeOwners,$ionicLoading,storageService) {
 
-$scope.images=[];
-var image1="http://weiman.com/Weiman/files/ed/ed754062-df49-4b63-9f66-776eeddafe7c.jpg";
-			var image2="https://www.daimer.com/data/Image/hard-surface-cleaner-xtreme-power-13000.jpg";
-			var image3="http://www.onegoodthingbyjillee.com/wp-content/uploads/2012/03/bathroom-cleaner-4.jpg";
-			var image4="http://cleaningday.co.uk/wp-content/uploads/2015/06/SB_steps_cleaner_bathroom.jpg";
-			var image5="http://tristarmaintenance.com/wp-content/uploads/2013/03/bathroom.jpeg";
-			$scope.images.push(image1);
-			$scope.images.push(image2);
-			$scope.images.push(image3);
-			$scope.images.push(image4);
-			$scope.images.push(image5);
+$ionicLoading.show({
+
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+			var data = 'aboutus=about';
+			var team = 'team =team';
+			HomeOwners.About(data).then(function(response) {
 			
+			console.log(data);
 			
+			$scope.title = response.about_us[0].title;
+			
+			$scope.description = response.description;
+			console.log($scope.description);
+			})
+			HomeOwners.Team(team).then(function(response) {
+			console.log(response);
+			$scope.myTeam = response.team;
+			$ionicLoading.hide();
+			
+			})
+
+
 
 
 })
+
 /*....................  End about Controller.................................... */
 
 
 /*....................  start profile Controller.................................... */
 
-.controller('profileCtrl', function($scope, $state, $http, HomeOwners,storageService) {
+.controller('profileCtrl', function($scope, $state, $http, HomeOwners,storageService,$ionicLoading,$cordovaActionSheet,$cordovaCamera) {
+
+ /*...................................... Start Camera Plugin  .....................................*/
+ 
+    $scope.pic = function() {
+
+        var options = {
+            title: 'Choose Option',
+            buttonLabels: ['Take Picture', 'Upload From Gallery'],
+            addCancelButtonWithLabel: 'Cancel',
+            androidEnableCancelButton: true,
+            winphoneEnableCancelButton: true
+
+        };
+
+        document.addEventListener("deviceready", function() {
+
+            $cordovaActionSheet.show(options)
+                .then(function(btnIndex) {
+                var index = btnIndex;
+                //console.log(index);
+                if (index === 1) {
+                    var options = {
+                        quality: 75,
+                        destinationType: Camera.DestinationType.DATA_URL,
+                        sourceType: Camera.PictureSourceType.CAMERA,
+                        allowEdit: true,
+                        encodingType: Camera.EncodingType.JPEG,
+                        targetWidth: 300,
+                        targetHeight: 300,
+                        popoverOptions: CameraPopoverOptions,
+                        saveToPhotoAlbum: false
+                    };
+
+                    $cordovaCamera.getPicture(options).then(function(imageData) {
+                        //console.log(imageData);
+                        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+						$scope.imgURL = "data:image/jpeg;base64," + imageData;
+                    }, function(err) {
+
+                    });
+
+                } else if (index === 2) {
+                    var options = {
+                        quality: 50,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                    };
+                    $cordovaCamera.getPicture(options).then(function(imageData) {
+                        //console.log(imageData);
+						
+						
+						function convertImgToBase64URL(url, callback, outputFormat){
+            var img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = function(){
+                var canvas = document.createElement('CANVAS'),
+                ctx = canvas.getContext('2d'), dataURL;
+                canvas.height = this.height;
+                canvas.width = this.width;
+                ctx.drawImage(this, 0, 0);
+                dataURL = canvas.toDataURL(outputFormat);
+                callback(dataURL);
+                canvas = null; 
+    };
+    img.src = url;
+}
+
+convertImgToBase64URL(imageData, function(base64Img){
+console.log(base64Img);
+
+ $scope.imgURL = base64Img;
+ $scope.imgURI = imageData;                        
+    // Base64DataURL
+})					
+							
+							
+							
+						
+						
+						
+						
+						
+						
+                       
+
+                    }, function(err) {
+                        // An error occured. Show a message to the user
+                    });
+
+                }
+            });
+        }, false);
+    }
+ /*...................................... End Camera Plugin  .....................................*/
+
+
+
+
+
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+ $scope.userId=JSON.parse(storageService.get("userId"));
+  var data = "userInformation="+ $scope.userId;
+
+   HomeOwners.Profile(data).then(function(response) {
+   
+    $scope.userInfo = response.user_information[0];
+    $ionicLoading.hide();
+    storageService.save("userInfo", $scope.userInfo);
+   //console.log($scope.userInfo);
+   });
+
+
 $scope.orginal = {};
     $scope.tab = 'first';
     $scope.scroll_data = 0;
@@ -1696,11 +1903,90 @@ $scope.orginal = {};
 
 /*....................  start Edit Information Controller.................................... */
 
-.controller('informationCtrl', function($scope, $state, $http, HomeOwners,storageService) {
-$scope.orginal = {};
-    $scope.tab = 'first';
-    $scope.scroll_data = 0;
+.controller('informationCtrl', function($scope, $state, $http, HomeOwners,storageService,$ionicLoading) {
+  
+$scope.userInfo=JSON.parse(storageService.get("userInfo"));
 
+
+console.log($scope.userInfo);
+
+
+  HomeOwners.show_Cities().then(function(response) {
+
+			  $scope.city=response.All_cities;
+			
+          });
+          
+    $scope.setcities= function(color){
+    
+        $scope.colorId = color.id;
+        //$scope.shade = color.shade;
+
+        $scope.color = color.name;
+		var city_id=$scope.colorId;
+		
+		
+		 HomeOwners.show_location(city_id).then(function(response) {
+          
+			$scope.location=response.All_location;
+				
+        });
+	}      
+  
+  $scope.setlocations= function(colors){
+	
+			$scope.locationId = colors.id;
+			//$scope.shade = color.shade;
+
+			$scope.location_name = colors.name;
+			
+			$scope.longitude=colors.longitude;
+			$scope.latitude=colors.latitude;
+			
+			
+		}
+          
+$scope.user = {};
+$scope.user.username = $scope.userInfo.full_name;
+$scope.user.email= $scope.userInfo.email;
+$scope.user.mobile = $scope.userInfo.phone;
+$scope.user.address = $scope.userInfo.address;
+
+$scope.userId=JSON.parse(storageService.get("userId"));
+  var uId = $scope.userId;
+    $scope.updateInfo = function() {
+ if($("#form1").valid() == true)
+{
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+   var full_name = $scope.user.username;
+    var email_id = $scope.user.email;
+     var mobile = $scope.user.mobile;
+      var address = $scope.user.address;
+      var locationname=$scope.locationId;
+	    var cityname=$scope.colorId;
+	    console.log(full_name);
+	     console.log(cityname);
+	    
+	   
+       var data= "full_name="+full_name+"&email_id="+email_id+"&phone="+mobile+"&address="+address+"&locationname="+locationname+"&cityname="+cityname+"&userId="+uId;
+
+      HomeOwners.EditInfo(data).then(function(response) {
+     $ionicLoading.hide();
+     
+     
+			$state.go('services', {}, {reload: true})
+ 
+ 
+      })
+     }
+
+}
 
 })
 /*....................  End Edit Information Controller.................................... */
@@ -1709,48 +1995,458 @@ $scope.orginal = {};
 
 /*....................  start Change Password Controller.................................... */
 
-.controller('passwordCtrl', function($scope, $state, $http, HomeOwners,storageService) {
-$scope.orginal = {};
-    $scope.tab = 'first';
-    $scope.scroll_data = 0;
+.controller('passwordCtrl', function($scope, $state, $http, HomeOwners,storageService,$ionicPopup) {
+
+$scope.users = {};
+ $scope.userId=JSON.parse(storageService.get("userId"));
+ 
+ $scope.changePassword = function() {
+ var novalid=$("#myForm_password").valid();
+ if(novalid==true)
+ {
+   
+   var oldPassword = $scope.users.old;
+   var newPassword = $scope.users.new;
+    var confirmPassword = $scope.users.confirm;
+    
+    if(newPassword!=confirmPassword)
+    {
+        $ionicPopup.alert({
+                title: 'Invalid Password',
+                content: 'Please do not Match '
+              }).then(function(res) {
+                console.log('Test Alert Box');
+
+              });
+              return false;
+    }
+
+   var data = 'userId='+ $scope.userId+'&old_password='+oldPassword+'&new_password='+newPassword;
+    HomeOwners.ChangePassword(data).then(function(response) {
+    
+    if(response.status =="failure")
+    {
+       $ionicPopup.alert({
+                title: 'Invalid Old Password',
+                content: 'Please enter the correct password '
+              }).then(function(res) {
+                console.log('Test Alert Box');
+
+              });
+    
+    
+    }
+    else
+    {
+        $ionicPopup.alert({
+                title: 'Password Change',
+                content: 'Your password has been changed successfully'
+              }).then(function(res) {
+                console.log('Test Alert Box');
+
+              });
+    
+    }  
+    
+    })
+   
+   }
+}
 
 
 })
 /*....................  End Change Password Controller.................................... */
+.controller('logOutCtrl', function($scope, $state, $http, HomeOwners,storageService, $ionicHistory) {
+
+	storageService.clearAll();
+			 $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+		
+			  $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });	
+			 //$scope.popover.hide();
+			// $scope.refreshItems();
+		//	document.location.reload()
+		   //$window.location.reload(true)
+		   		  $("#menu1").hide();
+           $("#menu12").show();
+           $("#notify").hide();
+           	$state.go('services', {}, {reload: true})
+})
 
 
-.controller('MyCtrl', function($scope, $state, $http, HomeOwners,storageService) {
+.controller('MyCtrl', function($scope, $state, $http, HomeOwners,storageService, $ionicHistory) {
+var userId=JSON.parse(storageService.get("userId"));
+console.log(userId);
+  var useremail=storageService.get("useremail");
+  
+  if(userId!=null)
+  {
+ 
+  $("#menu12").hide();
+  $("#menu1").show();
+  
+  }
+  /*else
+  {
+  $("#menu1").hide();
+  $("#menu12").show();
+  }*/
 
 
-$scope.logout = function() {
 
+
+ $scope.logout = function() {
+
+  
 			storageService.clearAll();
-			$state.go("services");
+			 $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+		
+			  $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });	
+			 //$scope.popover.hide();
+			// $scope.refreshItems();
+		//	document.location.reload()
+		   //$window.location.reload(true)
+		   		  $("#menu1").hide();
+           $("#menu12").show();
+           $("#notify").hide();
+			$state.go('services', {}, {reload: true})
+			   
 			}
 
 })
 
+.controller('ResetCtrl', function($scope, $state, $http, HomeOwners,$rootScope,$ionicUser,$ionicLoading,$ionicPush,$ionicPopup) {
+$scope.user = {};
+$scope.resetPassword = function() {
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+   
+   
+    var data = "phone="+$scope.user.phone;
+          HomeOwners.ResetPassword(data).then(function(response) {
+          console.log(response);
 
-.controller('ResetCtrl', function($scope, $state, $http, HomeOwners) {
+	        $ionicLoading.hide();
+          
+          if(response.status == "failure")
+          {
+            $ionicPopup.alert({
+              title: 'Invalid Mobile Number',
+              content: 'Please enter the valid mobile number '
+            }).then(function(res) {
+              console.log('Test Alert Box');
+
+            });
+          return 
+          }
+          else
+          {
+               $ionicPopup.alert({
+              title: 'Password Reset',
+              content: 'Your Password has been reset successfully.'
+            }).then(function(res) {
+             $state.go('login');
+            });
+          
+          }
+          
+
+            });
+   
+   
+   
+}
+
+})
+.controller('searchBoxCtrl', function($scope, $state,$window, $cordovaDialogs,$http,HomeOwners,storageService,$ionicPopover,$ionicLoading,$rootScope, $ionicPlatform, $cordovaLocalNotification,$ionicHistory, $ionicPopup) {
+$scope.test={};
+ $scope.orginal = {};
+	 $ionicHistory.clearCache();
+	 $scope.userId={};
+	 $scope.userId=storageService.get("userId");
+	 
+
+	 HomeOwners.show_Cities_new().then(function(response) {
+            
+            
+            console.log(response.All_location_cities);
+			$scope.city=response.All_location_cities;
+			
+			
+				angular.forEach($scope.city, function(key, value) {
+				
+				$scope.cities = key;
+				
+				
+				})
+			
+			
+			
+        });
+        
+        
+        HomeOwners.getBusiness().then(function(response) {
+        
+        $scope.business = response.All_business;
+            //console.log($scope.business);
+		
+			 // console.log($scope.business);
+			
+				angular.forEach (response.All_business, function(key, value) {
+			//		console.log(key);
+				$scope.businessDetail = key;
+				
+		
+				
+				})
+			
+			
+			
+        });
+         $scope.users = {};
+       
+        
+     $scope.getBusinessDetail=function(){ 
+     
+      var business_name = $scope.users.business;
+     
+      var data = 'business_name='+business_name;
+     
+       HomeOwners.getBusiness(data).then(function(response) {
+       
+       
+       
+      			angular.forEach (response.All_business, function(key, value) {
+			//		console.log(key);
+				$scope.businessDetail = key;
+				
+		
+				
+				})
+       
+       
+       
+       
+       });
+     
+          if($scope.users.business==undefined)
+          {
+            $scope.allBusiness=false;
+          }
+         else
+          {
+         
+           $scope.allBusiness=true;
+         
+           }
+     }  
+        
+      $scope.insertBusiness=function(valueBusiness){
+     
+    
+      $scope.users.business = valueBusiness;
+      $scope.allBusiness=false;
+      }  
+
+   
+    $scope.getCities=function(vlue){
+    
+
+  /* $('#input').keydown(function(){
+       $(this).val($(this).val().replace(/...$/,' $&'));
+    });*/
+   
+   
+    /* if (event.keyCode >= 65 && event.keyCode <= 90)
+    {
+      alert("input was a-z");
+      
+      }*/
+    
+    if($scope.users.citys==undefined)
+    {
+        $scope.allCities=false;
+    }
+    else
+    {
+        $scope.allCities=true;
+    }
+    }
+    
+    $scope.inserVal=function(value,name){
+   
+    if(name!=undefined)
+    {
+    
+     $scope.users.citys = value+","+name;
+    }  
+    else
+    {
+      $scope.users.citys = value;
+    }
+    
+     $scope.allCities=false;
+    }
+			 $scope.searchResult=function(){
+			 console.log(businessName);
+		
+		 
+ 
+
+
+		    
+		    /* $cordovaDialogs.beep(1);*/
+	    var businessName = $scope.users.business;
+	    if(businessName == undefined)
+    {
+    
+        $ionicPopup.alert({
+              title: 'Business Name',
+              content: 'Please Enter Business Name'
+            }).then(function(res) {
+           
+
+            });
+              return false;
+          
+    }	   
+	    var locationName = $scope.users.citys;
+	    
+		  $ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+	    
+	     storageService.save("searchTerm", businessName);
+	    
+	   if(locationName!=undefined)
+	   {
+	   
+	      var res = locationName.split(",");
+	       var loc = res[0];
+	        var res = locationName.split(",");
+	  
+	       var newCity = res[1];
+	   
+	   }
+	   else
+	   {
+	   
+	   var loc ='';
+	       var newCity = '';
+	   }	    
+	   
+	    
+	    //alert(loc);
+	    var data = 'business_name='+businessName+'&cities='+loc+'&newCity='+newCity;
+	    
+    
+	   HomeOwners.SearchResult(data).then(function(response) {
+	   
+
+	      
+	   
+	   console.log(response.All_business);
+	   
+	    if(response.All_business == "No Result Found")
+	    {
+	     
+	   //  alert("here");
+	      
+	      $state.go('noResult');
+	    
+	    }
+	    else
+	    {
+	     storageService.save("searchBusiness", response.All_business);
+	      storageService.save("allServices", response.All_service);
+	     //console.log(response.All_business);
+	        
+	      
+	    $ionicLoading.hide();
+	    $state.go('searchResult');
+	   
+	    }
+	    
+	   })
+		
+		 }
+$scope.search = function() {
+
+$("#searchDiv").slideToggle();
+
+$("#searchDivResult").slideToggle();
+
+
+}
+
+
+
+
+})
+.controller('detailNotificationCtrl', function($scope, $state,$window, $http,HomeOwners,storageService,$ionicPopover,$stateParams,$rootScope, $ionicPlatform, $cordovaLocalNotification,$ionicHistory) {
+ $scope.notify=JSON.parse(storageService.get("notify"));
+ console.log($scope.notify);
+ 
+ $scope.detailJob = function(id) {
+ 
+      $state.go('detailJob',{id:id});
+      
+
+ 
+ }
+
 
 })
 
-.controller('powerCtrl', function($scope, $state, $http,HomeOwners,storageService,$ionicPopover,$rootScope, $ionicPlatform, $cordovaLocalNotification,$ionicHistory) {
+
+.controller('powerCtrl', function($scope, $state,$window, $http,HomeOwners,storageService,$ionicPopover, $timeout,$stateParams,$rootScope, $ionicPlatform, $cordovaLocalNotification,$ionicHistory) {
+
+ $scope.userId=JSON.parse(storageService.get("userId"));
+ 
+ var data = 'user_id='+$scope.userId;
+  $timeout(function() {
+   HomeOwners.CountNotify(data).then(function(response) {
+
+$scope.counter = response.counter;
+ 
+ console.log(response.counter);
+ 
+ 
+ 
+ });
+        
+    }, 3000);
+$scope.Notification = function() {
+
+ HomeOwners.MyNotify(data).then(function(response) {
+
+	 storageService.save("notify", response.notifyResult);
+	$state.go('detailNotification', {}, {reload: true})
 
 
+  });
 
 
+}
+
+//alert("here");
+	
+//$scope.headerButtons = 'true';
 	 $scope.userId={};
 	 $scope.useremail={};
 	 $scope.userId=storageService.get("userId");
-	 $scope.useremail=JSON.parse(storageService.get("useremail"));
-	 //alert($scope.useremail);
-	// console.log($scope.useremail);
-	    /*if($scope.useremail = "null")
-	   {
-	    alert("here")
-	   }
-	*/
+	 $scope.useremail=storageService.get("useremail");
+
 	 
 	 $ionicPopover.fromTemplateUrl('templates/popover.html', {
     scope: $scope,
@@ -1786,11 +2482,12 @@ $scope.logout = function() {
 			storageService.clearAll();
 			 $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
-		
+		      $("#notify").show();
 			  $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });	
 			 $scope.popover.hide();
 			// $scope.refreshItems();
 		//	document.location.reload()
+		   $window.location.reload(true)		
 			$state.go('services', {}, {reload: true})
 			   
 			}
@@ -1803,18 +2500,125 @@ $scope.logout = function() {
 			
 			
 			
+
+})
+
+.controller('power2Ctrl', function($scope, $state,$window, $http,HomeOwners,storageService,$ionicPopover,$timeout,$stateParams,$rootScope, $ionicPlatform, $cordovaLocalNotification,$ionicHistory) {
+
+  $scope.userId=JSON.parse(storageService.get("userId"));
+ var data = 'user_id='+$scope.userId;
+ // $timeout(function() {
+   HomeOwners.CountNotify(data).then(function(response) {
+
+$scope.counter = response.counter;
+ 
+ console.log(response.counter);
+ 
+ 
+ 
+ });
+        
+   // }, 3000);
+    
+
+$scope.Notification = function() {
+
+ HomeOwners.MyNotify(data).then(function(response) {
+
+	 storageService.save("notify", response.notifyResult);
+	$state.go('detailNotification', {}, {reload: true})
+
+
+  });
+
+
+}
+
+//alert("here");
+	
+//$scope.headerButtons = 'true';
+	 $scope.userId={};
+	 $scope.useremail={};
+	 $scope.userId=storageService.get("userId");
+	 $scope.useremail=storageService.get("useremail");
+
+	 
+	 $ionicPopover.fromTemplateUrl('templates/popover.html', {
+    scope: $scope,
+  }).then(function(popover) {
+ 
+    $scope.popover = popover;
+     /*var stopListening = $scope.$on('popover.hidden', function() {
+          stopListening();
+          popover.remove();
+
+        });*/
+	
+  });
+  
+  /*======Jobs Code Starts here========*/
+   
+    
+   
+     $scope.jobs = function() {
+     
+      $scope.popover.hide();
+     $state.go('jobs');
+     
+     
+     }
+
+  /*====== Jobs Code Starts here========*/
+  
+  
+
+  $scope.logout = function() {
+
+  //alert("here");
+			storageService.clearAll();
+			 $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+		
+			  $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });	
+			 $scope.popover.hide();
+			// $scope.refreshItems();
+		//	document.location.reload()
+		   $window.location.reload(true)		
+			$state.go('services', {}, {reload: true})
+			   
+			}
+			
+	  $scope.profile = function() {
+
+			 $scope.popover.hide();
+			$state.go("profile");
+			}
+			
+			
 			
 
 })
+
 /*==========Jobs Controllere Starts here=========*/
-.controller('JobsCtrl', function($scope, $state, $http,HomeOwners,storageService,$ionicPopover,$rootScope, $ionicPlatform, $cordovaLocalNotification)
+.controller('JobsCtrl', function($scope, $state, $http,HomeOwners,storageService,$ionicPopover,$rootScope, $ionicLoading,$ionicPlatform, $cordovaLocalNotification)
 {
 
  var userId=JSON.parse(storageService.get("userId"));
+
       
-       var data = "id=" +  userId;
+       var data = "my_job_id=" +  userId;
+       	$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
       HomeOwners.jobs(data).then(function(response) {
+      
+       $ionicLoading.hide();
         $scope.allJobs = response.All_appointment;
+        
         console.log(response.All_appointment);
         
         })
@@ -1826,28 +2630,55 @@ $scope.logout = function() {
 
  
  }
+ $scope.registerJob = function() {
+ 
+      $state.go('services');
+      
 
+ 
+ }
 
 })
 
 /*==========Jobs Controllere Starts here=========*/
 
 /*==========DetailJob Controllere Starts here=========*/
-.controller('detailJobCtrl', function($scope, $ionicPopover,$stateParams,HomeOwners) {
+.controller('detailJobCtrl', function($scope, $ionicPopover,$stateParams,HomeOwners,$ionicLoading) {
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
  $scope.id = $stateParams.id;
  
  var data = "id=" +$scope.id;
  
  HomeOwners.detailJob(data).then(function(response) {
+ 
+ console.log(response);
+ 
        console.log(response.All_appointment_specfic_data);
        
        $scope.date = response.All_appointment_specfic_data[0].appointment_date;
+        var str1 = $scope.date;
+       var res1 = str1.split(" ");
+       console.log(res1[0]);
        
+      
+        $scope.shortDate = res1[1];
+        $scope.shortMonth = res1[0].substring(0, 3);
+      
+       
+       
+    //   console.log($scope.date);
        var str = $scope.date;
        var res = str.split(",");
        $scope.newDate = res[0];
        $scope.year = res[1];
        $scope.jobDetail = response.All_appointment_specfic_data[0];
+       $ionicLoading.hide();
         })
 
 
@@ -1946,9 +2777,17 @@ $scope.logout = function() {
 
 /*.................... Start Services show for  homeowner part.................................... */
 
-.controller('ServicesCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams,$ionicHistory) {
+.controller('ServicesCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams,$ionicHistory,$ionicLoading) {
 
 
+
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+          });
 
     $scope.orginal = {};
 	 $ionicHistory.clearCache();
@@ -1959,13 +2798,507 @@ $scope.logout = function() {
 	 //console.log("nishant");
           //  console.log(response.All_services);
 		$scope.services_data=response.All_services;
-           console.log($scope.services_data);
-		   console.log(response);
+       //    console.log($scope.services_data);
+		   
         });
+
+
+	 HomeOwners.show_Cities().then(function(response) {
+            
+			$scope.city=response.All_cities;
+			
+			
+				angular.forEach($scope.city, function(key, value) {
+				
+				$scope.cities = key;
+				
+				
+				})
+			
+			
+			
+        });
+        
+        
+        HomeOwners.getBusiness().then(function(response) {
+        
+        $scope.business = response.All_business;
+            //console.log($scope.business);
 		
-		$state.reload();
+			 // console.log($scope.business);
+			
+				angular.forEach (response.All_business, function(key, value) {
+			//		console.log(key);
+				$scope.businessDetail = key;
+				
+		$ionicLoading.hide();
+				
+				})
+			
+			
+			
+        });
+         $scope.users = {};
+       
+        
+     $scope.getBusinessDetail=function(){ 
+     
+      console.log($scope.users.business)
+     
+          if($scope.users.business==undefined)
+          {
+            $scope.allBusiness=false;
+          }
+         else
+          {
+         
+           $scope.allBusiness=true;
+         
+           }
+     }  
+        
+      $scope.insertBusiness=function(valueBusiness){
+     
+    
+      $scope.users.business = valueBusiness;
+      $scope.allBusiness=false;
+      }  
+
+   
+    $scope.getCities=function(){
+    
+    console.log($scope.users.citys);
+    if($scope.users.citys==undefined)
+    {
+        $scope.allCities=false;
+    }
+    else
+    {
+        $scope.allCities=true;
+    }
+    }
+    
+    $scope.inserVal=function(value){
+   
+  if(name!=undefined)
+   {
+    $scope.users.citys = value+","+name;
+    }
+    else
+    {
+    
+    $scope.users.citys = value;
+    }
+     $scope.allCities=false;
+    }
+			 $scope.searchResults=function(){
+		  
+    
+	    var businessName = $scope.users.business;
+	    var locationName = $scope.users.citys
+	    
+	    
+	    var data = 'business_name='+businessName+'&cities='+locationName;
+	   HomeOwners.SearchResult(data).then(function(response) {
+	   
+	  
+	   
+	      storageService.save("searchBusiness", response.All_business);
+	  
+	    $state.go('searchResult');
+	    	//$state.go('searchResult', {}, {reload: true})
+	   })
+		
+		 }
+	$scope.load=function(){
+	$scope.$broadcast('scroll.refreshComplete');
+	
+	}
+	
+	
 		
 	})
+
+.controller('termsCtrl', function($scope, $state, $http, HomeOwners,$ionicLoading,storageService,$ionicLoading,$ionicPopup,$ionicModal, $stateParams) {
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+          });
+var data = 'term=term'
+
+HomeOwners.Term(data).then(function(response) {
+console.log(response);
+$scope.description = response.description;
+$scope.title = response.title;
+$ionicLoading.hide();
+})
+
+})
+
+
+.controller('techDetailCtrl', function($scope, $state, $http, HomeOwners, storageService,$ionicLoading,$ionicPopup,$ionicModal, $stateParams) {
+
+var id =$stateParams.id;
+
+var data = 'service_id='+id;
+
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+          });
+ HomeOwners.techDetail(data).then(function(response) {
+ console.log(response);
+ $scope.tech = response.All_technician_list;
+ $scope.img = response.banner;
+ $ionicLoading.hide();
+ console.log(response.All_technician_list);
+   storageService.save("techList", response.All_technician_list);
+ 
+ angular.forEach(response.All_technician_list, function(key, value) {
+ 
+$scope.serviceId = key.service_id;
+ 
+ 
+ })
+ 
+ 
+ });
+
+$scope.hire=function(serviceId){ 
+
+ $state.go('job',{serviceId:serviceId});
+
+}
+	 $scope.techList=JSON.parse(storageService.get("techList"));
+     	 console.log($scope.techList);
+     
+     $scope.techInfo=function(id){ 
+     
+    // var data = 'tech_id ='+ id;
+     
+      angular.forEach($scope.techList, function(key, value) {
+      if(key.tech_id == id){
+ 
+       $ionicPopup.alert({
+              title: key.username,
+              template:"<img style=width:57%;margin-left:39px;height:128px; src=http://incitysearch.com/themes/web/images/app/"+key.profile_pic+"><br><p style=text-align:center;margin-top:7px;margin-bottom:0px;>"+key.servicename+'</p>'+'<p style=text-align:center;margin:0px;>'+key.jobname+'</p><p style=text-align:center;margin:0px;>'+key.cityname+'</p>',
+            //  template:key.description,
+             // content: 'Please enter the valid mobile number ',
+              /* buttons: [
+       { text: 'Cancel' }
+        ]*/
+              
+            }).then(function(res) {
+              console.log('Test Alert Box');
+
+            });
+     
+       
+       
+       
+ 
+      }
+        
+ 
+ })
+ 
+     
+     
+     	 
+  /*   HomeOwners.techInfo(data).then(function(response) {*/
+     
+     
+      
+     
+   /*  })*/
+     
+     
+     
+     
+    
+     
+     }
+
+
+})
+
+.controller('searchResultCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams) {
+
+var searchData=JSON.parse(storageService.get("searchBusiness"));
+ $scope.searchTerm =JSON.parse(storageService.get("searchTerm"));
+  $scope.allServices =JSON.parse(storageService.get("allServices"));
+ 
+ 
+ 
+console.log($scope.allServices);
+
+$scope.resultSearch = searchData;
+
+console.log($scope.resultSearch);
+$scope.blank_result = $scope.resultSearch.length;
+$scope.blank_result_service = $scope.allServices.length;
+
+console.log($scope.blank_result);
+console.log($scope.blank_result_service);
+
+ HomeOwners.show_Cities_new().then(function(response) {
+            
+			//$scope.city=response.All_cities;
+			$scope.city=response.All_location_cities;
+			
+				angular.forEach($scope.city, function(key, value) {
+				
+				$scope.cities = key;
+				
+				
+				})
+			
+			
+			
+        });
+        
+        
+        HomeOwners.getBusiness().then(function(response) {
+        
+        $scope.business = response.All_business;
+            //console.log($scope.business);
+		
+			 // console.log($scope.business);
+			
+				angular.forEach (response.All_business, function(key, value) {
+			//		console.log(key);
+				$scope.businessDetail = key;
+				
+		
+				
+				})
+			
+			
+			
+        });
+         $scope.users = {};
+       
+        
+     $scope.getBusinessDetail=function(){ 
+     
+      console.log($scope.users.business)
+     
+          if($scope.users.business==undefined)
+          {
+            $scope.allBusiness=false;
+          }
+         else
+          {
+         
+           $scope.allBusiness=true;
+         
+           }
+     }  
+        
+      $scope.insertBusiness=function(valueBusiness){
+     
+    
+      $scope.users.business = valueBusiness;
+      $scope.allBusiness=false;
+      }  
+
+   
+    $scope.getCities=function(){
+    
+    console.log($scope.users.citys);
+    if($scope.users.citys==undefined)
+    {
+        $scope.allCities=false;
+    }
+    else
+    {
+        $scope.allCities=true;
+    }
+    }
+    
+    $scope.inserVal=function(value,name){
+   
+   if(name!=undefined)
+   {
+    $scope.users.citys = value+","+name;
+    }
+    else
+    {
+    
+    $scope.users.citys = value;
+    }
+     $scope.allCities=false;
+    }
+			 $scope.searchResult=function(){
+		 
+		 
+	    var businessName = $scope.users.business;
+	    var locationName = $scope.users.citys;
+	    
+	    
+	    
+	    if(locationName!=undefined)
+	   {
+	   
+	      var res = locationName.split(",");
+	       var loc = res[0];
+	        var res = locationName.split(",");
+	  
+	       var newCity = res[1];
+	   
+	   }
+	   else
+	   {
+	   
+	   var loc ='';
+	       var newCity = '';
+	   }	  
+	    
+	    
+	    
+	    
+	  
+	    
+	    var data = 'business_name='+businessName+'&cities='+loc+'&newCity='+newCity;
+	   HomeOwners.SearchResult(data).then(function(response) {
+	   
+	$scope.resultSearch = response.All_business;
+	
+	$("#searchDivResult").hide();
+	//console.log($scope.resultSearch );
+	   })
+ 
+ 
+ 
+ }
+ 
+ $scope.searchAnother=function(){
+ 
+ $state.go('services');
+ 
+ }
+
+//$state.go($state.current, {}, {reload: true});
+})
+
+.controller('searchDetailCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams) {
+
+
+
+
+var id =$stateParams.id;
+
+var data ='id='+id;
+function initialize() {
+ HomeOwners.SearchDetail(data).then(function(response) {
+ 
+ $scope.businessDetail = response.All_business[0];
+ console.log($scope.businessDetail);
+ console.log($scope.businessDetail.locationame);
+ console.log($scope.businessDetail.cityname);
+  console.log($scope.businessDetail.pincode);
+ // alert($scope.businessDetail.landline1.charAt(0));
+ 
+ var landline1 = $scope.businessDetail.landline1.trim();
+ var landline2 = $scope.businessDetail.landline2.trim();
+
+  if(landline1.charAt(0) ==  "0")
+  {
+ 
+      var str4 = landline1.replace("(91)-", "+91 ");
+      var newString = str4.replace('0','+91 ');
+      
+    $scope.landline1 =  newString.replace(/(\d{3})(?!$)/g, "$1-");
+  }
+ 
+   else
+  {
+    $scope.landline1 =  "+91 "+$scope.businessDetail.landline1.replace(/(\d{4})(?!$)/g, "$1-");
+  }
+  if(landline2.charAt(0) == "0")
+  {
+        var str4 = landline2.replace("(91)-", "+91 ");
+      var newString = str4.replace('0','+91 ');
+      
+    $scope.landline2 =  newString.replace(/(\d{3})(?!$)/g, "$1-");
+  }
+  else
+  {
+  
+   $scope.landline2 =  "+91"+$scope.businessDetail.landline2.replace(/(\d{4})(?!$)/g, "$1-")
+  }
+   if($scope.businessDetail.mobile1.charAt(0) == "(")
+   {
+       var str4 = $scope.businessDetail.mobile1.replace("(91)-", "+91-");
+    //  $scope.mobile1 = str4.replace(/(\d{4})(?!$)/g, "$1-");
+      
+      }
+      else
+      {
+        $scope.mobile1 = "+91-"+$scope.businessDetail.mobile1;
+      
+      }
+      if($scope.businessDetail.mobile2.charAt(0) == "(")
+     {
+     
+         var str4 = $scope.businessDetail.mobile2.replace("(91)-", "+91-");
+      
+      }
+      else
+      {
+        
+        $scope.mobile2 = "+91-"+$scope.businessDetail.mobile2;
+      
+      }
+ // alert($scope.businessDetail.landline1.charAt(0));
+ 
+ 
+ 
+  
+  $scope.custom_address = $scope.businessDetail.locationame+', ' + $scope.businessDetail.cityname +', '+ $scope.businessDetail.pincode;
+  
+  console.log( $scope.custom_address);
+  
+ 
+var lat = JSON.parse(response.All_business[0].latitude);
+var long = JSON.parse(response.All_business[0].longitude);
+   
+
+            
+  var myLatLng = {lat: lat , lng: long };
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+            
+          //  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+
+ 
+
+ 
+ 
+ })
+}
+ google.maps.event.addDomListener(window, 'load', initialize());
+
+
+
+})
+
 
 /*.................... End Services show for  homeowner part.................................... */
 
@@ -1973,7 +3306,16 @@ $scope.logout = function() {
 
 /*.................... Start job show for  homeowner part.................................... */
 
-.controller('jobCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams) {
+.controller('jobCtrl', function($scope, $state, $http, HomeOwners, storageService, $stateParams,$ionicHistory, $ionicPopup,$ionicLoading) {
+ 
+ 
+   $ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
     $scope.orginal = {};
 	$scope.colorId={};
 	$scope.color={};
@@ -1985,11 +3327,20 @@ $scope.logout = function() {
           //  console.log(response.All_services);
 		//$scope.services_data=response.All_services;
          //  console.log($scope.services_data);
-		   console.log(response);
+		  console.log(response.status);
 		   
-	$scope.jobs = response.specific_service_job;
-	 $scope.jobs.push({ name: 'Others',id:'0'});
-        });
+		   $ionicLoading.hide();
+		   
+		   if(response.status == 'Fail')
+		   {
+		   
+		       $scope.status = 0;
+		   
+		   }
+		   
+	    $scope.jobs = response.specific_service_job;
+	     $scope.jobs.push({ name: 'Others',id:'0'});
+            });
     $scope.setJobs= function(color){
 	
         $scope.colorId = color.id;
@@ -2012,6 +3363,15 @@ $scope.logout = function() {
 		
     };
 	$scope.next=function(){
+	
+	 $ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+	
 	 var novalid=$("#form1").valid();
 	 
 	
@@ -2035,14 +3395,121 @@ $scope.logout = function() {
 	var data={job_name:selected_job_name,serviceId:serviceId,jobId:job_id,comments:comment}
 	console.log(data);
 	storageService.save("service_job", data);
+		 $ionicLoading.hide();
 	$state.go("new_auction");
 	}
 	};
 	
+	
+	HomeOwners.show_Cities().then(function(response) {
+            //console.log(response);
+			$scope.city=response.All_cities;
+			
+        });
+	
+	
+	$scope.setcities= function(color){
+	
+	
+	console.log(color);
+        $scope.colorId = color.id;
+        //$scope.shade = color.shade;
+
+        $scope.color = color.name;
+		var city_id=$scope.colorId;
+		console.log($scope.colorId);
+		
+		 HomeOwners.show_location(city_id).then(function(response) {
+            console.log(response);
+			$scope.location=response.All_location;
+				
+					$scope.locationName=response.All_location[0].name;
+        });
+	}
+	
+	
+	
+	  $scope.orginal = {};
+      $scope.serviceMessage = function() {
+
+       var novalid=$("#form11").valid();
+
+      if(novalid==true)
+      {
+       $ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+      var name =  $scope.orginal.name;
+     
+      var email =  $scope.orginal.email;
+      var message = $scope.orginal.message;
+      var phone = $scope.orginal.phone;
+      var location = $scope.locationName;
+      var city = $scope.color;
+      
+      console.log(city);
+      console.log(location);
+      
+     // var job_id =  job_id ;
+     // var data = '';
+      var data = "username="+name+"&useremail="+email+"&job_description="+message+'&phone='+phone+'&service_id='+serviceId+'&location='+location+"&city="+city;;
+      console.log(data);
+       HomeOwners.ServiceMessage(data).then(function(response) {
+       
+      if(response.msg=="Submit Sucessfully")
+      {
+       $ionicLoading.hide();
+           $ionicPopup.alert({
+              title: 'Service Request',
+              content: 'Your Request has been submitted successfully.'
+            }).then(function(res) {
+            
+            $state.go('services');
+            
+            
+
+            });
+          
+      
+      }
+       
+       
+       
+       })
+       
+       
+   }
+   }    
+       
+	  $scope.backButton = function() {
+	  
+	  $ionicHistory.goBack();
+	  
+	  
+	  }
+	 
 	 
 	})
 
 /*.................... End job show for  homeowner part.................................... */
+
+.controller('connectionCtrl', function($scope, $state, HomeOwners, $ionicScrollDelegate, $ionicPopup,$ionicLoading, storageService) {
+
+$ionicLoading.hide();
+$scope.refresh = function() {
+
+$state.reload();
+
+}
+
+})
+
+
+
 /*------------------start thanku ctrl------------------------*/
 .controller('thankuCtrl', function($scope, $state, HomeOwners, $ionicScrollDelegate, $ionicPopup, storageService) {
 
@@ -2069,15 +3536,35 @@ var uesrId=storageService.get("userId");
 			}
 			
 			
+		$scope.go = function ( path ) {
+$state.go(path);
+};	
+			
+			
 })
 /*------------------end thanku ctrl------------------------*/
+.controller('noResultCtrl', function($scope, $state, HomeOwners,$ionicLoading, $ionicScrollDelegate, $ionicLoading, storageService) {
+$ionicLoading.hide();
+ $scope.searchTerm =JSON.parse(storageService.get("searchTerm"));
 
+})
 
 
 /*.................... start Display Current Bids for  homeowner part.................................... */
 
-.controller('BidsCtrl', function($scope, $state, HomeOwners, $ionicScrollDelegate, $ionicPopup, storageService) {
+.controller('BidsCtrl', function($scope, $state, HomeOwners,$ionicLoading, $ionicScrollDelegate, $ionicPopup, storageService) {
 //alert("test");
+$scope.services = function() {
+$state.go('services')
+
+}
+$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
 	var service_price=100;
 	var longi_lati=JSON.parse(storageService.get("longi_lati"));
 	var service_job=JSON.parse(storageService.get("service_job"));
@@ -2089,16 +3576,21 @@ var uesrId=storageService.get("userId");
 	var service_id=service_job.serviceId;
 	var job_id=service_job.jobId;
 	
+	
+	
 	 var data = "longitude=" +  lon + "&latitude=" + lat + "&service_id=" + service_id + "&job_id=" + job_id;
 
         console.log(data);
 
       HomeOwners.worker_near_by(data).then(function(response) {
+      $ionicLoading.hide();
           console.log(response);
 			//$state.go("my_bids");
 			if(response.status=="no result found")
 			{
-			$state.go("dash");
+			$scope.status = 0;
+			//$state.go('noResult');
+			//$state.go("dash");
 			}
 			else
 			{
@@ -2169,6 +3661,37 @@ var uesrId=storageService.get("userId");
         });
 
     }*/
+     /* $scope.orginal = {};
+      $scope.serviceMessage = function() {
+
+       var novalid=$("#form11").valid();
+
+      if(novalid==true)
+      {
+   
+      var name =  $scope.orginal.name;
+     
+      var email =  $scope.orginal.email;
+      var message = $scope.orginal.message;
+     // var job_id =  job_id ;
+     // var data = '';
+      var data = "name="+name+"&email="+email+"&message="+message;
+       HomeOwners.ServiceMessage(data).then(function(response) {
+       
+       console.log(response);
+       
+       
+       
+       })
+      
+      
+      }
+      
+
+
+      }*/
+      
+    
  
 })
 
@@ -2179,7 +3702,7 @@ var uesrId=storageService.get("userId");
 
 /*.................... start Display Selected Bid With Info for  homeowner part.................................... */
 
-.controller('BidInfoCtrl', function($scope, $state, HomeOwners, $ionicScrollDelegate, $ionicPopup, storageService, $stateParams) {
+.controller('BidInfoCtrl', function($scope, $state, HomeOwners, $ionicScrollDelegate,	$ionicLoading,$ionicPopup, storageService, $stateParams) {
 	$scope.max = 5;
 	$scope.sum=0;
 	$scope.rating_avg={};
@@ -2199,11 +3722,12 @@ var uesrId=storageService.get("userId");
 			//console.log(key); 
 			$scope.worker_description=key.description;
 			$scope.worker_name=key.username;
-			var image1="http://weiman.com/Weiman/files/ed/ed754062-df49-4b63-9f66-776eeddafe7c.jpg";
-			var image2="https://www.daimer.com/data/Image/hard-surface-cleaner-xtreme-power-13000.jpg";
-			var image3="http://www.onegoodthingbyjillee.com/wp-content/uploads/2012/03/bathroom-cleaner-4.jpg";
-			var image4="http://cleaningday.co.uk/wp-content/uploads/2015/06/SB_steps_cleaner_bathroom.jpg";
-			var image5="http://tristarmaintenance.com/wp-content/uploads/2013/03/bathroom.jpeg";
+			$scope.worker_image=key.profile_pic;
+			var image1=key.work_pic_1;
+			var image2=key.work_pic_2;
+			var image3=key.work_pic_3;
+			var image4=key.work_pic_4;
+			var image5=key.work_pic_5;
 			$scope.images.push(image1);
 			$scope.images.push(image2);
 			$scope.images.push(image3);
@@ -2213,12 +3737,15 @@ var uesrId=storageService.get("userId");
 
           //  $state.go("login");
         });
+       $scope.workerImages = $scope.images.length;
 
 		HomeOwners.workers_detail_review(techId).then(function(response) {
             console.log(response.review_details);
 			$scope.review_detail=response.review_details;
-           //console.log($scope.review_detail.length);
-		   $scope.review_count=$scope.review_detail.length;
+			
+			
+          console.log($scope.review_detail);
+		   $scope.review_count=5;
 		
 		   angular.forEach($scope.review_detail, function(key, value) {
 		   var rate=key.rating;
@@ -2234,6 +3761,16 @@ var uesrId=storageService.get("userId");
         });		
 		
 		$scope.pickme = function(price) {
+		
+		$ionicLoading.show({
+            template: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+		
+		
 	$scope.service_jobs=JSON.parse(storageService.get("service_job"));
 	console.log($scope.service_jobs);
 	var job_name=$scope.service_jobs.job_name;
@@ -2247,6 +3784,8 @@ var uesrId=storageService.get("userId");
 	console.log($scope.new_auction_data);
 	var app_date=$scope.new_auction_data.date;
 	var user_id=$scope.new_auction_data.id;
+	var user_id=JSON.parse(storageService.get("userId"));
+
 	var timings=$scope.new_auction_data.timing;
 	var distance=$stateParams.techDistance;
 	var kilo=' km';
@@ -2258,31 +3797,44 @@ var uesrId=storageService.get("userId");
 
 	 
 	HomeOwners.appointment_create(data).then(function(response) {
-	console.log(response);
+	
+	  console.log(response);
+	
+	
+	
+	
+	//$state.go("thanku");
 	if(response.msg=="Appointment Submit Sucessfully")
 	{
 	
 		 var user_id=$scope.new_auction_data.id;
-	 var user_data = user_id;
-	HomeOwners.user_view(user_data).then(function(usersresponse) {
-	//console.log(usersresponse);
-	$scope.user_response=usersresponse;
-	//console.log($scope.user_response);
-	angular.forEach($scope.user_response, function(key, value) {
+	   var user_data = user_id;
+	   HomeOwners.user_view(user_data).then(function(usersresponse) {
+	  //console.log(usersresponse);
+	  $scope.user_response=usersresponse;
+	  //console.log($scope.user_response);
+	  angular.forEach($scope.user_response, function(key, value) {
 			//console.log(key); 
 			$scope.useremail=key.email_id;
 			$scope.userId=key.id;
 			console.log($scope.useremail);
 			storageService.save("useremail", $scope.useremail);
-	storageService.save("userId", $scope.userId);
+	    storageService.save("userId", $scope.userId);
 			})
 	
 	})
 	
 
+
+
+
+	$ionicLoading.hide();
 	
 	$state.go("thanku");
 	}
+	
+	
+
 	
 	
 	 });

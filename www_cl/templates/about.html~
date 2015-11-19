@@ -1,0 +1,183 @@
+<ion-view>
+        <!-- <ion-nav-bar class="nav-title-slide-ios7 bar-custom">
+   <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+     <ion-nav-buttons side="right">
+		             <div ng-include="'templates/power.html'"></div> 
+
+	
+      </ion-nav-buttons>-->
+    <ion-content>
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+      <div class="aboutPage">
+     
+      <div style="font-size:24px;font-weight:bold;margin-bottom:16px;">{{title}}</div>
+     
+       <div data-ng-bind-html="description">
+   
+      </div>
+      
+      </div>
+							
+                   <div class="vendor_work fontsforweb_fontid_12950" style="margin-top:0px;">
+                    <h2 style=" margin: 21px 0 24px 19px;
+    text-align: left;">Meet the Team</h2>
+                   
+                   
+                   
+                   
+                    <ion-scroll direction="x" class="wide-as-needed">
+                        <div class="container_images" style="width:1500px;height:155px !important;">
+						
+						               
+						
+                            <div class="content_appointment_wrap_image"  ng-repeat="x in myTeam">
+						                        	<ul class="myApp">
+                    <li> <img src="http://incitysearch.com/themes/web/images/{{x.image_url}}" class="fullscreen-image" style="width: 100px;height:84px;" /><p style="text-align: center;
+margin-top: 8px;">{{x.name}}</p><!--<p>{{x.designation}}</p>--></li>
+                         
+                    
+                     
+                  </ul>               
+                            </div>
+                        </div>
+                    </ion-scroll>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                              
+                              <!-- <ion-scroll direction="x" class="wide-as-needed"  >
+                               
+                         <div class="row" style="margin-left:12px;">
+                     <div class="col">
+                        <img src="img/asset/krishan.png" class="foot_img">
+                         
+                   
+                      </div>
+                      <div class="col">
+                          <img src="img/asset/raman.jpg" class="foot_img">
+                              
+                    </div>
+                    </div>
+                    
+                    <div class="row"style="margin-left:12px;">
+                            <div class="col">
+                                <p class="white">Krishan Dutt</p>
+                            </div>
+                            <div class="col">
+                                      <p class="white"> Raman Bhaskar</p>
+                                  </div>
+                   
+                           </div>
+                     <div class="row" style="font-size: 11px;margin-top: -24px;margin-left:12px;">
+                            <div class="col">
+                                <p class="white">Manager Business & Strategy</p>
+                            </div>
+                            <div class="col">
+                                      <p class="white">Project Manager/Developer</p>
+                                  </div>
+                   
+                           </div>
+                       
+                      
+                           
+                    </ion-scroll>
+                   <!--<div class="col">
+                      <img src="img/asset/pankaj.jpg" class="foot_img">
+                       <div class="row">
+                   <div class="col">
+                   <p class="white">Pankaj Sharma</p>
+                   </div>
+                   
+                   </div>
+                   </div>
+                   <div class="col">
+                      <img src="img/asset/nishant.jpg" class="foot_img">
+                       <div class="row">
+                   <div class="col">
+                   <p class="white">Nishant Garg</p>
+                   </div>
+                   
+                   </div>
+                    </div>
+                   
+                   </div>
+                   
+                   
+                   
+                   
+                </div>
+							
+                        </div>
+						
+					
+						</div>-->
+						    
+						
+                        <!-- <div><div class="calendar"><img ng-src="img/asset/calendar-icon-0-days.png"></div><div class="content_appointment"><h1>No Scheduled Appointments </h1></div><div class="content_lower"><button ng-click="gotourl('my_bids')" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
+           Schedule a cut
+        </button><div class="or_state fontsforweb_fontid_12950"> -OR- </div><button ng-click="gotourl('new_auction')" class="button button-full button-trans schedule_cut fontsforweb_fontid_12950">
+           Get new quotes
+        </button></div></div>-->
+        <style>
+        .aboutPage
+        {
+        margin-left: 12px;
+color: white;
+margin-top:24px;
+
+}
+        
+        .foot_img
+        {
+            height: 100%;
+            width: 68%;
+        
+        }
+        .icons_img
+        {
+            width:26px;
+        }
+        .white
+        {
+        color:white;
+        }
+        .col li {
+    float: left;
+    
+    margin-left: 8px;
+}
+     
+ .content.clearfix > h2 {
+    color: white;
+    font-size:20px !important;
+}    
+     .myApp > li {
+    float: left;
+}
+        </style>
+        
+                    </ion-content>
+                </ion-view>

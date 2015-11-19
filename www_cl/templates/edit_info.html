@@ -1,15 +1,23 @@
 <ion-view>
-    <!--<ion-nav-bar class="nav-title-slide-ios7 bar-custom">
-        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
-    </ion-nav-bar>
-          <ion-nav-buttons side="right">
-		             <div ng-include="'templates/power.html'"></div> 
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
 
-	
-      </ion-nav-buttons>
-    <ion-nav-title class="title_service">Edit Information
-  </ion-nav-title>-->
-    <ion-content>
+	  </ion-nav-bar>
+    <ion-content >
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         <br/>
 		<form name="myForm" id="form1">
         <div class="rate_service">
@@ -17,7 +25,7 @@
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
-	  <input type="text" name="uname" id="uname" required style="color:black;height:25px;">
+	  <input type="text" name="uname" id="uname" ng-model="user.username"required style="color:black;height:25px;">
 	 </div>
 	</div>
         </div>
@@ -28,7 +36,7 @@
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
-	  <input type="email" name="email" id="email_id" required style="color:black;height:25px;">
+	  <input type="email" name="email" id="email_id"  ng-model="user.email" required style="color:black;height:25px;">
 	 </div>
 	</div>
         </div>
@@ -38,7 +46,7 @@
 		  <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
-	  <input type="text" name="mobile" id="mobile" required style="color:black;height:25px;">
+	  <input type="text" name="mobile" id="mobile"  ng-model="user.mobile" required style="color:black;height:25px;">
 	 </div>
 	</div>
         </div>		
@@ -48,16 +56,29 @@
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
-	  <textarea name="address" id="address" required style="color:black;height:50px;"></textarea>
+	  <textarea name="address" id="address"  ng-model="user.address" required style="color:black;height:50px;"></textarea>
 	 </div>
 	</div>
         </div>
+        
+        <div class="rate_service">
+            <div class='services_color' style="text-align:left;">City </div>
+            <div class="row" style="padding-left:0px;">
+			<div class="sel">
+	 
+	  <select name="cities" ng-model="selectedColor" ng-options="cities as cities.name for cities in city" ng-change="setcities(selectedColor)" style="width:100%;height:25px;" required >
+                <option value="" disabled selected>Select A City</option>
+            </select>
+	 </div>
+	</div>
+        </div>
+        
 		  <div class="rate_service">
             <div class='services_color' style="text-align:left;">Location</div>
             <div class="row" style="padding-left:0px;">
 			<div class="sel">
 	 
-			<select name="locations" ng-model="selectedColors" ng-options="locations as locations.name for locations in location" ng-init="selectedColors = check(selected,locations)" ng-change="setlocations(selectedColors)" style="width:100%;height:25px;"  required>
+			<select name="locations" ng-model="selectedColors" ng-options="locations as locations.name for locations in location"  ng-change="setlocations(selectedColors)" style="width:100%;height:25px;"  required>
                 <option value="" disabled selected>Select A Location</option>
             </select>	  
 
@@ -66,23 +87,13 @@
         </div>
 		
 		
-		 <div class="rate_service">
-            <div class='services_color' style="text-align:left;">City </div>
-            <div class="row" style="padding-left:0px;">
-			<div class="sel">
-	 
-	  <select name="cities" ng-model="selectedColor" ng-options="cities as cities.name for cities in city" ng-init="selectedColor = check(selected,cities)" ng-change="setcities(selectedColor)" style="width:100%;height:25px;" required >
-                <option value="" disabled selected>Select A City</option>
-            </select>
-	 </div>
-	</div>
-        </div>
+		 
 		
 		
 		
 		  <div class="rate_service">
 		  <div class="row" style="padding-left:0px;">
-		         <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="next()" >
+		         <button class="button button-full button-custom auction_cut fontsforweb_fontid_12950" ng-click="updateInfo()" >
              Update
              </button>
 		 </div>

@@ -1,0 +1,71 @@
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content >
+
+       <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+      
+      
+       <div class="aboutPage">
+     
+      <div style="font-size:24px;font-weight:bold;margin-bottom:16px;">{{title}}</div>
+     
+       <div data-ng-bind-html="description">
+   
+      </div>
+      
+      </div>
+		             
+        <style>
+        .aboutPage
+        {
+        margin-left: 12px;
+color: white;
+margin-top:24px;
+
+}
+        
+        .foot_img
+        {
+            height: 100%;
+            width: 68%;
+        
+        }
+        .icons_img
+        {
+            width:26px;
+        }
+        .white
+        {
+        color:white;
+        }
+        .col li {
+    float: left;
+    
+    margin-left: 8px;
+}
+     
+ .content.clearfix > h2 {
+    color: white;
+    font-size:20px !important;
+}    
+     
+        </style>
+        
+                    </ion-content>
+                </ion-view>

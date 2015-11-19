@@ -1,19 +1,40 @@
+
 <ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+
     <!--  <div class="bar bar-header bar-balanced"><img ng-src="img/asset/auctions_03.png" class="logo_green"></div>  -->
     <ion-content style="background:#fff;">
+     <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
         <div class="Reschedule_img_back">
 		      
 
             <div class="image_width_on_banner">
                 <div class="date_calendarsing "  style="background-color:white;">
-                    <div class="date_calendar_green1">{{newDate}}</div>
-                    <div class="date_cal1">{{year}}</div>
+                    <div class="date_calendar_green1">{{shortMonth}}, {{shortDate}}</div>
+                
+                     <div class="date_cal1">  <img src="http://incitysearch.com/themes/web/images/app/{{jobDetail.serviceicons}}" alt="" style="font-size: 8px;max-width: 50px;border-radius:0px; margin-top:11px;">   </div>
                     <div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>
                     <!--<div class="date_calendar_white1" style="font-size:12px;">{{ specificvendorappointmentInfo.appointments.service_date | date:'EEEE'}}</div>-->
                 </div>
                 <div class="banner_rate">
                     <!--<img ng-src="img/asset/notifications_29.png">-->
-                    <div class="blue_circle">{{jobDetail.service_price}}</div>
+                    <div class="blue_circle">&#x20B9;{{jobDetail.service_price}}</div>
                 </div>
             </div>
         </div>
@@ -138,7 +159,18 @@
                                 
                                 </ion-content>
       <style>
-
+    
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map, #pano {
+        float: left;
+        height: 100%;
+        width: 45%;
+      }
+   
 /* Progress Tracker v2 */
 ol.progress[data-steps="2"] li { width: 49%; }
 ol.progress[data-steps="3"] li { width: 33%; }

@@ -1,0 +1,53 @@
+<ion-view>
+    
+  
+<ion-nav-bar class="bar-positive nav-title-slide-ios7">
+     	 <ion-nav-buttons side="left">
+	<a href="#/services"> <img class="title-image" src="img/asset/headerCity.png" style="width: 100px;
+height: 25px;
+margin: 5px 0 0 8px" /></a>
+	 </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+ 
+   <!-- Toggle left side menu -->
+    <div ng-include="&apos;templates/power.html&apos;" ng-controller="power2Ctrl"></div> 
+   <button menu-toggle="right" style="margin-left: 106px !important;
+    top: -36px;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+	  </ion-nav-bar>
+    <ion-content >
+    <ion-content>
+      <div ng-include="'templates/searchbox_2.html'" ng-controller="searchBoxCtrl"></div> 
+        <div class="logo_align_dash">
+            <img ng-src="img/asset/incity.png">
+            </div>
+            <div class="row">
+                <!--<div ng-click="changetab('first')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='first'}"> Appointments</div>
+                </div>-->
+              <!--  <div ng-click="changetab('second')" class="col col-50 pointer">
+                    <div ng-class="{'col-demo':tab=='second'}"> My Greenpal</div>
+                </div>-->
+            </div>
+            <hr>
+                <div>
+                   <!-- <div class="barrel">
+                        <img ng-src="img/asset/bid-gavel.png">
+                        </div>-->
+                        <div class="content">
+                           <!-- <h4 class="fontsforweb_fontid_12950">Service is not available</h4>-->
+                            <h1> Service is not available </h1>
+                         <!--   <h1> getting your bids.</h1>-->
+                            <!--<div class="garry_no_bid">
+                                <img ng-src="img/asset/no-bids-gary.png">
+                                </div>-->
+                            </div>
+                        </div>
+                        <!-- <div><div class="calendar"><img ng-src="img/asset/calendar-icon-0-days.png"></div><div class="content_appointment"><h1>No Scheduled Appointments </h1></div><div class="content_lower"><button ng-click="gotourl('my_bids')" class="button button-full button-custom schedule_cut fontsforweb_fontid_12950">
+           Schedule a cut
+        </button><div class="or_state fontsforweb_fontid_12950"> -OR- </div><button ng-click="gotourl('new_auction')" class="button button-full button-trans schedule_cut fontsforweb_fontid_12950">
+           Get new quotes
+        </button></div></div>-->
+                    </ion-content>
+                </ion-view>
